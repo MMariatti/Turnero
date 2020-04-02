@@ -73,7 +73,7 @@ namespace Turnero.Forms
 
     private void BtnSalir_Click(object sender, EventArgs e)
     {
-      if (MessageBox.Show("Esta seguro que desea cerrar la aplicacion?", "Cerrar Aplicacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+      if (MessageBox.Show("¿Está seguro que desea cerrar la aplicacion?", "Cerrar Aplicacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
       {
         Application.Exit();
       }
@@ -81,7 +81,7 @@ namespace Turnero.Forms
 
     private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
     {
-      if (MessageBox.Show("Esta seguro que desea cerrar la aplicacion", "Cerrar Aplicacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+      if (MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         e.Cancel = false;
       else
         e.Cancel = true;

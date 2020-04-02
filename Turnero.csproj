@@ -47,6 +47,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DBHelper.cs" />
+    <Compile Include="Classes\Especialidades.cs" />
+    <Compile Include="Classes\Medicos.cs" />
+    <Compile Include="Classes\ObrasSociales.cs" />
+    <Compile Include="Classes\Pacientes.cs" />
+    <Compile Include="Classes\Practicas.cs" />
+    <Compile Include="Classes\Turnos.cs" />
+    <Compile Include="Forms\FrmAgregarMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAgregarMedico.Designer.cs">
+      <DependentUpon>FrmAgregarMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEspecialidades.Designer.cs">
+      <DependentUpon>FrmEspecialidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,13 +77,76 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMedicos.Designer.cs">
+      <DependentUpon>FrmMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModificarApellido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModificarApellido.Designer.cs">
+      <DependentUpon>FrmModificarApellido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModificarEspecialidadMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModificarEspecialidadMedico.Designer.cs">
+      <DependentUpon>FrmModificarEspecialidadMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModificarNombreMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModificarNombreMedico.Designer.cs">
+      <DependentUpon>FrmModificarNombreMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmObrasSociales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmObrasSociales.Designer.cs">
+      <DependentUpon>FrmObrasSociales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPacientes.Designer.cs">
+      <DependentUpon>FrmPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPracticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPracticas.Designer.cs">
+      <DependentUpon>FrmPracticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTurnos.Designer.cs">
+      <DependentUpon>FrmTurnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmAgregarMedico.resx">
+      <DependentUpon>FrmAgregarMedico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMedicos.resx">
+      <DependentUpon>FrmMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModificarApellido.resx">
+      <DependentUpon>FrmModificarApellido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModificarEspecialidadMedico.resx">
+      <DependentUpon>FrmModificarEspecialidadMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModificarNombreMedico.resx">
+      <DependentUpon>FrmModificarNombreMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
