@@ -22,14 +22,9 @@ namespace Turnero.Classes
         this.idEspecialidad = value;
       }
     }
-
-   
     public string Descripcion
     {
-      get
-      {
-        return this.descripcion;
-      }
+      get { return this.descripcion; }
       private set
       {
         if (!string.IsNullOrWhiteSpace(value))
@@ -43,15 +38,20 @@ namespace Turnero.Classes
       }
     }
 
+
+
+
     public Especialidades()
     {
 
     }
 
+   
+
     public Especialidades(string descripcion)
     {
       
-      this.Descripcion = descripcion;
+      this.descripcion = descripcion;
     }
 
     public Especialidades(int idEspecialidad)
@@ -62,9 +62,9 @@ namespace Turnero.Classes
 
     private void getAttr()
     {
-      string query = "SELECT  descripcion FROM Especialidades WHERE idTipoItem = " + IdEspecialidad;
+      string query = "SELECT  descripcion FROM Especialidades WHERE idEspecialidad = " + IdEspecialidad;
       DataTable tabla = BDHelper.ConsultarSQL(query);
-      descripcion = tabla.Rows[0]["descripcion"].ToString();
+      Descripcion = tabla.Rows[0]["descripcion"].ToString();
     }
 
     public void Save()
@@ -73,7 +73,7 @@ namespace Turnero.Classes
       {
         string query = "INSERT INTO Especialidades(descripcion) values('" + this.Descripcion + "')";
         BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Tipo de Item: " + this.Descripcion + " cargado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.None);
+        MessageBox.Show("Se ha cargado " + this.Descripcion + " con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.None);
       }
       catch (Exception ex)
       {
@@ -84,7 +84,7 @@ namespace Turnero.Classes
     public static DataTable GetAll()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT * FROM ESpecialidades";
+      string query = "SELECT idEspecialidad AS Codigo, descripcion AS Nombre FROM Especialidades";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -97,6 +97,21 @@ namespace Turnero.Classes
       }
     }
 
+    public static DataTable LlenarCmb()
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT * FROM Especialidades";
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
     public void CambiarDescripcion(string descripcionNueva)
     {
       string query = "UPDATE Especialidades SET descripcion = '" + descripcionNueva + "' WHERE idEspecialidad = '" + this.IdEspecialidad + "'";

@@ -101,7 +101,7 @@ namespace Turnero.Classes
       
     private void getAttr()
     {
-      string query = "SELECT * FROM Medicos WHERE idMedico = "+ IdMedico +"";
+      string query = "SELECT * FROM Medicos WHERE legajo = "+ IdMedico +"";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       Nombre = tabla.Rows[0]["nombre"].ToString();
       Apellido = tabla.Rows[0]["apellido"].ToString();
@@ -112,7 +112,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "INSERT INTO Medicos(apellido,nombre, idEspecialidad) " + "VALUES('" + this.Nombre + "','" + this.Apellido + "', "+ this.Especialidad+")";
+        string query = "INSERT INTO Medicos(apellido, nombre, idEspecialidad) " + "VALUES('" + this.Nombre + "','" + this.Apellido + "', "+ this.Especialidad+")";
         BDHelper.ConsultarSQL(query);
 
       }
@@ -141,7 +141,7 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT M.idMedico AS Legajo, M.apellido AS Apellido, M.nombre AS Nombre, E.descripcion AS Especialidad FROM Medicos M , Especialidades E WHERE M.idEspecialidad = E.idEspecialidad" ;
+      string query = "SELECT M.legajo AS Legajo, M.apellido AS Apellido, M.nombre AS Nombre, E.descripcion AS Especialidad FROM Medicos M , Especialidades E WHERE M.idEspecialidad = E.idEspecialidad" ;
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -157,12 +157,12 @@ namespace Turnero.Classes
 
     public Medicos GetMedico(int idM)
     {
-      string query = "SELECT * FROM Medicos WHERE idMedico = " + idM + " ";
+      string query = "SELECT * FROM Medicos WHERE legajo = " + idM ;
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
-      Medicos cliente = new Medicos(fila.Field<string>("nombre"), fila.Field<string>("apellido"), fila.Field<int>("idEspecialidad"));
-      return cliente;
+      Medicos medico = new Medicos(fila.Field<string>("nombre"), fila.Field<string>("apellido"), fila.Field<int>("idEspecialidad"));
+      return medico;
     }
 
    
@@ -171,7 +171,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Medicos SET nombre = '" + newNombre + "' WHERE nombre = '" + this.Nombre + "' AND apellido = '"+ this.Apellido +"'";
+        string query = "UPDATE Medicos SET nombre = '" + newNombre + "' WHERE legajo = " + this.IdMedico + " ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = newNombre;
         MessageBox.Show("Nombre cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -186,7 +186,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Medicos SET apellido = '" + newApellido + "' WHERE nombre = '" + this.Nombre + "' AND apellido = '" + this.Apellido + "'";
+        string query = "UPDATE Medicos SET apellido = '" + newApellido + "' WHERE legajo = " + this.IdMedico + "";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Apellido cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Apellido = newApellido;
@@ -201,7 +201,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Medicos SET idEspecialidad = " + newEspecialidad + " WHERE nombre = '" + this.Nombre + "' AND apellido = '" + this.Apellido + "'";
+        string query = "UPDATE Medicos SET idEspecialidad = " + newEspecialidad + " WHERE legajo = " + this.IdMedico + "";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Especialidad cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }

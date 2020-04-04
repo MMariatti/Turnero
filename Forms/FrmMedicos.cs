@@ -52,29 +52,10 @@ namespace Turnero.Forms
       frmAgregarMedico.Show();
     }
 
-    private void BtnModificarNombre_Click(object sender, EventArgs e)
-
-    {
-      if(GrdMedicos.SelectedRows.Count == 0)
-      {
-        MessageBox.Show("Seleccione al medico que quiere realizarle modificaciones", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-       }
-
-      else
-      {
-        FrmModificarNombreMedico frmModificarNombre;
-        frmModificarNombre = new FrmModificarNombreMedico();
-
-        frmModificarNombre.TxtLegajo.Text = GrdMedicos.SelectedRows[0].Cells[0].Value.ToString();
-        frmModificarNombre.TxtApellido.Text = GrdMedicos.SelectedRows[0].Cells[1].Value.ToString();
-        frmModificarNombre.TxtEspecialidad.Text = GrdMedicos.SelectedRows[0].Cells[3].Value.ToString();
-
-        frmModificarNombre.Show();
-      }
+   
        
       
-    }
+    
 
     private void BtnModificarApellido_Click(object sender, EventArgs e)
     {
@@ -85,34 +66,17 @@ namespace Turnero.Forms
       }
       else
       {
-        FrmModificarApellido frmModificarApellido;
-        frmModificarApellido = new FrmModificarApellido();
-        frmModificarApellido.TxtLegajo.Text = GrdMedicos.SelectedRows[0].Cells[0].Value.ToString();
-        frmModificarApellido.TxtNombre.Text = GrdMedicos.SelectedRows[0].Cells[2].Value.ToString();
-        frmModificarApellido.TxtEspecialidad.Text = GrdMedicos.SelectedRows[0].Cells[3].Value.ToString();
-        frmModificarApellido.Show();
+        FrmModificarMedico frmModificarMedico;
+        frmModificarMedico = new FrmModificarMedico();
+        frmModificarMedico.TxtLegajo.Text = GrdMedicos.SelectedRows[0].Cells[0].Value.ToString();
+        frmModificarMedico.TxtApellido.Text = GrdMedicos.SelectedRows[0].Cells[1].Value.ToString();
+        frmModificarMedico.TxtNombre.Text = GrdMedicos.SelectedRows[0].Cells[2].Value.ToString();
+        frmModificarMedico.CmbEspecialidad.Text = GrdMedicos.SelectedRows[0].Cells[3].Value.ToString();
+        frmModificarMedico.Show();
       }
      
     }
 
-    private void BtnModificarEspecialidad_Click(object sender, EventArgs e)
-    {
-      if (GrdMedicos.SelectedRows.Count == 0)
-      {
-        MessageBox.Show("Seleccione al medico que quiere realizarle modificaciones", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-      }
-      else
-      {
-        FrmModificarEspecialidadMedico frmModificarEspecialidadMedico;
-        frmModificarEspecialidadMedico = new FrmModificarEspecialidadMedico();
-
-        frmModificarEspecialidadMedico.TxtLegajo.Text = GrdMedicos.SelectedRows[0].Cells[0].Value.ToString();
-        frmModificarEspecialidadMedico.TxtApellido.Text = GrdMedicos.SelectedRows[0].Cells[1].Value.ToString();
-        frmModificarEspecialidadMedico.TxtNombre.Text = GrdMedicos.SelectedRows[0].Cells[2].Value.ToString();
-        frmModificarEspecialidadMedico.Show();
-      }
-      
-    }
+   
   }
 }

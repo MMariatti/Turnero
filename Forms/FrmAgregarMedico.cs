@@ -44,7 +44,7 @@ namespace Turnero.Forms
 
     private void FrmAgregarMedico_Load(object sender, EventArgs e)
     {
-      CmbEspecialidades.DataSource = Especialidades.GetAll();
+      CmbEspecialidades.DataSource = Especialidades.LlenarCmb();
       CmbEspecialidades.DisplayMember = "descripcion";
       CmbEspecialidades.ValueMember = "idEspecialidad";
       CmbEspecialidades.SelectedIndex = -1;

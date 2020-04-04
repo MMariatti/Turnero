@@ -179,6 +179,7 @@
       this.Name = "FrmMain";
       this.Text = "FrmMain";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
+      this.Load += new System.EventHandler(this.FrmMain_Load);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

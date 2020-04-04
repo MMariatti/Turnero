@@ -59,6 +59,12 @@
     <Compile Include="Forms\FrmAgregarMedico.Designer.cs">
       <DependentUpon>FrmAgregarMedico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAgregarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAgregarPaciente.Designer.cs">
+      <DependentUpon>FrmAgregarPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,23 +89,17 @@
     <Compile Include="Forms\FrmMedicos.Designer.cs">
       <DependentUpon>FrmMedicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmModificarApellido.cs">
+    <Compile Include="Forms\FrmModificarMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmModificarApellido.Designer.cs">
-      <DependentUpon>FrmModificarApellido.cs</DependentUpon>
+    <Compile Include="Forms\FrmModificarMedico.Designer.cs">
+      <DependentUpon>FrmModificarMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmModificarEspecialidadMedico.cs">
+    <Compile Include="Forms\FrmModificarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmModificarEspecialidadMedico.Designer.cs">
-      <DependentUpon>FrmModificarEspecialidadMedico.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmModificarNombreMedico.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmModificarNombreMedico.Designer.cs">
-      <DependentUpon>FrmModificarNombreMedico.cs</DependentUpon>
+    <Compile Include="Forms\FrmModificarPaciente.Designer.cs">
+      <DependentUpon>FrmModificarPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmObrasSociales.cs">
       <SubType>Form</SubType>
@@ -130,6 +130,12 @@
     <EmbeddedResource Include="Forms\FrmAgregarMedico.resx">
       <DependentUpon>FrmAgregarMedico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAgregarPaciente.resx">
+      <DependentUpon>FrmAgregarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEspecialidades.resx">
+      <DependentUpon>FrmEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,14 +145,20 @@
     <EmbeddedResource Include="Forms\FrmMedicos.resx">
       <DependentUpon>FrmMedicos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmModificarApellido.resx">
-      <DependentUpon>FrmModificarApellido.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmModificarMedico.resx">
+      <DependentUpon>FrmModificarMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmModificarEspecialidadMedico.resx">
-      <DependentUpon>FrmModificarEspecialidadMedico.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmModificarPaciente.resx">
+      <DependentUpon>FrmModificarPaciente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmModificarNombreMedico.resx">
-      <DependentUpon>FrmModificarNombreMedico.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmObrasSociales.resx">
+      <DependentUpon>FrmObrasSociales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPacientes.resx">
+      <DependentUpon>FrmPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPracticas.resx">
+      <DependentUpon>FrmPracticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
