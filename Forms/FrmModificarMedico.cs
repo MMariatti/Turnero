@@ -23,42 +23,20 @@ namespace Turnero.Forms
 
     }
 
-    private void CambiarApellido()
+    private void ActualizarMedico()
     {
-      string nvoApellido = TxtApellido.Text;
-      Medicos medico = new Medicos(Convert.ToInt32(TxtLegajo.Text));
-      medico.CambiarApellido(nvoApellido);
-
+      string nombreM = TxtNombre.Text;
+      string apellidoM = TxtApellido.Text;
+      int idEspecialidadM = Convert.ToInt32(CmbEspecialidad.SelectedValue);
+      int legajo = Convert.ToInt32(TxtLegajo.Text);
+      Medicos medico = new Medicos(legajo);
+      medico.ActualizarMedico(nombreM,apellidoM,idEspecialidadM);
     }
-    private void CambiarEspecialidad()
-    {
-      int nvaEspecialidad = Convert.ToInt32(CmbEspecialidad.SelectedValue);
-      Medicos medico = new Medicos(Convert.ToInt32(TxtLegajo.Text));
-      medico.CambiarEspecialidad(nvaEspecialidad);
-
-    }
-    private void CambiarNombre()
-    {
-      string nvoNombre = TxtNombre.Text;
-      Medicos Medico = new Medicos(Convert.ToInt32(TxtLegajo.Text));
-      Medico.CambiarNombre(nvoNombre);
+    
+    
 
 
-    }
-
-
-    private void BtnCambiarApellido_Click(object sender, EventArgs e)
-    {
-      if (TxtApellido.Text == String.Empty)
-      {
-        MessageBox.Show("Por favor complete el campo que desea modificar ", "Modifica datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      else
-      {
-        CambiarApellido();
-
-      }
-    }
+    
 
     private void BtnSalir_Click(object sender, EventArgs e)
     {
@@ -75,43 +53,9 @@ namespace Turnero.Forms
       CmbEspecialidad.ValueMember = "idEspecialidad";
     }
 
-    private void BtnCambiarNombre_Click(object sender, EventArgs e)
+    private void BtnGuardar_Click(object sender, EventArgs e)
     {
-      if (TxtNombre.Text == string.Empty)
-      {
-        MessageBox.Show("Por favor complete el campo que desea modificar ", "Modifica datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      else
-      {
-        CambiarNombre();
-      }
-    }
-
-    private void BtnCambiarEspecialidad_Click(object sender, EventArgs e)
-    {
-      if (CmbEspecialidad.SelectedIndex <= 0)
-      {
-        MessageBox.Show("Por favor complete el campo que desea modificar ", "Modifica datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      else
-      {
-        CambiarEspecialidad();
-      }
-    }
-
-    private void TxtApellido_Click(object sender, EventArgs e)
-    {
-      TxtApellido.Clear();
-    }
-
-    private void TxtNombre_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void TxtNombre_Click(object sender, EventArgs e)
-    {
-      TxtNombre.Clear();
+      ActualizarMedico();
     }
   }
 }

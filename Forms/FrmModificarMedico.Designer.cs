@@ -31,15 +31,13 @@
       this.label1 = new System.Windows.Forms.Label();
       this.TxtLegajo = new System.Windows.Forms.TextBox();
       this.BtnSalir = new System.Windows.Forms.Button();
-      this.BtnCambiarApellido = new System.Windows.Forms.Button();
+      this.BtnGuardar = new System.Windows.Forms.Button();
       this.TxtNombre = new System.Windows.Forms.TextBox();
       this.LblEspecialidad = new System.Windows.Forms.Label();
       this.LblApellido = new System.Windows.Forms.Label();
       this.TxtApellido = new System.Windows.Forms.TextBox();
       this.LblNuevoNombre = new System.Windows.Forms.Label();
       this.CmbEspecialidad = new System.Windows.Forms.ComboBox();
-      this.BtnCambiarNombre = new System.Windows.Forms.Button();
-      this.BtnCambiarEspecialidad = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label1
@@ -54,7 +52,7 @@
       // TxtLegajo
       // 
       this.TxtLegajo.Enabled = false;
-      this.TxtLegajo.Location = new System.Drawing.Point(115, 44);
+      this.TxtLegajo.Location = new System.Drawing.Point(117, 46);
       this.TxtLegajo.Name = "TxtLegajo";
       this.TxtLegajo.Size = new System.Drawing.Size(121, 20);
       this.TxtLegajo.TabIndex = 0;
@@ -69,15 +67,15 @@
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
       // 
-      // BtnCambiarApellido
+      // BtnGuardar
       // 
-      this.BtnCambiarApellido.Location = new System.Drawing.Point(279, 76);
-      this.BtnCambiarApellido.Name = "BtnCambiarApellido";
-      this.BtnCambiarApellido.Size = new System.Drawing.Size(98, 23);
-      this.BtnCambiarApellido.TabIndex = 3;
-      this.BtnCambiarApellido.Text = "Cambiar Apellido";
-      this.BtnCambiarApellido.UseVisualStyleBackColor = true;
-      this.BtnCambiarApellido.Click += new System.EventHandler(this.BtnCambiarApellido_Click);
+      this.BtnGuardar.Location = new System.Drawing.Point(15, 220);
+      this.BtnGuardar.Name = "BtnGuardar";
+      this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
+      this.BtnGuardar.TabIndex = 3;
+      this.BtnGuardar.Text = "Guardar";
+      this.BtnGuardar.UseVisualStyleBackColor = true;
+      this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
       // 
       // TxtNombre
       // 
@@ -85,8 +83,6 @@
       this.TxtNombre.Name = "TxtNombre";
       this.TxtNombre.Size = new System.Drawing.Size(121, 20);
       this.TxtNombre.TabIndex = 1;
-      this.TxtNombre.Click += new System.EventHandler(this.TxtNombre_Click);
-      this.TxtNombre.TextChanged += new System.EventHandler(this.TxtNombre_TextChanged);
       // 
       // LblEspecialidad
       // 
@@ -112,7 +108,6 @@
       this.TxtApellido.Name = "TxtApellido";
       this.TxtApellido.Size = new System.Drawing.Size(121, 20);
       this.TxtApellido.TabIndex = 0;
-      this.TxtApellido.Click += new System.EventHandler(this.TxtApellido_Click);
       // 
       // LblNuevoNombre
       // 
@@ -132,38 +127,16 @@
       this.CmbEspecialidad.Size = new System.Drawing.Size(121, 21);
       this.CmbEspecialidad.TabIndex = 2;
       // 
-      // BtnCambiarNombre
-      // 
-      this.BtnCambiarNombre.Location = new System.Drawing.Point(279, 113);
-      this.BtnCambiarNombre.Name = "BtnCambiarNombre";
-      this.BtnCambiarNombre.Size = new System.Drawing.Size(98, 23);
-      this.BtnCambiarNombre.TabIndex = 4;
-      this.BtnCambiarNombre.Text = "Cambiar Nombre";
-      this.BtnCambiarNombre.UseVisualStyleBackColor = true;
-      this.BtnCambiarNombre.Click += new System.EventHandler(this.BtnCambiarNombre_Click);
-      // 
-      // BtnCambiarEspecialidad
-      // 
-      this.BtnCambiarEspecialidad.Location = new System.Drawing.Point(277, 156);
-      this.BtnCambiarEspecialidad.Name = "BtnCambiarEspecialidad";
-      this.BtnCambiarEspecialidad.Size = new System.Drawing.Size(98, 34);
-      this.BtnCambiarEspecialidad.TabIndex = 6;
-      this.BtnCambiarEspecialidad.Text = "Cambiar Especialidad";
-      this.BtnCambiarEspecialidad.UseVisualStyleBackColor = true;
-      this.BtnCambiarEspecialidad.Click += new System.EventHandler(this.BtnCambiarEspecialidad_Click);
-      // 
       // FrmModificarMedico
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(387, 290);
-      this.Controls.Add(this.BtnCambiarEspecialidad);
-      this.Controls.Add(this.BtnCambiarNombre);
+      this.ClientSize = new System.Drawing.Size(252, 290);
       this.Controls.Add(this.CmbEspecialidad);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.TxtLegajo);
       this.Controls.Add(this.BtnSalir);
-      this.Controls.Add(this.BtnCambiarApellido);
+      this.Controls.Add(this.BtnGuardar);
       this.Controls.Add(this.TxtNombre);
       this.Controls.Add(this.LblEspecialidad);
       this.Controls.Add(this.LblApellido);
@@ -183,14 +156,12 @@
     private System.Windows.Forms.Label label1;
     protected internal System.Windows.Forms.TextBox TxtLegajo;
     private System.Windows.Forms.Button BtnSalir;
-    private System.Windows.Forms.Button BtnCambiarApellido;
+    private System.Windows.Forms.Button BtnGuardar;
     protected internal System.Windows.Forms.TextBox TxtNombre;
     private System.Windows.Forms.Label LblEspecialidad;
     private System.Windows.Forms.Label LblApellido;
     protected internal System.Windows.Forms.TextBox TxtApellido;
     private System.Windows.Forms.Label LblNuevoNombre;
     protected internal System.Windows.Forms.ComboBox CmbEspecialidad;
-    private System.Windows.Forms.Button BtnCambiarNombre;
-    private System.Windows.Forms.Button BtnCambiarEspecialidad;
   }
 }

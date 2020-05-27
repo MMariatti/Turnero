@@ -43,12 +43,7 @@
       this.CmbObraSocial = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.BtnSalir = new System.Windows.Forms.Button();
-      this.BtnCambiarApellido = new System.Windows.Forms.Button();
-      this.BtnCambiarNombre = new System.Windows.Forms.Button();
-      this.BtnCambiarObraSocial = new System.Windows.Forms.Button();
-      this.BtnCambiarTelefono = new System.Windows.Forms.Button();
-      this.BtnCambiarDireccion = new System.Windows.Forms.Button();
-      this.BtnCambiarFechaNac = new System.Windows.Forms.Button();
+      this.BtnGuardar = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // TxtTelefono
@@ -58,7 +53,6 @@
       this.TxtTelefono.Name = "TxtTelefono";
       this.TxtTelefono.Size = new System.Drawing.Size(142, 20);
       this.TxtTelefono.TabIndex = 5;
-      this.TxtTelefono.Click += new System.EventHandler(this.TxtTelefono_Click);
       // 
       // TxtNombre
       // 
@@ -66,7 +60,6 @@
       this.TxtNombre.Name = "TxtNombre";
       this.TxtNombre.Size = new System.Drawing.Size(142, 20);
       this.TxtNombre.TabIndex = 2;
-      this.TxtNombre.Click += new System.EventHandler(this.TxtNombre_Click);
       // 
       // TxtDireccion
       // 
@@ -74,7 +67,6 @@
       this.TxtDireccion.Name = "TxtDireccion";
       this.TxtDireccion.Size = new System.Drawing.Size(142, 20);
       this.TxtDireccion.TabIndex = 6;
-      this.TxtDireccion.Click += new System.EventHandler(this.TxtDireccion_Click);
       // 
       // TxtApellido
       // 
@@ -82,7 +74,6 @@
       this.TxtApellido.Name = "TxtApellido";
       this.TxtApellido.Size = new System.Drawing.Size(142, 20);
       this.TxtApellido.TabIndex = 1;
-      this.TxtApellido.Click += new System.EventHandler(this.TxtApellido_Click);
       // 
       // label7
       // 
@@ -154,7 +145,6 @@
       this.TxtFechaNac.Size = new System.Drawing.Size(142, 20);
       this.TxtFechaNac.TabIndex = 3;
       this.TxtFechaNac.ValidatingType = typeof(System.DateTime);
-      this.TxtFechaNac.Click += new System.EventHandler(this.TxtFechaNac_Click);
       // 
       // CmbObraSocial
       // 
@@ -176,7 +166,7 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(409, 372);
+      this.BtnSalir.Location = new System.Drawing.Point(218, 359);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
       this.BtnSalir.TabIndex = 13;
@@ -184,77 +174,22 @@
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
       // 
-      // BtnCambiarApellido
+      // BtnGuardar
       // 
-      this.BtnCambiarApellido.Location = new System.Drawing.Point(372, 78);
-      this.BtnCambiarApellido.Name = "BtnCambiarApellido";
-      this.BtnCambiarApellido.Size = new System.Drawing.Size(112, 23);
-      this.BtnCambiarApellido.TabIndex = 7;
-      this.BtnCambiarApellido.Text = "Cambiar Apellido";
-      this.BtnCambiarApellido.UseVisualStyleBackColor = true;
-      this.BtnCambiarApellido.Click += new System.EventHandler(this.BtnCambiarApellido_Click);
-      // 
-      // BtnCambiarNombre
-      // 
-      this.BtnCambiarNombre.Location = new System.Drawing.Point(372, 117);
-      this.BtnCambiarNombre.Name = "BtnCambiarNombre";
-      this.BtnCambiarNombre.Size = new System.Drawing.Size(112, 23);
-      this.BtnCambiarNombre.TabIndex = 8;
-      this.BtnCambiarNombre.Text = "Cambiar nombre";
-      this.BtnCambiarNombre.UseVisualStyleBackColor = true;
-      this.BtnCambiarNombre.Click += new System.EventHandler(this.BtnCambiarNombre_Click);
-      // 
-      // BtnCambiarObraSocial
-      // 
-      this.BtnCambiarObraSocial.Location = new System.Drawing.Point(372, 207);
-      this.BtnCambiarObraSocial.Name = "BtnCambiarObraSocial";
-      this.BtnCambiarObraSocial.Size = new System.Drawing.Size(112, 23);
-      this.BtnCambiarObraSocial.TabIndex = 10;
-      this.BtnCambiarObraSocial.Text = "Cambiar obra social";
-      this.BtnCambiarObraSocial.UseVisualStyleBackColor = true;
-      this.BtnCambiarObraSocial.Click += new System.EventHandler(this.BtnCambiarObraSocial_Click);
-      // 
-      // BtnCambiarTelefono
-      // 
-      this.BtnCambiarTelefono.Location = new System.Drawing.Point(372, 249);
-      this.BtnCambiarTelefono.Name = "BtnCambiarTelefono";
-      this.BtnCambiarTelefono.Size = new System.Drawing.Size(112, 23);
-      this.BtnCambiarTelefono.TabIndex = 11;
-      this.BtnCambiarTelefono.Text = "Cambiar Telefono";
-      this.BtnCambiarTelefono.UseVisualStyleBackColor = true;
-      this.BtnCambiarTelefono.Click += new System.EventHandler(this.BtnCambiarTelefono_Click);
-      // 
-      // BtnCambiarDireccion
-      // 
-      this.BtnCambiarDireccion.Location = new System.Drawing.Point(372, 296);
-      this.BtnCambiarDireccion.Name = "BtnCambiarDireccion";
-      this.BtnCambiarDireccion.Size = new System.Drawing.Size(112, 23);
-      this.BtnCambiarDireccion.TabIndex = 12;
-      this.BtnCambiarDireccion.Text = "Cambiar Direccion";
-      this.BtnCambiarDireccion.UseVisualStyleBackColor = true;
-      this.BtnCambiarDireccion.Click += new System.EventHandler(this.BtnCambiarDireccion_Click);
-      // 
-      // BtnCambiarFechaNac
-      // 
-      this.BtnCambiarFechaNac.Location = new System.Drawing.Point(372, 155);
-      this.BtnCambiarFechaNac.Name = "BtnCambiarFechaNac";
-      this.BtnCambiarFechaNac.Size = new System.Drawing.Size(112, 34);
-      this.BtnCambiarFechaNac.TabIndex = 9;
-      this.BtnCambiarFechaNac.Text = "Cambiar fecha de nacimiento";
-      this.BtnCambiarFechaNac.UseVisualStyleBackColor = true;
-      this.BtnCambiarFechaNac.Click += new System.EventHandler(this.BtnCambiarFechaNac_Click);
+      this.BtnGuardar.Location = new System.Drawing.Point(27, 359);
+      this.BtnGuardar.Name = "BtnGuardar";
+      this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
+      this.BtnGuardar.TabIndex = 7;
+      this.BtnGuardar.Text = "Guardar";
+      this.BtnGuardar.UseVisualStyleBackColor = true;
+      this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
       // 
       // FrmModificarPaciente
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(496, 437);
-      this.Controls.Add(this.BtnCambiarFechaNac);
-      this.Controls.Add(this.BtnCambiarDireccion);
-      this.Controls.Add(this.BtnCambiarTelefono);
-      this.Controls.Add(this.BtnCambiarObraSocial);
-      this.Controls.Add(this.BtnCambiarNombre);
-      this.Controls.Add(this.BtnCambiarApellido);
+      this.ClientSize = new System.Drawing.Size(321, 407);
+      this.Controls.Add(this.BtnGuardar);
       this.Controls.Add(this.TxtTelefono);
       this.Controls.Add(this.TxtNombre);
       this.Controls.Add(this.TxtDireccion);
@@ -291,14 +226,9 @@
     protected internal System.Windows.Forms.TextBox TxtApellido;
     protected internal System.Windows.Forms.TextBox TxtDni;
     protected internal System.Windows.Forms.MaskedTextBox TxtFechaNac;
-    private System.Windows.Forms.Button BtnCambiarApellido;
-    private System.Windows.Forms.Button BtnCambiarNombre;
-    private System.Windows.Forms.Button BtnCambiarObraSocial;
-    private System.Windows.Forms.Button BtnCambiarTelefono;
-    private System.Windows.Forms.Button BtnCambiarDireccion;
+    private System.Windows.Forms.Button BtnGuardar;
     protected internal System.Windows.Forms.MaskedTextBox TxtTelefono;
     protected internal System.Windows.Forms.TextBox TxtDireccion;
     protected internal System.Windows.Forms.ComboBox CmbObraSocial;
-    private System.Windows.Forms.Button BtnCambiarFechaNac;
   }
 }

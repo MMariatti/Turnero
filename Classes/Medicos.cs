@@ -165,7 +165,26 @@ namespace Turnero.Classes
       return medico;
     }
 
-   
+   public void ActualizarMedico(string nombre, string apellido, int especialidad)
+    {
+      try
+      {
+        string query = "UPDATE Medicos SET nombre = '" + nombre + "' AND apellido = '" + apellido + "' AND idESpecialidad=" + especialidad + " WHERE legajo = " + this.IdMedico + " ";
+        BDHelper.ConsultarSQL(query);
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.Especialidad = especialidad;
+
+        MessageBox.Show("Datos del medico actualizados con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+      }
+
+      catch(Exception ex)
+      {
+        MessageBox.Show(ex.Data.ToString(), "Error al actualizar datos del medico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+      
+    }
 
     public void CambiarNombre(string newNombre)
     {
