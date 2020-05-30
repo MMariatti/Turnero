@@ -38,7 +38,7 @@
       // 
       // BtnInciarSesion
       // 
-      this.BtnInciarSesion.Location = new System.Drawing.Point(263, 295);
+      this.BtnInciarSesion.Location = new System.Drawing.Point(42, 222);
       this.BtnInciarSesion.Name = "BtnInciarSesion";
       this.BtnInciarSesion.Size = new System.Drawing.Size(86, 23);
       this.BtnInciarSesion.TabIndex = 2;
@@ -49,7 +49,7 @@
       // Usuario
       // 
       this.Usuario.AutoSize = true;
-      this.Usuario.Location = new System.Drawing.Point(260, 164);
+      this.Usuario.Location = new System.Drawing.Point(39, 91);
       this.Usuario.Name = "Usuario";
       this.Usuario.Size = new System.Drawing.Size(43, 13);
       this.Usuario.TabIndex = 0;
@@ -57,7 +57,7 @@
       // 
       // TxtContra
       // 
-      this.TxtContra.Location = new System.Drawing.Point(386, 237);
+      this.TxtContra.Location = new System.Drawing.Point(165, 164);
       this.TxtContra.Name = "TxtContra";
       this.TxtContra.PasswordChar = '*';
       this.TxtContra.Size = new System.Drawing.Size(100, 20);
@@ -67,7 +67,7 @@
       // Contraseña
       // 
       this.Contraseña.AutoSize = true;
-      this.Contraseña.Location = new System.Drawing.Point(260, 237);
+      this.Contraseña.Location = new System.Drawing.Point(39, 164);
       this.Contraseña.Name = "Contraseña";
       this.Contraseña.Size = new System.Drawing.Size(61, 13);
       this.Contraseña.TabIndex = 0;
@@ -75,7 +75,7 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(400, 295);
+      this.BtnSalir.Location = new System.Drawing.Point(179, 222);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(86, 23);
       this.BtnSalir.TabIndex = 3;
@@ -85,7 +85,7 @@
       // 
       // TxtUsuario
       // 
-      this.TxtUsuario.Location = new System.Drawing.Point(386, 164);
+      this.TxtUsuario.Location = new System.Drawing.Point(165, 91);
       this.TxtUsuario.Name = "TxtUsuario";
       this.TxtUsuario.Size = new System.Drawing.Size(100, 20);
       this.TxtUsuario.TabIndex = 0;
@@ -94,7 +94,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.ClientSize = new System.Drawing.Size(312, 271);
       this.Controls.Add(this.TxtUsuario);
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.Contraseña);

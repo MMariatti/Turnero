@@ -52,6 +52,7 @@
     <Compile Include="Classes\ObrasSociales.cs" />
     <Compile Include="Classes\Pacientes.cs" />
     <Compile Include="Classes\Practicas.cs" />
+    <Compile Include="Classes\Sesion.cs" />
     <Compile Include="Classes\Turnos.cs" />
     <Compile Include="Forms\FrmAgregarMedico.cs">
       <SubType>Form</SubType>

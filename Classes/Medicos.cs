@@ -169,7 +169,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Medicos SET nombre = '" + nombre + "' AND apellido = '" + apellido + "' AND idESpecialidad=" + especialidad + " WHERE legajo = " + this.IdMedico + " ";
+        string query = "UPDATE Medicos SET nombre = '" + nombre + "', apellido = '" + apellido + "', idESpecialidad=" + especialidad + " WHERE legajo = " + this.IdMedico + " ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
         this.Apellido = apellido;

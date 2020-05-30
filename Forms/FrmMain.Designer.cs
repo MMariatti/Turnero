@@ -43,6 +43,8 @@
       this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.verHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editarHistoriaClinicaTsm = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.SuspendLayout();
@@ -117,7 +119,9 @@
       // pacientesToolStripMenuItem1
       // 
       this.pacientesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionarPacientesToolStripMenuItem});
+            this.gestionarPacientesToolStripMenuItem,
+            this.verHistoriaClinicaToolStripMenuItem,
+            this.editarHistoriaClinicaTsm});
       this.pacientesToolStripMenuItem1.Name = "pacientesToolStripMenuItem1";
       this.pacientesToolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
       this.pacientesToolStripMenuItem1.Text = "Pacientes";
@@ -125,7 +129,7 @@
       // gestionarPacientesToolStripMenuItem
       // 
       this.gestionarPacientesToolStripMenuItem.Name = "gestionarPacientesToolStripMenuItem";
-      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
       this.gestionarPacientesToolStripMenuItem.Text = "Gestionar pacientes";
       this.gestionarPacientesToolStripMenuItem.Click += new System.EventHandler(this.gestionarPacientesToolStripMenuItem_Click);
       // 
@@ -167,6 +171,18 @@
       this.dataGridView1.Size = new System.Drawing.Size(544, 290);
       this.dataGridView1.TabIndex = 2;
       // 
+      // verHistoriaClinicaToolStripMenuItem
+      // 
+      this.verHistoriaClinicaToolStripMenuItem.Name = "verHistoriaClinicaToolStripMenuItem";
+      this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+      this.verHistoriaClinicaToolStripMenuItem.Text = "Ver historia clinica";
+      // 
+      // editarHistoriaClinicaTsm
+      // 
+      this.editarHistoriaClinicaTsm.Name = "editarHistoriaClinicaTsm";
+      this.editarHistoriaClinicaTsm.Size = new System.Drawing.Size(183, 22);
+      this.editarHistoriaClinicaTsm.Text = "Editar historia clinica";
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,5 +221,7 @@
     private System.Windows.Forms.ToolStripMenuItem turnosToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem gestionarTurnosToolStripMenuItem;
     private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.ToolStripMenuItem verHistoriaClinicaToolStripMenuItem;
+    protected internal System.Windows.Forms.ToolStripMenuItem editarHistoriaClinicaTsm;
   }
 }

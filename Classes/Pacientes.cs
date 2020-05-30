@@ -226,8 +226,8 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Pacientess SET nombre = '" + nombre + "' AND apellido = '" + apellido + "' AND obraSocial=" + obraSocial +
-        "AND fechaNac='" + fechaNacimiento + "' AND direccion ='" + direccion + "' AND telefono ='" + telefono + "' WHERE legajo = " + this.Dni + " ";
+        string query = "UPDATE Pacientess SET apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
+        ", fechaNac='" + fechaNacimiento + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE dni = '" + this.Dni + "' ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
         this.Apellido = apellido;
@@ -235,7 +235,7 @@ namespace Turnero.Classes
         this.fechaNac = fechaNacimiento;
         this.Direccion = direccion;
         this.Telefono = telefono;
-        MessageBox.Show("Datos del paciente actualizados", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Datos del paciente actualizados", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch(Exception ex)
       {

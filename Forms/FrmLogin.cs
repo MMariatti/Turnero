@@ -16,16 +16,19 @@ namespace Turnero.Forms
 
     private string usuarioActual;
     private string contraseñaActual;
+    private int rolActual;
 
     public FrmLogin()
     {
       InitializeComponent();
     }
 
+   
+
     private bool loguear(string usuario, string contra)
     {
       DataTable tabla;
-      string consulta = "SELECT usuario , contraseña FROM Usuarios U WHERE " +
+      string consulta = "SELECT usuario , contraseña, idRol  FROM Usuarios U WHERE " +
           "U.usuario = '" + usuario + "' AND U.contraseña = '" + contra + "' AND U.activo = 1";
       tabla = BDHelper.ConsultarSQL(consulta);
       if (tabla.Rows.Count == 0)
@@ -36,12 +39,13 @@ namespace Turnero.Forms
       {
         contraseñaActual = contra;
         usuarioActual = usuario;
+        rolActual = (int)tabla.Rows[0]["idRol"];
         return true;
       }
     }
     private void FrmLogin_Load(object sender, EventArgs e)
     {
-
+      
     }
 
     private void BtnInciarSesion_Click(object sender, EventArgs e)
@@ -55,9 +59,18 @@ namespace Turnero.Forms
         //Logueo con base de datos 
         if (loguear(TxtUsuario.Text, TxtContra.Text))
         {
+          Sesion sesion = new Sesion(usuarioActual,contraseñaActual, rolActual);
+
           //Logueo satisfactorio, creacion de instancia de menu principal 
-          FrmMain frmMainMenu;
-          frmMainMenu = new FrmMain();
+          FrmMain frmMainMenu = new FrmMain();
+          if(sesion.Rol == 3)
+          {
+            frmMainMenu.editarHistoriaClinicaTsm.Enabled = true;
+          }
+          else
+          {
+            frmMainMenu.editarHistoriaClinicaTsm.Enabled = false;
+          }
           frmMainMenu.Show();
           //Minimizacion del frmLogin y eliminacion del TaskBar 
           this.WindowState = FormWindowState.Minimized;
@@ -71,6 +84,7 @@ namespace Turnero.Forms
       }
     }
 
+   
     private void BtnSalir_Click(object sender, EventArgs e)
     {
       if (MessageBox.Show("¿Está seguro que desea cerrar la aplicacion?", "Cerrar Aplicacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

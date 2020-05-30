@@ -17,6 +17,8 @@ namespace Turnero.Forms
       InitializeComponent();
     }
 
+    
+
     private void gestionarMedicosToolStripMenuItem_Click(object sender, EventArgs e)
     {
       FrmMedicos frmMedicos;
@@ -74,7 +76,7 @@ namespace Turnero.Forms
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
-
+      
     }
   }
 }
