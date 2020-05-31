@@ -159,7 +159,7 @@ namespace Turnero.Classes
       Apellido = tabla.Rows[0]["apellido"].ToString();
       Nombre = tabla.Rows[0]["nombre"].ToString();
       ObraSocial = (int)tabla.Rows[0]["obraSocial"] ;
-      fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNacimiento"].ToString());
+      fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNac"].ToString());
       Direccion = tabla.Rows[0]["direccion"].ToString();
       Telefono = tabla.Rows[0]["Telefono"].ToString();
 
@@ -198,8 +198,10 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT dni AS DNI, P.apellido AS Apellido, P.nombre AS Nombre, P.fechaNac AS 'Fecha de nacimiento', O.descripcion AS 'Obra Social', " +
-        "P.telefono AS Telefono, P.direccion AS Direccion FROM Pacientess P, ObrasSociales O WHERE P.obraSocial = O.idObraSocial ";
+      string query = "SELECT P.dni AS DNI, P.apellido AS Apellido, P.nombre AS Nombre, P.fechaNac AS 'Fecha de nacimiento'," +
+        " O.descripcion AS 'Obra Social', " + "P.telefono AS Telefono, P.direccion AS Direccion, DATEDIFF(YEAR,P.fechaNac,GETDATE())" +
+        " - (CASE WHEN DATEADD(YY, DATEDIFF(YEAR, P.fechaNac, GETDATE()),P.fechaNac)> GETDATE() THEN   1 ELSE   0  END) as Edad"  +
+        " FROM Pacientess P, ObrasSociales O WHERE P.obraSocial = O.idObraSocial ";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);

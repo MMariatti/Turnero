@@ -56,6 +56,7 @@ namespace Turnero.Forms
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
       ActualizarMedico();
+      this.Close();
     }
   }
 }

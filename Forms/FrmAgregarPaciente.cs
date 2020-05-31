@@ -19,7 +19,7 @@ namespace Turnero.Forms
       InitializeComponent();
     }
 
-    private void AgregarPaciente(string dni, string apellido, string nombre, int obraSocial, string fechaNac, string telefono,string direccion)
+    private void AgregarPaciente(string dni, string apellido, string nombre, int obraSocial, DateTime fechaNac, string telefono,string direccion)
     {
       DataTable tabla = new DataTable();
       try
@@ -68,7 +68,7 @@ namespace Turnero.Forms
       }
       else
       {
-        AgregarPaciente((TxtDni.Text.ToString()), TxtApellido.Text, TxtNombre.Text, Convert.ToInt32(CmbObraSocial.SelectedValue), (TxtFechaNac.Text.ToString()),(TxtTelefono.Text.ToString()), TxtDireccion.Text);
+        AgregarPaciente((TxtDni.Text.ToString()), TxtApellido.Text, TxtNombre.Text, Convert.ToInt32(CmbObraSocial.SelectedValue), DateTime.Parse(TxtFechaNac.Text),(TxtTelefono.Text.ToString()), TxtDireccion.Text);
         this.Close();
       }
     }

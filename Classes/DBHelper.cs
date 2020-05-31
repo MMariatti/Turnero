@@ -12,7 +12,7 @@ namespace Turnero.Classes
   {
     //CONSTRUCTOR DE LA CLASE 
 
-    private static string cadenaConexion = @"Data Source=MARKY\SQLMARCOS;Initial Catalog = Turnero; Integrated Security = True";
+    private static string cadenaConexion = @"Data Source=MARKY\SQLMARCOS;Initial Catalog = Turnero1; Integrated Security = True";
     private static SqlConnection conexion;
     private static SqlCommand comando;
     //PROPIEDAD QUE IMPLEMENTA SET Y GET DE CADA ATRIBUTO

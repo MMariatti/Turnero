@@ -76,5 +76,11 @@ namespace Turnero.Forms
     {
       
     }
+
+    private void verHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
+      frmHistoriaClinica.Show();
+    }
   }
 }

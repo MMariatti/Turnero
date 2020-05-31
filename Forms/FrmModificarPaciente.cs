@@ -33,7 +33,7 @@ namespace Turnero.Forms
       string nombre = TxtNombre.Text;
       string apellido = TxtApellido.Text;
       string dni = TxtDni.Text;
-      string fechaNacimiento = TxtFechaNac.Text;
+     DateTime fechaNacimiento = DateTime.Parse(TxtFechaNac.Text);
       string direccion = TxtDireccion.Text;
       string telefono = TxtTelefono.Text;
       int obraSocial = Convert.ToInt32(CmbObraSocial.SelectedValue);
@@ -52,6 +52,7 @@ namespace Turnero.Forms
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
       ActualizarP();
+      this.Close();
     }
   }
 }

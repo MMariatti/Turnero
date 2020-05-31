@@ -135,6 +135,7 @@
       this.verHistoriaClinicaToolStripMenuItem.Name = "verHistoriaClinicaToolStripMenuItem";
       this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.verHistoriaClinicaToolStripMenuItem.Text = "Ver historia clinica";
+      this.verHistoriaClinicaToolStripMenuItem.Click += new System.EventHandler(this.verHistoriaClinicaToolStripMenuItem_Click);
       // 
       // practicasToolStripMenuItem1
       // 
