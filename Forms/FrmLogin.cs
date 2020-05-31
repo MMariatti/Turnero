@@ -62,16 +62,18 @@ namespace Turnero.Forms
           Sesion sesion = new Sesion(usuarioActual,contraseñaActual, rolActual);
 
           //Logueo satisfactorio, creacion de instancia de menu principal 
-          FrmMain frmMainMenu = new FrmMain();
+          
           if(sesion.Rol == 3)
           {
-            frmMainMenu.editarHistoriaClinicaTsm.Enabled = true;
+            FrmMainMedico frmMainMedico = new FrmMainMedico();
+            frmMainMedico.Show();
           }
           else
           {
-            frmMainMenu.editarHistoriaClinicaTsm.Enabled = false;
+            FrmMain frmMainMenu = new FrmMain();
+            frmMainMenu.Show();
           }
-          frmMainMenu.Show();
+          
           //Minimizacion del frmLogin y eliminacion del TaskBar 
           this.WindowState = FormWindowState.Minimized;
           this.ShowInTaskbar = false;

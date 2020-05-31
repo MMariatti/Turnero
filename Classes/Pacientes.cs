@@ -80,7 +80,7 @@ namespace Turnero.Classes
       }
     }
 
-    private int edad;
+    private int edad = 0;
     public int Edad
     {
       get { return this.edad; }
@@ -96,7 +96,9 @@ namespace Turnero.Classes
         }
       }
     }
-    private string fechaNac = " " ;
+    public DateTime fechaNac = new DateTime() ;
+
+   
 
     private string direccion;
     public string Direccion
@@ -134,7 +136,7 @@ namespace Turnero.Classes
 
 
 
-    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, string fechaNac,string telefonoPaciente, string direccionPaciente)
+    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac,string telefonoPaciente, string direccionPaciente)
     {
       this.Dni = dniPaciente;
       this.Apellido = apellidoPaciente;
@@ -152,12 +154,12 @@ namespace Turnero.Classes
 
     private void getAttr()
     {
-      string query = "SELECT * FROM Pacientess WHERE dni = '" + Dni + "'";
+      string query = "SELECT * FROM Pacientess WHERE dni = '" + this.Dni + "'";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       Apellido = tabla.Rows[0]["apellido"].ToString();
       Nombre = tabla.Rows[0]["nombre"].ToString();
       ObraSocial = (int)tabla.Rows[0]["obraSocial"] ;
-      fechaNac = tabla.Rows[0]["fechaNac"].ToString();
+      fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNacimiento"].ToString());
       Direccion = tabla.Rows[0]["direccion"].ToString();
       Telefono = tabla.Rows[0]["Telefono"].ToString();
 
@@ -167,7 +169,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "INSERT INTO Pacientess(dni, apellido, nombre,obraSocial,fechaNac,direccion,telefono) " + "VALUES('" + this.Dni + "','" + this.Apellido + "','" + this.Nombre + "', " + this.ObraSocial + ",'" + this.fechaNac + "','" + this.Direccion + "','"+ this.Telefono +"')";
+        string query = "INSERT INTO Pacientess(dni, apellido, nombre,obraSocial,fechaNac,direccion,telefono) " + "VALUES('" + this.Dni + "','" + this.Apellido + "','" + this.Nombre + "', " + this.ObraSocial + ",'" + this.fechaNac.ToString("yyyy-MM-dd") + "','" + this.Direccion + "','"+ this.Telefono +"')";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("El paciente "+this.nombre + " " + this.apellido + " se ha cargado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.None);
       }
@@ -211,23 +213,23 @@ namespace Turnero.Classes
     }
 
 
-    public Pacientes GetPacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocial, string fechaNac, string telefono, string direccion)
+    public Pacientes GetPacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocial, DateTime fechaNac, string telefono, string direccion)
     {
       string query = "SELECT * FROM Pacientess WHERE dni = '" + dniPaciente + "' AND apellido= '" + apellidoPaciente + "' AND nombre = '" + nombrePaciente + "' AND telefono = '" + telefono + "' AND obraSocial = "
         + obraSocial + "AND direccion ='" + direccion + "')";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
-      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), fila.Field<string>("fechaNac"), fila.Field<string>("telefono"), fila.Field<string>("direccion"));
+      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"));
       return paciente;
     }
 
-    public void ActualizarPaciente(string nombre, string apellido, int obraSocial, string fechaNacimiento, string direccion, string telefono)
+    public void ActualizarPaciente(string nombre, string apellido, int obraSocial, DateTime fechaNacimiento, string direccion, string telefono)
     {
       try
       {
         string query = "UPDATE Pacientess SET apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
-        ", fechaNac='" + fechaNacimiento + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE dni = '" + this.Dni + "' ";
+        ", fechaNac='" + fechaNacimiento.ToString("yyyy-MM-dd") + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE dni = '" + this.Dni + "' ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
         this.Apellido = apellido;

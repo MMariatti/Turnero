@@ -38,13 +38,12 @@
       this.gestionarObrasSocialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.pacientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarPacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.verHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.practicasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarPracticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.verHistoriaClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.editarHistoriaClinicaTsm = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.SuspendLayout();
@@ -69,7 +68,6 @@
       this.menuStrip1.Size = new System.Drawing.Size(800, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
-      this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
       // 
       // medicosToolStripMenuItem
       // 
@@ -120,8 +118,7 @@
       // 
       this.pacientesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarPacientesToolStripMenuItem,
-            this.verHistoriaClinicaToolStripMenuItem,
-            this.editarHistoriaClinicaTsm});
+            this.verHistoriaClinicaToolStripMenuItem});
       this.pacientesToolStripMenuItem1.Name = "pacientesToolStripMenuItem1";
       this.pacientesToolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
       this.pacientesToolStripMenuItem1.Text = "Pacientes";
@@ -129,9 +126,15 @@
       // gestionarPacientesToolStripMenuItem
       // 
       this.gestionarPacientesToolStripMenuItem.Name = "gestionarPacientesToolStripMenuItem";
-      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
       this.gestionarPacientesToolStripMenuItem.Text = "Gestionar pacientes";
       this.gestionarPacientesToolStripMenuItem.Click += new System.EventHandler(this.gestionarPacientesToolStripMenuItem_Click);
+      // 
+      // verHistoriaClinicaToolStripMenuItem
+      // 
+      this.verHistoriaClinicaToolStripMenuItem.Name = "verHistoriaClinicaToolStripMenuItem";
+      this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.verHistoriaClinicaToolStripMenuItem.Text = "Ver historia clinica";
       // 
       // practicasToolStripMenuItem1
       // 
@@ -170,18 +173,6 @@
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.Size = new System.Drawing.Size(544, 290);
       this.dataGridView1.TabIndex = 2;
-      // 
-      // verHistoriaClinicaToolStripMenuItem
-      // 
-      this.verHistoriaClinicaToolStripMenuItem.Name = "verHistoriaClinicaToolStripMenuItem";
-      this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-      this.verHistoriaClinicaToolStripMenuItem.Text = "Ver historia clinica";
-      // 
-      // editarHistoriaClinicaTsm
-      // 
-      this.editarHistoriaClinicaTsm.Name = "editarHistoriaClinicaTsm";
-      this.editarHistoriaClinicaTsm.Size = new System.Drawing.Size(183, 22);
-      this.editarHistoriaClinicaTsm.Text = "Editar historia clinica";
       // 
       // FrmMain
       // 
@@ -222,6 +213,5 @@
     private System.Windows.Forms.ToolStripMenuItem gestionarTurnosToolStripMenuItem;
     private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.ToolStripMenuItem verHistoriaClinicaToolStripMenuItem;
-    protected internal System.Windows.Forms.ToolStripMenuItem editarHistoriaClinicaTsm;
   }
 }
