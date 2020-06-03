@@ -16,5 +16,13 @@ namespace Turnero.Forms
     {
       InitializeComponent();
     }
+
+    private void BtnHistoriaClinica_Click(object sender, EventArgs e)
+    {
+      FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
+      frmHistoriaClinica.RtbHistoriaClinica.ReadOnly = false;
+      frmHistoriaClinica.BtnGuardar.Visible = true;
+      frmHistoriaClinica.Show();
+    }
   }
 }

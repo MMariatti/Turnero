@@ -33,21 +33,24 @@
       this.BtnImprimir = new System.Windows.Forms.Button();
       this.printDialog1 = new System.Windows.Forms.PrintDialog();
       this.printHistoriaClinica = new System.Drawing.Printing.PrintDocument();
+      this.txtDni = new System.Windows.Forms.TextBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.BtnBuscar = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // RtbHistoriaClinica
       // 
       this.RtbHistoriaClinica.AcceptsTab = true;
-      this.RtbHistoriaClinica.Enabled = false;
-      this.RtbHistoriaClinica.Location = new System.Drawing.Point(39, 38);
+      this.RtbHistoriaClinica.Location = new System.Drawing.Point(39, 92);
       this.RtbHistoriaClinica.Name = "RtbHistoriaClinica";
+      this.RtbHistoriaClinica.ReadOnly = true;
       this.RtbHistoriaClinica.Size = new System.Drawing.Size(715, 339);
       this.RtbHistoriaClinica.TabIndex = 0;
       this.RtbHistoriaClinica.Text = "";
       // 
       // BtnGuardar
       // 
-      this.BtnGuardar.Location = new System.Drawing.Point(39, 415);
+      this.BtnGuardar.Location = new System.Drawing.Point(39, 452);
       this.BtnGuardar.Name = "BtnGuardar";
       this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
       this.BtnGuardar.TabIndex = 1;
@@ -57,7 +60,7 @@
       // 
       // BtnImprimir
       // 
-      this.BtnImprimir.Location = new System.Drawing.Point(679, 415);
+      this.BtnImprimir.Location = new System.Drawing.Point(679, 452);
       this.BtnImprimir.Name = "BtnImprimir";
       this.BtnImprimir.Size = new System.Drawing.Size(75, 23);
       this.BtnImprimir.TabIndex = 2;
@@ -73,11 +76,40 @@
       // 
       this.printHistoriaClinica.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printHistoriaClinica_PrintPage);
       // 
+      // txtDni
+      // 
+      this.txtDni.Location = new System.Drawing.Point(125, 33);
+      this.txtDni.Name = "txtDni";
+      this.txtDni.Size = new System.Drawing.Size(154, 20);
+      this.txtDni.TabIndex = 3;
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(54, 36);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(26, 13);
+      this.label1.TabIndex = 4;
+      this.label1.Text = "DNI";
+      // 
+      // BtnBuscar
+      // 
+      this.BtnBuscar.Location = new System.Drawing.Point(679, 31);
+      this.BtnBuscar.Name = "BtnBuscar";
+      this.BtnBuscar.Size = new System.Drawing.Size(75, 23);
+      this.BtnBuscar.TabIndex = 5;
+      this.BtnBuscar.Text = "Buscar";
+      this.BtnBuscar.UseVisualStyleBackColor = true;
+      this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+      // 
       // FrmHistoriaClinica
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.ClientSize = new System.Drawing.Size(800, 487);
+      this.Controls.Add(this.BtnBuscar);
+      this.Controls.Add(this.label1);
+      this.Controls.Add(this.txtDni);
       this.Controls.Add(this.BtnImprimir);
       this.Controls.Add(this.BtnGuardar);
       this.Controls.Add(this.RtbHistoriaClinica);
@@ -85,15 +117,18 @@
       this.Text = "FrmHistoriaClinica";
       this.Load += new System.EventHandler(this.FrmHistoriaClinica_Load);
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
     #endregion
-
-    private System.Windows.Forms.RichTextBox RtbHistoriaClinica;
-    private System.Windows.Forms.Button BtnGuardar;
     private System.Windows.Forms.Button BtnImprimir;
     private System.Windows.Forms.PrintDialog printDialog1;
     private System.Drawing.Printing.PrintDocument printHistoriaClinica;
+    protected internal System.Windows.Forms.RichTextBox RtbHistoriaClinica;
+    protected internal System.Windows.Forms.Button BtnGuardar;
+    private System.Windows.Forms.TextBox txtDni;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Button BtnBuscar;
   }
 }

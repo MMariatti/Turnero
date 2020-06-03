@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Turnero.Classes;
 
 namespace Turnero.Forms
 {
@@ -16,7 +17,12 @@ namespace Turnero.Forms
     {
       InitializeComponent();
     }
-
+    private void BuscarHistoriaClinica(string dni)
+    {
+      Pacientes paciente = new Pacientes(dni);
+      paciente.BuscarHistoriaClinica();
+      RtbHistoriaClinica.Text = paciente.HistoriaClinica;
+    }
     private void BtnImprimir_Click(object sender, EventArgs e)
     {
       printDialog1.Document = printHistoriaClinica;
@@ -36,6 +42,11 @@ namespace Turnero.Forms
     private void FrmHistoriaClinica_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private void BtnBuscar_Click(object sender, EventArgs e)
+    {
+      BuscarHistoriaClinica(txtDni.Text);
     }
   }
 }

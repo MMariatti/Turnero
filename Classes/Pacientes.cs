@@ -135,6 +135,25 @@ namespace Turnero.Classes
     }
 
 
+    private string historiaClinica;
+    public string HistoriaClinica
+    {
+      get { return this.historiaClinica; }
+      private set
+      {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+          this.direccion = value;
+        }
+        else
+        {
+          throw new ArgumentNullException();
+        }
+      }
+    }
+
+
+
 
     public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac,string telefonoPaciente, string direccionPaciente)
     {
@@ -146,6 +165,18 @@ namespace Turnero.Classes
       this.Telefono = telefonoPaciente;
       this.Direccion = direccionPaciente;
     }
+
+    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac, string telefonoPaciente, string direccionPaciente, string historiaClinicaPaciente)
+    {
+      this.Dni = dniPaciente;
+      this.Apellido = apellidoPaciente;
+      this.Nombre = nombrePaciente;
+      this.fechaNac = fechaNac;
+      this.ObraSocial = obraSocialPaciente;
+      this.Telefono = telefonoPaciente;
+      this.Direccion = direccionPaciente;
+      this.HistoriaClinica = historiaClinicaPaciente;
+    }
     public Pacientes(string dni)
     {
       this.Dni = dni;
@@ -154,7 +185,7 @@ namespace Turnero.Classes
 
     private void getAttr()
     {
-      string query = "SELECT * FROM Pacientess WHERE dni = '" + this.Dni + "'";
+      string query = "SELECT * FROM Pacientes WHERE dni = '" + this.Dni + "'";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       Apellido = tabla.Rows[0]["apellido"].ToString();
       Nombre = tabla.Rows[0]["nombre"].ToString();
@@ -169,7 +200,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "INSERT INTO Pacientess(dni, apellido, nombre,obraSocial,fechaNac,direccion,telefono) " + "VALUES('" + this.Dni + "','" + this.Apellido + "','" + this.Nombre + "', " + this.ObraSocial + ",'" + this.fechaNac.ToString("yyyy-MM-dd") + "','" + this.Direccion + "','"+ this.Telefono +"')";
+        string query = "INSERT INTO Pacientes(dni, apellido, nombre,obraSocial,fechaNac,direccion,telefono) " + "VALUES('" + this.Dni + "','" + this.Apellido + "','" + this.Nombre + "', " + this.ObraSocial + ",'" + this.fechaNac.ToString("yyyy-MM-dd") + "','" + this.Direccion + "','"+ this.Telefono +"')";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("El paciente "+this.nombre + " " + this.apellido + " se ha cargado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.None);
       }
@@ -198,10 +229,10 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT P.dni AS DNI, P.apellido AS Apellido, P.nombre AS Nombre, P.fechaNac AS 'Fecha de nacimiento'," +
+      string query = "SELECT P.dni AS DNI, P.nroHistoriaClinica AS 'Nº Historia Clinica', P.apellido AS Apellido, P.nombre AS Nombre, P.fechaNac AS 'Fecha de nacimiento'," +
         " O.descripcion AS 'Obra Social', " + "P.telefono AS Telefono, P.direccion AS Direccion, DATEDIFF(YEAR,P.fechaNac,GETDATE())" +
         " - (CASE WHEN DATEADD(YY, DATEDIFF(YEAR, P.fechaNac, GETDATE()),P.fechaNac)> GETDATE() THEN   1 ELSE   0  END) as Edad"  +
-        " FROM Pacientess P, ObrasSociales O WHERE P.obraSocial = O.idObraSocial ";
+        " FROM Pacientes P, ObrasSociales O WHERE P.obraSocial = O.idObraSocial ";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -215,14 +246,14 @@ namespace Turnero.Classes
     }
 
 
-    public Pacientes GetPacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocial, DateTime fechaNac, string telefono, string direccion)
+    public Pacientes GetPacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocial, DateTime fechaNac, string telefono, string direccion, string historiaClinica)
     {
-      string query = "SELECT * FROM Pacientess WHERE dni = '" + dniPaciente + "' AND apellido= '" + apellidoPaciente + "' AND nombre = '" + nombrePaciente + "' AND telefono = '" + telefono + "' AND obraSocial = "
-        + obraSocial + "AND direccion ='" + direccion + "')";
+      string query = "SELECT * FROM Pacientes WHERE dni = '" + dniPaciente + "' AND apellido= '" + apellidoPaciente + "' AND nombre = '" + nombrePaciente + "' AND telefono = '" + telefono + "' AND obraSocial = "
+        + obraSocial + "AND direccion ='" + direccion + "' AND historiaClinica ='"+this.historiaClinica+"')";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
-      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"));
+      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"), fila.Field<string>("historiaClinica"));
       return paciente;
     }
 
@@ -230,7 +261,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Pacientess SET apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
+        string query = "UPDATE Pacientes SET apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
         ", fechaNac='" + fechaNacimiento.ToString("yyyy-MM-dd") + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE dni = '" + this.Dni + "' ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
@@ -253,7 +284,7 @@ namespace Turnero.Classes
       try
       {
         
-        string query = "UPDATE Pacientess SET nombre = '" + newNombre + "' WHERE dni ='" + this.Dni + "'";
+        string query = "UPDATE Pacientes SET nombre = '" + newNombre + "' WHERE dni ='" + this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Nombre cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -270,7 +301,7 @@ namespace Turnero.Classes
       {
         
        
-        string query = "UPDATE pacientess SET apellido = '" + newApellido + "' WHERE dni = '" +this.Dni + "'";
+        string query = "UPDATE pacientes SET apellido = '" + newApellido + "' WHERE dni = '" +this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Apellido cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
@@ -285,7 +316,7 @@ namespace Turnero.Classes
       try
       {
         
-        string query = "UPDATE pacientess SET telefono = '" + newTelefono + "' WHERE dni= '" + this.Dni + "'";
+        string query = "UPDATE pacientes SET telefono = '" + newTelefono + "' WHERE dni= '" + this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Telefono cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
@@ -300,7 +331,7 @@ namespace Turnero.Classes
       try
       {
         ;
-        string query = "UPDATE Pacientess SET direccion = '" + newDireccion + "' WHERE dni='" + this.Dni + "'";
+        string query = "UPDATE Pacientes SET direccion = '" + newDireccion + "' WHERE dni='" + this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Direccion cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
@@ -315,7 +346,7 @@ namespace Turnero.Classes
       try
       {
         
-        string query = "UPDATE Pacientess SET fechaNac = '" + newFechaNac + "' WHERE dni='" + this.Dni + "'";
+        string query = "UPDATE Pacientes SET fechaNac = '" + newFechaNac + "' WHERE dni='" + this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Direccion cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
@@ -330,7 +361,7 @@ namespace Turnero.Classes
       try
       {
         
-        string query = "UPDATE Pacientess SET obraSocial = " + newObraSocial + " WHERE dni= '" + this.Dni + "'";
+        string query = "UPDATE Pacientes SET obraSocial = " + newObraSocial + " WHERE dni= '" + this.Dni + "'";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Obra Social cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
@@ -339,6 +370,38 @@ namespace Turnero.Classes
         MessageBox.Show(ex.Data.ToString(), "Error al cambiar Obra Social", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
+
+    public void BuscarHistoriaClinica()
+    {
+      string query = "SELECT HistoriaClinica FROM Pacientes WHERE dni ='" + this.Dni + "'";
+      DataTable tabla = new DataTable();
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        tabla.Rows[0]["HistoriaClinica"].ToString();
+        this.HistoriaClinica = tabla.Rows[0]["HistoriaClinica"].ToString();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    public void GuardarHistoriaClinica(string nuevaHc)
+    {
+      string query = "UPDATE Pacientes SET historiaClinica ='"+nuevaHc+"' WHERE dni ='"+this.Dni+"'";
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Historia Clinica Guardada", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch(Exception ex)
+      {
+        MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    
   }
 }
 
