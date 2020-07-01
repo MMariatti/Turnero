@@ -21,7 +21,7 @@ namespace Turnero.Forms
     {
       Pacientes paciente = new Pacientes(dni);
       paciente.BuscarHistoriaClinica();
-      RtbHistoriaClinica.Text = paciente.HistoriaClinica;
+      RtbHistoriaClinica.Text = paciente.historiaClinica.ToString();
     }
     private void BtnImprimir_Click(object sender, EventArgs e)
     {
@@ -47,6 +47,11 @@ namespace Turnero.Forms
     private void BtnBuscar_Click(object sender, EventArgs e)
     {
       BuscarHistoriaClinica(txtDni.Text);
+    }
+
+    private void RtbHistoriaClinica_TextChanged(object sender, EventArgs e)
+    {
+
     }
   }
 }

@@ -47,6 +47,7 @@
       this.RtbHistoriaClinica.Size = new System.Drawing.Size(715, 339);
       this.RtbHistoriaClinica.TabIndex = 0;
       this.RtbHistoriaClinica.Text = "";
+      this.RtbHistoriaClinica.TextChanged += new System.EventHandler(this.RtbHistoriaClinica_TextChanged);
       // 
       // BtnGuardar
       // 

@@ -80,22 +80,7 @@ namespace Turnero.Classes
       }
     }
 
-    private int edad = 0;
-    public int Edad
-    {
-      get { return this.edad; }
-      private set
-      {
-        if (value > 0)
-        {
-          this.edad = value;
-        }
-        else
-        {
-          throw new ArgumentOutOfRangeException();
-        }
-      }
-    }
+    
     public DateTime fechaNac = new DateTime() ;
 
    
@@ -134,24 +119,25 @@ namespace Turnero.Classes
       }
     }
 
-
-    private string historiaClinica;
-    public string HistoriaClinica
-    {
-      get { return this.historiaClinica; }
-      private set
+    public string[] historiaClinica;
+    /*
+      private string[] historiaClinica;
+      public string HistoriaClinica
       {
-        if (!string.IsNullOrWhiteSpace(value))
+        get { return Convert.ToString(this.historiaClinica); }
+        private set
         {
-          this.direccion = value;
-        }
-        else
-        {
-          throw new ArgumentNullException();
+          if (!string.IsNullOrWhiteSpace(value))
+          {
+            this.historiaClinica=value;
+          }
+          else
+          {
+            throw new ArgumentNullException();
+          }
         }
       }
-    }
-
+      */
 
 
 
@@ -166,7 +152,7 @@ namespace Turnero.Classes
       this.Direccion = direccionPaciente;
     }
 
-    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac, string telefonoPaciente, string direccionPaciente, string historiaClinicaPaciente)
+    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac, string telefonoPaciente, string direccionPaciente, string[] historiaClinicaPaciente)
     {
       this.Dni = dniPaciente;
       this.Apellido = apellidoPaciente;
@@ -175,7 +161,7 @@ namespace Turnero.Classes
       this.ObraSocial = obraSocialPaciente;
       this.Telefono = telefonoPaciente;
       this.Direccion = direccionPaciente;
-      this.HistoriaClinica = historiaClinicaPaciente;
+      this.historiaClinica = historiaClinicaPaciente;
     }
     public Pacientes(string dni)
     {
@@ -253,7 +239,7 @@ namespace Turnero.Classes
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
-      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"), fila.Field<string>("historiaClinica"));
+      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"), fila.Field<string[]>("historiaClinica"));
       return paciente;
     }
 
@@ -379,7 +365,7 @@ namespace Turnero.Classes
       {
         tabla = BDHelper.ConsultarSQL(query);
         tabla.Rows[0]["HistoriaClinica"].ToString();
-        this.HistoriaClinica = tabla.Rows[0]["HistoriaClinica"].ToString();
+        this.historiaClinica = (string[])tabla.Rows[0]["HistoriaClinica"];
       }
       catch (Exception ex)
       {
