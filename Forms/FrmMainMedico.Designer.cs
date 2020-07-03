@@ -89,6 +89,7 @@
       this.Controls.Add(this.dataGridView1);
       this.Name = "FrmMainMedico";
       this.Text = "FrmMainMedico";
+      this.Load += new System.EventHandler(this.FrmMainMedico_Load);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.ResumeLayout(false);
 

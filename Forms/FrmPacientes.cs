@@ -62,12 +62,12 @@ namespace Turnero.Forms
         FrmModificarPaciente frmModificarPaciente;
         frmModificarPaciente = new FrmModificarPaciente();
         frmModificarPaciente.TxtDni.Text = GrdPacientes.SelectedRows[0].Cells[0].Value.ToString();
-        frmModificarPaciente.TxtApellido.Text = GrdPacientes.SelectedRows[0].Cells[1].Value.ToString();
-        frmModificarPaciente.TxtNombre.Text = GrdPacientes.SelectedRows[0].Cells[2].Value.ToString();
-        frmModificarPaciente.TxtFechaNac.Text = GrdPacientes.SelectedRows[0].Cells[3].Value.ToString();
-        frmModificarPaciente.TxtTelefono.Text = GrdPacientes.SelectedRows[0].Cells[5].Value.ToString();
-        frmModificarPaciente.CmbObraSocial.Text = GrdPacientes.SelectedRows[0].Cells[4].Value.ToString();
-        frmModificarPaciente.TxtDireccion.Text = GrdPacientes.SelectedRows[0].Cells[6].Value.ToString();
+        frmModificarPaciente.TxtApellido.Text = GrdPacientes.SelectedRows[0].Cells[2].Value.ToString();
+        frmModificarPaciente.TxtNombre.Text = GrdPacientes.SelectedRows[0].Cells[3].Value.ToString();
+        frmModificarPaciente.TxtFechaNac.Text = GrdPacientes.SelectedRows[0].Cells[4].Value.ToString();
+        frmModificarPaciente.TxtTelefono.Text = GrdPacientes.SelectedRows[0].Cells[6].Value.ToString();
+        frmModificarPaciente.CmbObraSocial.Text = GrdPacientes.SelectedRows[0].Cells[5].Value.ToString();
+        frmModificarPaciente.TxtDireccion.Text = GrdPacientes.SelectedRows[0].Cells[7].Value.ToString();
         frmModificarPaciente.Show();
 
       }

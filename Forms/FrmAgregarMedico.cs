@@ -52,7 +52,7 @@ namespace Turnero.Forms
 
     private void BtnAgregar_Click(object sender, EventArgs e)
     {
-      if(TxtApellido.Text == string.Empty || TxtNombre.Text == string.Empty || CmbEspecialidades.SelectedIndex <1)
+      if(TxtApellido.Text == string.Empty || TxtNombre.Text == string.Empty || CmbEspecialidades.SelectedIndex < 0)
       {
         MessageBox.Show("Por favor complete todos los campos", "Error al cargar medico", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }

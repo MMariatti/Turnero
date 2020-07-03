@@ -21,7 +21,7 @@ namespace Turnero.Forms
     {
       Pacientes paciente = new Pacientes(dni);
       paciente.BuscarHistoriaClinica();
-      RtbHistoriaClinica.Text = paciente.historiaClinica.ToString();
+      RtbHistoriaClinica.Text = paciente.HistoriaClinica.ToString();
     }
     private void BtnImprimir_Click(object sender, EventArgs e)
     {
@@ -35,7 +35,7 @@ namespace Turnero.Forms
 
     private void printHistoriaClinica_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
     {
-      e.Graphics.DrawString(RtbHistoriaClinica.Text, new Font("Arial",12, FontStyle.Regular),Brushes.Black,150,125); 
+      e.Graphics.DrawString(RtbHistoriaClinica.Text, new Font("Made Tommy Regular", 12, FontStyle.Regular),Brushes.Black,150,125); 
      
     }
 
@@ -46,12 +46,26 @@ namespace Turnero.Forms
 
     private void BtnBuscar_Click(object sender, EventArgs e)
     {
-      BuscarHistoriaClinica(txtDni.Text);
+      if(txtDni.Text != string.Empty)
+      {
+        BuscarHistoriaClinica(txtDni.Text);
+      }
+      else
+      {
+        MessageBox.Show("Ingrese el dni del paciente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+      
     }
 
     private void RtbHistoriaClinica_TextChanged(object sender, EventArgs e)
     {
 
+    }
+
+    private void BtnGuardar_Click(object sender, EventArgs e)
+    {
+      Pacientes paciente = new Pacientes(txtDni.Text);
+      paciente.GuardarHistoriaClinica(RtbHistoriaClinica.Text);
     }
   }
 }

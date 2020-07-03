@@ -12,11 +12,38 @@ namespace Turnero.Classes
   class ObrasSociales
   {
     private int idObraSocial = 0;
+    public int IdObraSocial
+    {
+      get { return this.idObraSocial; }
+      private set
+      {
+        this.idObraSocial = value;
+      }
+    }
     private string descripcion = "";
-
+    public string Descripcion
+    {
+      get { return this.descripcion; }
+      private set
+      {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+          this.descripcion = value;
+        }
+        else
+        {
+          throw new ArgumentNullException();
+        }
+      }
+    }
     public ObrasSociales()
     {
 
+    }
+    public ObrasSociales(int idObraSocial)
+    {
+      this.idObraSocial = idObraSocial;
+      GetAttr();
     }
 
     public ObrasSociales(int idObraSocial,string descripcion)
@@ -38,13 +65,34 @@ namespace Turnero.Classes
       tabla = BDHelper.ConsultarSQL(query);
       return tabla;
     }
-    public static DataTable LLenarCmb()
+    public static DataTable LlenarCmb()
     {
       string query = "SELECT * FROM ObrasSociales";
       DataTable tabla = new DataTable();
 
       tabla = BDHelper.ConsultarSQL(query);
       return tabla;
+    
+    }
+
+    public void  GetAttr()
+    {
+      string query = "SELECT * FROM ObrasSociales WHERE idObraSocial = " + this.IdObraSocial;
+      DataTable table = new DataTable();
+      table = BDHelper.ConsultarSQL(query);
+      if (table.Rows.Count != 0)
+      {
+        IdObraSocial = (int)table.Rows[0]["idObraSocial"];
+        Descripcion = table.Rows[0]["descripcion"].ToString();
+        
+      }
+      else
+      {
+        MessageBox.Show("La obra social que busca no está cargado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+      
+      
+      
     }
     public void save()
     {

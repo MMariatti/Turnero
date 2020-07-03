@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ProyectoPav2018\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +60,11 @@
     <Compile Include="Classes\Practicas.cs" />
     <Compile Include="Classes\Sesion.cs" />
     <Compile Include="Classes\Turnos.cs" />
+    <Compile Include="DataSet\dsReporteTurnosDiarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReporteTurnosDiarios.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAgregarMedico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +143,12 @@
     <Compile Include="Forms\FrmPracticas.Designer.cs">
       <DependentUpon>FrmPracticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmReporteTurnosDelDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmReporteTurnosDelDia.Designer.cs">
+      <DependentUpon>FrmReporteTurnosDelDia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmTurnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +196,9 @@
     <EmbeddedResource Include="Forms\FrmPracticas.resx">
       <DependentUpon>FrmPracticas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmReporteTurnosDelDia.resx">
+      <DependentUpon>FrmReporteTurnosDelDia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmTurnos.resx">
       <DependentUpon>FrmTurnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +211,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DataSet\dsReporteTurnosDiarios.xsc">
+      <DependentUpon>dsReporteTurnosDiarios.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dsReporteTurnosDiarios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReporteTurnosDiarios.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dsReporteTurnosDiarios.xss">
+      <DependentUpon>dsReporteTurnosDiarios.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -203,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

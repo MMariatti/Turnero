@@ -108,11 +108,12 @@ namespace Turnero.Classes
       Especialidad = (int)tabla.Rows[0]["idEspecialidad"]; ;
     }
 
-    public void Save()
+    
+      public void Save()
     {
       try
       {
-        string query = "INSERT INTO Medicos(apellido, nombre, idEspecialidad) " + "VALUES('" + this.Nombre + "','" + this.Apellido + "', "+ this.Especialidad+")";
+        string query = "INSERT INTO Medicos(apellido, nombre, idEspecialidad) " + "VALUES('" + this.Apellido+ "','" + this.Nombre + "', "+ this.Especialidad+")";
         BDHelper.ConsultarSQL(query);
 
       }
@@ -169,7 +170,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "UPDATE Medicos SET nombre = '" + nombre + "', apellido = '" + apellido + "', idESpecialidad=" + especialidad + " WHERE legajo = " + this.IdMedico + " ";
+        string query = "UPDATE Medicos SET nombre = '" + nombre + "', apellido = '" + apellido + "', idEspecialidad=" + especialidad + " WHERE legajo = " + this.IdMedico + " ";
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
         this.Apellido = apellido;

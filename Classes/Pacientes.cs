@@ -119,25 +119,23 @@ namespace Turnero.Classes
       }
     }
 
-    public string[] historiaClinica;
-    /*
-      private string[] historiaClinica;
-      public string HistoriaClinica
+    private string historiaClinica;
+    public string HistoriaClinica
+    {
+      get { return this.historiaClinica; }
+      private set
       {
-        get { return Convert.ToString(this.historiaClinica); }
-        private set
+        if (!string.IsNullOrWhiteSpace(value))
         {
-          if (!string.IsNullOrWhiteSpace(value))
-          {
-            this.historiaClinica=value;
-          }
-          else
-          {
-            throw new ArgumentNullException();
-          }
+          this.historiaClinica = value;
+        }
+        else
+        {
+          throw new ArgumentNullException();
         }
       }
-      */
+    }
+      
 
 
 
@@ -152,7 +150,7 @@ namespace Turnero.Classes
       this.Direccion = direccionPaciente;
     }
 
-    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac, string telefonoPaciente, string direccionPaciente, string[] historiaClinicaPaciente)
+    public Pacientes(string dniPaciente, string apellidoPaciente, string nombrePaciente, int obraSocialPaciente, DateTime fechaNac, string telefonoPaciente, string direccionPaciente, string historiaClinicaPaciente)
     {
       this.Dni = dniPaciente;
       this.Apellido = apellidoPaciente;
@@ -169,16 +167,23 @@ namespace Turnero.Classes
       getAttr();
     }
 
-    private void getAttr()
+    public void getAttr()
     {
       string query = "SELECT * FROM Pacientes WHERE dni = '" + this.Dni + "'";
       DataTable tabla = BDHelper.ConsultarSQL(query);
-      Apellido = tabla.Rows[0]["apellido"].ToString();
-      Nombre = tabla.Rows[0]["nombre"].ToString();
-      ObraSocial = (int)tabla.Rows[0]["obraSocial"] ;
-      fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNac"].ToString());
-      Direccion = tabla.Rows[0]["direccion"].ToString();
-      Telefono = tabla.Rows[0]["Telefono"].ToString();
+      if(tabla.Rows.Count != 0)
+      {
+        Apellido = tabla.Rows[0]["apellido"].ToString();
+        Nombre = tabla.Rows[0]["nombre"].ToString();
+        ObraSocial = (int)tabla.Rows[0]["obraSocial"];
+        fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNac"].ToString());
+        Direccion = tabla.Rows[0]["direccion"].ToString();
+        Telefono = tabla.Rows[0]["Telefono"].ToString();
+      }
+      else
+      {
+        MessageBox.Show("El paciente que busca no está cargado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
 
     }
 
@@ -239,7 +244,7 @@ namespace Turnero.Classes
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
-      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"), fila.Field<string[]>("historiaClinica"));
+      Pacientes paciente = new Pacientes(fila.Field<string>("dni"), fila.Field<string>("apellido"), fila.Field<string>("nombre"), fila.Field<int>("obraSocial"), DateTime.Parse(fila.Field<string>("fechaNac")), fila.Field<string>("telefono"), fila.Field<string>("direccion"), fila.Field<string>("historiaClinica"));
       return paciente;
     }
 
@@ -364,8 +369,9 @@ namespace Turnero.Classes
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
+
         tabla.Rows[0]["HistoriaClinica"].ToString();
-        this.historiaClinica = (string[])tabla.Rows[0]["HistoriaClinica"];
+        historiaClinica = tabla.Rows[0]["HistoriaClinica"].ToString();
       }
       catch (Exception ex)
       {
@@ -375,7 +381,7 @@ namespace Turnero.Classes
 
     public void GuardarHistoriaClinica(string nuevaHc)
     {
-      string query = "UPDATE Pacientes SET historiaClinica ='"+nuevaHc+"' WHERE dni ='"+this.Dni+"'";
+      string query = "UPDATE Pacientes SET HistoriaClinica ='"+nuevaHc+"' WHERE dni ='"+this.Dni+"'";
       try
       {
         BDHelper.ConsultarSQL(query);

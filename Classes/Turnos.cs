@@ -105,12 +105,20 @@ namespace Turnero.Classes
       this.ObraSocial = obraSocial;
     }
 
-    public void GetAll()
+    public Turnos(DateTime fechaTurno, DateTime horaTurno, int legajoMedico)
+    {
+      this.fechaTurno = fechaTurno;
+      this.horaTurno = horaTurno;
+      this.LegajoMedico = legajoMedico;
+    }
+
+    private  void GetAll()
     {
       string query = "SELECT * FROM Turnos";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       fechaTurno = DateTime.Parse(tabla.Rows[0]["fecha"].ToString());
       horaTurno = DateTime.Parse(tabla.Rows[0]["hora"].ToString());
+      
       this.LegajoMedico = (int)tabla.Rows[0]["medico"];
       this.IdEspecialidad = (int)tabla.Rows[0]["idEspecialidad"];
       this.DniPaciente = tabla.Rows[0]["paciente"].ToString();
@@ -118,10 +126,49 @@ namespace Turnero.Classes
       this.ObraSocial = (int)tabla.Rows[0]["obraSocial"];
     }
 
+    public static DataTable GetAllEspecifico(DateTime fechaDelDia)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico " +
+        "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
+        "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = '"+fechaDelDia+"'";
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
+
+
+    public static  DataTable GetTurnosDelDia()
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico " +
+        "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
+        "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE())";
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
+
+
+
     public void Save()
     {
-      string query = "INSERT into Turnos(fecha, hora, medico, idEspecialidad, paciente, idPractica, obraSocial) VALUES ("
-        + fechaTurno.ToString("yyyy-MM-dd") + "," + horaTurno.ToString("hh:mm:ss") + "," + this.LegajoMedico + "," + this.IdEspecialidad + ",'" + this.DniPaciente + "',"
+      string query = "INSERT into Turnos(fecha, hora, medico, idEspecialidad, paciente, idPractica, obraSocial) VALUES ('"
+        + fechaTurno.ToString("yyyy-MM-dd") + "','" + horaTurno.ToString("HH:mm:ss") + "'," + this.LegajoMedico + "," + this.IdEspecialidad + ",'" + this.DniPaciente + "',"
         +this.Practica+"," + this.ObraSocial + ")";
       try{
         BDHelper.ConsultarSQL(query);
@@ -136,6 +183,36 @@ namespace Turnero.Classes
 
 
 
+    }
+
+    public void Confirmar()
+    {
+      string query = "UPDATE Turnos SET confirmado = 1 " +
+        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("hh:mm:ss") + "' AND medico =" + this.LegajoMedico;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Turno confirmado", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch(Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+    }
+
+    public void Atender()
+    {
+      string query = "UPDATE Turnos SET atendido = 1 " +
+        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("hh:mm:ss") + "' AND medico =" + this.LegajoMedico;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Turno atendido", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
     }
   }
 

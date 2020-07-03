@@ -24,5 +24,10 @@ namespace Turnero.Forms
       frmHistoriaClinica.BtnGuardar.Visible = true;
       frmHistoriaClinica.Show();
     }
+
+    private void FrmMainMedico_Load(object sender, EventArgs e)
+    {
+
+    }
   }
 }

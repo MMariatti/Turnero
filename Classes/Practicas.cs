@@ -34,10 +34,10 @@ namespace Turnero.Classes
     public Practicas(int idPractica)
     {
       this.idPractica = idPractica;
-      getAttr();
+      GetAttr();
     }
 
-    private void getAttr()
+    private void GetAttr()
     {
       string query = "SELECT * FROM Practicas WHERE idPractica = " + idPractica + "";
       DataTable tabla = BDHelper.ConsultarSQL(query);
@@ -48,7 +48,7 @@ namespace Turnero.Classes
 
 
 
-    public static DataTable GetAll()
+    public static DataTable GetAllEspecifico()
     {
       string query = "SELECT idPractica as Codigo, descripcion AS Nombre, costo AS Costo From Practicas";
       DataTable tabla = new DataTable();
@@ -64,12 +64,29 @@ namespace Turnero.Classes
 
       }
 
-
     }
+
+    public static DataTable GetAll()
+    {
+      string query = "SELECT * From Practicas";
+      DataTable tabla = new DataTable();
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+
+      }
+    }
+
 
     public Practicas GetPracticas(int idPractica)
     {
-      string query = "SELECT * FROM Medicos WHERE legajo = " + idPractica;
+      string query = "SELECT * FROM Practicas WHERE idPractica = " + idPractica;
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];

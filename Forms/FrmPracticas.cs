@@ -21,7 +21,7 @@ namespace Turnero.Forms
     public void MostrarPracticas()
     {
       DataTable tabla = new DataTable();
-      tabla = Practicas.GetAll();
+      tabla = Practicas.GetAllEspecifico();
       GrdPracticas.DataSource = tabla;
     }
 

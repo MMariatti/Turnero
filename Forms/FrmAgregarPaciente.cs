@@ -45,7 +45,7 @@ namespace Turnero.Forms
 
     private void FrmAgregarPaciente_Load(object sender, EventArgs e)
     {
-      CmbObraSocial.DataSource = ObrasSociales.LLenarCmb();
+      CmbObraSocial.DataSource = ObrasSociales.LlenarCmb();
       CmbObraSocial.DisplayMember = "descripcion";
       CmbObraSocial.ValueMember = "idObraSocial";
       CmbObraSocial.SelectedIndex = -1;
@@ -61,7 +61,7 @@ namespace Turnero.Forms
     private void BtnAgregarPaciente_Click(object sender, EventArgs e)
     {
       if (TxtDni.Text == string.Empty || TxtApellido.Text == string.Empty || TxtNombre.Text == string.Empty
-       || TxtFechaNac.Text == string.Empty || CmbObraSocial.SelectedIndex < 1 || TxtTelefono.Text == string.Empty || TxtDireccion.Text == string.Empty)
+       || TxtFechaNac.Text == string.Empty || CmbObraSocial.SelectedIndex < 0 || TxtTelefono.Text == string.Empty || TxtDireccion.Text == string.Empty)
       {
         MessageBox.Show("Por favor complete todos los campos", "Error al cargar los datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

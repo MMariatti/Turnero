@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Turnero.Classes;
 
 namespace Turnero.Forms
 {
@@ -17,7 +18,12 @@ namespace Turnero.Forms
       InitializeComponent();
     }
 
-    
+    private void MostrarTurnosDelDia()
+    {
+      DataTable tabla = new DataTable();
+      tabla = Turnos.GetTurnosDelDia();
+      GrdTurnos.DataSource = tabla;
+    }
 
     private void gestionarMedicosToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -70,17 +76,69 @@ namespace Turnero.Forms
       
     }
 
-   
+   private void VerTurnos(DateTime fecha)
+    {
+      DataTable tabla = new DataTable();
+      tabla = Turnos.GetAllEspecifico(fecha);
+      GrdTurnos.DataSource = tabla;
+      GrdTurnos.Columns[7].Visible = false;
+    }
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
-      
+      MostrarTurnosDelDia();
+      GrdTurnos.Columns[7].Visible = false;
     }
 
     private void verHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
     {
       FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
       frmHistoriaClinica.Show();
+    }
+
+    private void btnActualizar_Click(object sender, EventArgs e)
+    {
+      MostrarTurnosDelDia();
+
+    }
+
+    private void btnBuscarTurnos_Click(object sender, EventArgs e)
+    {
+        VerTurnos(monthCalendarTurno.SelectionStart);
+  
+    }
+
+    private void BtnConfirmarTurno_Click(object sender, EventArgs e)
+    {
+      if(GrdTurnos.SelectedRows.Count == 0)
+      {
+        MessageBox.Show("Por favor, seleccione un turno para ser confirmado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+      }
+      else
+      {
+        DateTime fecha = DateTime.Parse(GrdTurnos.SelectedRows[0].Cells[1].Value.ToString());
+        
+
+        DateTime hora = DateTime.Parse(GrdTurnos.SelectedRows[0].Cells[1].Value.ToString());
+       
+
+        int medico = Convert.ToInt32(GrdTurnos.SelectedRows[0].Cells[7].Value);
+        Turnos turno = new Turnos(fecha, hora, medico);
+        MessageBox.Show(turno.fechaTurno + " /" + turno.horaTurno + " /" + turno.LegajoMedico);
+        turno.Confirmar();
+      }
+    }
+
+    private void btnReporte_Click(object sender, EventArgs e)
+    {
+      FrmReporteTurnosDelDia frmReporte = new FrmReporteTurnosDelDia();
+      frmReporte.Show();
+    }
+
+    private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+
     }
   }
 }

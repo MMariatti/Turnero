@@ -29,17 +29,22 @@
     private void InitializeComponent()
     {
       this.Btn_DarTurno = new System.Windows.Forms.Button();
-      this.textBox1 = new System.Windows.Forms.TextBox();
-      this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+      this.txtPaciente = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
-      this.textBox2 = new System.Windows.Forms.TextBox();
-      this.textBox3 = new System.Windows.Forms.TextBox();
+      this.txtEspecialidad = new System.Windows.Forms.TextBox();
       this.label5 = new System.Windows.Forms.Label();
-      this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+      this.txtHora = new System.Windows.Forms.MaskedTextBox();
       this.Btn_salir = new System.Windows.Forms.Button();
+      this.label6 = new System.Windows.Forms.Label();
+      this.cmbPracticas = new System.Windows.Forms.ComboBox();
+      this.Btn_BuscarPaciente = new System.Windows.Forms.Button();
+      this.cmbMedico = new System.Windows.Forms.ComboBox();
+      this.txtObraSocial = new System.Windows.Forms.TextBox();
+      this.label7 = new System.Windows.Forms.Label();
+      this.monthCalendarTurno = new System.Windows.Forms.MonthCalendar();
       this.SuspendLayout();
       // 
       // Btn_DarTurno
@@ -47,22 +52,17 @@
       this.Btn_DarTurno.Location = new System.Drawing.Point(56, 311);
       this.Btn_DarTurno.Name = "Btn_DarTurno";
       this.Btn_DarTurno.Size = new System.Drawing.Size(75, 23);
-      this.Btn_DarTurno.TabIndex = 0;
+      this.Btn_DarTurno.TabIndex = 8;
       this.Btn_DarTurno.Text = "Dar Turno";
       this.Btn_DarTurno.UseVisualStyleBackColor = true;
+      this.Btn_DarTurno.Click += new System.EventHandler(this.Btn_DarTurno_Click);
       // 
-      // textBox1
+      // txtPaciente
       // 
-      this.textBox1.Location = new System.Drawing.Point(133, 63);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(100, 20);
-      this.textBox1.TabIndex = 1;
-      // 
-      // monthCalendar1
-      // 
-      this.monthCalendar1.Location = new System.Drawing.Point(369, 63);
-      this.monthCalendar1.Name = "monthCalendar1";
-      this.monthCalendar1.TabIndex = 2;
+      this.txtPaciente.Location = new System.Drawing.Point(133, 63);
+      this.txtPaciente.Name = "txtPaciente";
+      this.txtPaciente.Size = new System.Drawing.Size(121, 20);
+      this.txtPaciente.TabIndex = 0;
       // 
       // label1
       // 
@@ -76,7 +76,7 @@
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(53, 103);
+      this.label2.Location = new System.Drawing.Point(53, 145);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(45, 13);
       this.label2.TabIndex = 4;
@@ -85,81 +85,143 @@
       // label3
       // 
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(52, 152);
+      this.label3.Location = new System.Drawing.Point(53, 223);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(46, 13);
+      this.label3.Size = new System.Drawing.Size(52, 13);
       this.label3.TabIndex = 5;
-      this.label3.Text = "Practica";
+      this.label3.Text = "Practica :";
       // 
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(317, 68);
+      this.label4.Location = new System.Drawing.Point(429, 64);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(40, 13);
       this.label4.TabIndex = 6;
       this.label4.Text = "Fecha:";
       // 
-      // textBox2
+      // txtEspecialidad
       // 
-      this.textBox2.Location = new System.Drawing.Point(133, 100);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(100, 20);
-      this.textBox2.TabIndex = 7;
-      // 
-      // textBox3
-      // 
-      this.textBox3.Location = new System.Drawing.Point(133, 145);
-      this.textBox3.Name = "textBox3";
-      this.textBox3.Size = new System.Drawing.Size(100, 20);
-      this.textBox3.TabIndex = 8;
+      this.txtEspecialidad.Location = new System.Drawing.Point(133, 182);
+      this.txtEspecialidad.Name = "txtEspecialidad";
+      this.txtEspecialidad.Size = new System.Drawing.Size(121, 20);
+      this.txtEspecialidad.TabIndex = 4;
       // 
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(317, 240);
+      this.label5.Location = new System.Drawing.Point(429, 242);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(33, 13);
       this.label5.TabIndex = 9;
       this.label5.Text = "Hora:";
       // 
-      // maskedTextBox1
+      // txtHora
       // 
-      this.maskedTextBox1.Location = new System.Drawing.Point(369, 237);
-      this.maskedTextBox1.Mask = "00:00";
-      this.maskedTextBox1.Name = "maskedTextBox1";
-      this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-      this.maskedTextBox1.TabIndex = 10;
-      this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+      this.txtHora.Location = new System.Drawing.Point(505, 239);
+      this.txtHora.Mask = "00:00";
+      this.txtHora.Name = "txtHora";
+      this.txtHora.Size = new System.Drawing.Size(100, 20);
+      this.txtHora.TabIndex = 7;
+      this.txtHora.ValidatingType = typeof(System.DateTime);
       // 
       // Btn_salir
       // 
-      this.Btn_salir.Location = new System.Drawing.Point(486, 311);
+      this.Btn_salir.Location = new System.Drawing.Point(622, 311);
       this.Btn_salir.Name = "Btn_salir";
       this.Btn_salir.Size = new System.Drawing.Size(75, 23);
-      this.Btn_salir.TabIndex = 11;
+      this.Btn_salir.TabIndex = 9;
       this.Btn_salir.Text = "Salir";
       this.Btn_salir.UseVisualStyleBackColor = true;
+      this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(53, 189);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(73, 13);
+      this.label6.TabIndex = 10;
+      this.label6.Text = "Especialidad :";
+      // 
+      // cmbPracticas
+      // 
+      this.cmbPracticas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbPracticas.FormattingEnabled = true;
+      this.cmbPracticas.Location = new System.Drawing.Point(133, 220);
+      this.cmbPracticas.Name = "cmbPracticas";
+      this.cmbPracticas.Size = new System.Drawing.Size(121, 21);
+      this.cmbPracticas.TabIndex = 5;
+      // 
+      // Btn_BuscarPaciente
+      // 
+      this.Btn_BuscarPaciente.Location = new System.Drawing.Point(289, 61);
+      this.Btn_BuscarPaciente.Name = "Btn_BuscarPaciente";
+      this.Btn_BuscarPaciente.Size = new System.Drawing.Size(99, 23);
+      this.Btn_BuscarPaciente.TabIndex = 1;
+      this.Btn_BuscarPaciente.Text = "Buscar Paciente";
+      this.Btn_BuscarPaciente.UseVisualStyleBackColor = true;
+      this.Btn_BuscarPaciente.Click += new System.EventHandler(this.Btn_BuscarPaciente_Click);
+      // 
+      // cmbMedico
+      // 
+      this.cmbMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cmbMedico.FormattingEnabled = true;
+      this.cmbMedico.Location = new System.Drawing.Point(133, 142);
+      this.cmbMedico.Name = "cmbMedico";
+      this.cmbMedico.Size = new System.Drawing.Size(121, 21);
+      this.cmbMedico.TabIndex = 3;
+      this.cmbMedico.SelectedIndexChanged += new System.EventHandler(this.cmbMedico_SelectedIndexChanged);
+      // 
+      // txtObraSocial
+      // 
+      this.txtObraSocial.Location = new System.Drawing.Point(133, 101);
+      this.txtObraSocial.Name = "txtObraSocial";
+      this.txtObraSocial.ReadOnly = true;
+      this.txtObraSocial.Size = new System.Drawing.Size(121, 20);
+      this.txtObraSocial.TabIndex = 2;
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(53, 108);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(68, 13);
+      this.label7.TabIndex = 14;
+      this.label7.Text = "Obra Social :";
+      // 
+      // monthCalendarTurno
+      // 
+      this.monthCalendarTurno.Location = new System.Drawing.Point(505, 63);
+      this.monthCalendarTurno.MaxSelectionCount = 1;
+      this.monthCalendarTurno.Name = "monthCalendarTurno";
+      this.monthCalendarTurno.TabIndex = 15;
       // 
       // FrmTurnos
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.ClientSize = new System.Drawing.Size(800, 354);
+      this.Controls.Add(this.monthCalendarTurno);
+      this.Controls.Add(this.label7);
+      this.Controls.Add(this.txtObraSocial);
+      this.Controls.Add(this.cmbMedico);
+      this.Controls.Add(this.Btn_BuscarPaciente);
+      this.Controls.Add(this.cmbPracticas);
+      this.Controls.Add(this.label6);
       this.Controls.Add(this.Btn_salir);
-      this.Controls.Add(this.maskedTextBox1);
+      this.Controls.Add(this.txtHora);
       this.Controls.Add(this.label5);
-      this.Controls.Add(this.textBox3);
-      this.Controls.Add(this.textBox2);
+      this.Controls.Add(this.txtEspecialidad);
       this.Controls.Add(this.label4);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
-      this.Controls.Add(this.monthCalendar1);
-      this.Controls.Add(this.textBox1);
+      this.Controls.Add(this.txtPaciente);
       this.Controls.Add(this.Btn_DarTurno);
       this.Name = "FrmTurnos";
-      this.Text = "FrmTurnos";
+      this.Text = "Turnos";
+      this.Load += new System.EventHandler(this.FrmTurnos_Load);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -168,16 +230,21 @@
     #endregion
 
     private System.Windows.Forms.Button Btn_DarTurno;
-    private System.Windows.Forms.TextBox textBox1;
-    private System.Windows.Forms.MonthCalendar monthCalendar1;
+    private System.Windows.Forms.TextBox txtPaciente;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.TextBox textBox2;
-    private System.Windows.Forms.TextBox textBox3;
+    private System.Windows.Forms.TextBox txtEspecialidad;
     private System.Windows.Forms.Label label5;
-    private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+    private System.Windows.Forms.MaskedTextBox txtHora;
     private System.Windows.Forms.Button Btn_salir;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.ComboBox cmbPracticas;
+    private System.Windows.Forms.Button Btn_BuscarPaciente;
+    private System.Windows.Forms.ComboBox cmbMedico;
+    private System.Windows.Forms.TextBox txtObraSocial;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.MonthCalendar monthCalendarTurno;
   }
 }

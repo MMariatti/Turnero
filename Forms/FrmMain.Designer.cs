@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+      this.monthCalendarTurno = new System.Windows.Forms.MonthCalendar();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.medicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarEspecialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,16 +43,21 @@
       this.gestionarPracticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.GrdTurnos = new System.Windows.Forms.DataGridView();
+      this.btnBuscarTurnos = new System.Windows.Forms.Button();
+      this.btnActualizar = new System.Windows.Forms.Button();
+      this.BtnConfirmarTurno = new System.Windows.Forms.Button();
+      this.btnReporte = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).BeginInit();
       this.SuspendLayout();
       // 
-      // monthCalendar1
+      // monthCalendarTurno
       // 
-      this.monthCalendar1.Location = new System.Drawing.Point(18, 79);
-      this.monthCalendar1.Name = "monthCalendar1";
-      this.monthCalendar1.TabIndex = 1;
+      this.monthCalendarTurno.Location = new System.Drawing.Point(18, 79);
+      this.monthCalendarTurno.MaxSelectionCount = 1;
+      this.monthCalendarTurno.Name = "monthCalendarTurno";
+      this.monthCalendarTurno.TabIndex = 1;
       // 
       // menuStrip1
       // 
@@ -65,9 +70,10 @@
             this.turnosToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(1076, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
+      this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
       // 
       // medicosToolStripMenuItem
       // 
@@ -126,14 +132,14 @@
       // gestionarPacientesToolStripMenuItem
       // 
       this.gestionarPacientesToolStripMenuItem.Name = "gestionarPacientesToolStripMenuItem";
-      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.gestionarPacientesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
       this.gestionarPacientesToolStripMenuItem.Text = "Gestionar pacientes";
       this.gestionarPacientesToolStripMenuItem.Click += new System.EventHandler(this.gestionarPacientesToolStripMenuItem_Click);
       // 
       // verHistoriaClinicaToolStripMenuItem
       // 
       this.verHistoriaClinicaToolStripMenuItem.Name = "verHistoriaClinicaToolStripMenuItem";
-      this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.verHistoriaClinicaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
       this.verHistoriaClinicaToolStripMenuItem.Text = "Ver historia clinica";
       this.verHistoriaClinicaToolStripMenuItem.Click += new System.EventHandler(this.verHistoriaClinicaToolStripMenuItem_Click);
       // 
@@ -157,31 +163,75 @@
       this.turnosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarTurnosToolStripMenuItem});
       this.turnosToolStripMenuItem.Name = "turnosToolStripMenuItem";
-      this.turnosToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+      this.turnosToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
       this.turnosToolStripMenuItem.Text = "Turnos";
       // 
       // gestionarTurnosToolStripMenuItem
       // 
       this.gestionarTurnosToolStripMenuItem.Name = "gestionarTurnosToolStripMenuItem";
-      this.gestionarTurnosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+      this.gestionarTurnosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
       this.gestionarTurnosToolStripMenuItem.Text = "Gestionar Turnos";
       this.gestionarTurnosToolStripMenuItem.Click += new System.EventHandler(this.gestionarTurnosToolStripMenuItem_Click);
       // 
-      // dataGridView1
+      // GrdTurnos
       // 
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Location = new System.Drawing.Point(244, 79);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.Size = new System.Drawing.Size(544, 290);
-      this.dataGridView1.TabIndex = 2;
+      this.GrdTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.GrdTurnos.Location = new System.Drawing.Point(244, 79);
+      this.GrdTurnos.Name = "GrdTurnos";
+      this.GrdTurnos.Size = new System.Drawing.Size(792, 290);
+      this.GrdTurnos.TabIndex = 2;
+      // 
+      // btnBuscarTurnos
+      // 
+      this.btnBuscarTurnos.Location = new System.Drawing.Point(18, 267);
+      this.btnBuscarTurnos.Name = "btnBuscarTurnos";
+      this.btnBuscarTurnos.Size = new System.Drawing.Size(99, 23);
+      this.btnBuscarTurnos.TabIndex = 3;
+      this.btnBuscarTurnos.Text = "Buscar Turnos";
+      this.btnBuscarTurnos.UseVisualStyleBackColor = true;
+      this.btnBuscarTurnos.Click += new System.EventHandler(this.btnBuscarTurnos_Click);
+      // 
+      // btnActualizar
+      // 
+      this.btnActualizar.Location = new System.Drawing.Point(937, 385);
+      this.btnActualizar.Name = "btnActualizar";
+      this.btnActualizar.Size = new System.Drawing.Size(99, 23);
+      this.btnActualizar.TabIndex = 4;
+      this.btnActualizar.Text = "Actualizar";
+      this.btnActualizar.UseVisualStyleBackColor = true;
+      this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+      // 
+      // BtnConfirmarTurno
+      // 
+      this.BtnConfirmarTurno.Location = new System.Drawing.Point(244, 385);
+      this.BtnConfirmarTurno.Name = "BtnConfirmarTurno";
+      this.BtnConfirmarTurno.Size = new System.Drawing.Size(99, 23);
+      this.BtnConfirmarTurno.TabIndex = 5;
+      this.BtnConfirmarTurno.Text = "Confirmar Turno";
+      this.BtnConfirmarTurno.UseVisualStyleBackColor = true;
+      this.BtnConfirmarTurno.Click += new System.EventHandler(this.BtnConfirmarTurno_Click);
+      // 
+      // btnReporte
+      // 
+      this.btnReporte.Location = new System.Drawing.Point(553, 385);
+      this.btnReporte.Name = "btnReporte";
+      this.btnReporte.Size = new System.Drawing.Size(99, 23);
+      this.btnReporte.TabIndex = 6;
+      this.btnReporte.Text = "Reporte del dia ";
+      this.btnReporte.UseVisualStyleBackColor = true;
+      this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
       // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
-      this.Controls.Add(this.dataGridView1);
-      this.Controls.Add(this.monthCalendar1);
+      this.ClientSize = new System.Drawing.Size(1076, 450);
+      this.Controls.Add(this.btnReporte);
+      this.Controls.Add(this.BtnConfirmarTurno);
+      this.Controls.Add(this.btnActualizar);
+      this.Controls.Add(this.btnBuscarTurnos);
+      this.Controls.Add(this.GrdTurnos);
+      this.Controls.Add(this.monthCalendarTurno);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "FrmMain";
@@ -190,7 +240,7 @@
       this.Load += new System.EventHandler(this.FrmMain_Load);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -198,7 +248,7 @@
 
     #endregion
 
-    private System.Windows.Forms.MonthCalendar monthCalendar1;
+    private System.Windows.Forms.MonthCalendar monthCalendarTurno;
     private System.Windows.Forms.MenuStrip menuStrip1;
     private System.Windows.Forms.ToolStripMenuItem medicosToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem gestionarEspecialidadesToolStripMenuItem;
@@ -212,7 +262,11 @@
     private System.Windows.Forms.ToolStripMenuItem gestionarPracticasToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem turnosToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem gestionarTurnosToolStripMenuItem;
-    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.DataGridView GrdTurnos;
     private System.Windows.Forms.ToolStripMenuItem verHistoriaClinicaToolStripMenuItem;
+    private System.Windows.Forms.Button btnBuscarTurnos;
+    private System.Windows.Forms.Button btnActualizar;
+    private System.Windows.Forms.Button BtnConfirmarTurno;
+    private System.Windows.Forms.Button btnReporte;
   }
 }

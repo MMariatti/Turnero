@@ -43,7 +43,7 @@ namespace Turnero.Forms
 
     private void FrmModificarPaciente_Load(object sender, EventArgs e)
     {
-      CmbObraSocial.DataSource = ObrasSociales.LLenarCmb();
+      CmbObraSocial.DataSource = ObrasSociales.LlenarCmb();
       CmbObraSocial.DisplayMember = "descripcion";
       CmbObraSocial.ValueMember = "idObraSocial";
       
