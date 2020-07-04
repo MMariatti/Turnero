@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
       this.monthCalendarTurno = new System.Windows.Forms.MonthCalendar();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.medicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,8 @@
       this.btnActualizar = new System.Windows.Forms.Button();
       this.BtnConfirmarTurno = new System.Windows.Forms.Button();
       this.btnReporte = new System.Windows.Forms.Button();
+      this.printDocumentTurnos = new System.Drawing.Printing.PrintDocument();
+      this.printPreviewDialogTurnos = new System.Windows.Forms.PrintPreviewDialog();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).BeginInit();
       this.SuspendLayout();
@@ -73,7 +76,6 @@
       this.menuStrip1.Size = new System.Drawing.Size(1076, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
-      this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
       // 
       // medicosToolStripMenuItem
       // 
@@ -175,15 +177,19 @@
       // 
       // GrdTurnos
       // 
+      this.GrdTurnos.AllowUserToAddRows = false;
+      this.GrdTurnos.AllowUserToDeleteRows = false;
+      this.GrdTurnos.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.GrdTurnos.Location = new System.Drawing.Point(244, 79);
       this.GrdTurnos.Name = "GrdTurnos";
+      this.GrdTurnos.ReadOnly = true;
       this.GrdTurnos.Size = new System.Drawing.Size(792, 290);
       this.GrdTurnos.TabIndex = 2;
       // 
       // btnBuscarTurnos
       // 
-      this.btnBuscarTurnos.Location = new System.Drawing.Point(18, 267);
+      this.btnBuscarTurnos.Location = new System.Drawing.Point(18, 385);
       this.btnBuscarTurnos.Name = "btnBuscarTurnos";
       this.btnBuscarTurnos.Size = new System.Drawing.Size(99, 23);
       this.btnBuscarTurnos.TabIndex = 3;
@@ -215,11 +221,25 @@
       // 
       this.btnReporte.Location = new System.Drawing.Point(553, 385);
       this.btnReporte.Name = "btnReporte";
-      this.btnReporte.Size = new System.Drawing.Size(99, 23);
+      this.btnReporte.Size = new System.Drawing.Size(155, 23);
       this.btnReporte.TabIndex = 6;
-      this.btnReporte.Text = "Reporte del dia ";
+      this.btnReporte.Text = "Imprimir listado de turnos";
       this.btnReporte.UseVisualStyleBackColor = true;
       this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+      // 
+      // printDocumentTurnos
+      // 
+      this.printDocumentTurnos.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentTurnos_PrintPage);
+      // 
+      // printPreviewDialogTurnos
+      // 
+      this.printPreviewDialogTurnos.AutoScrollMargin = new System.Drawing.Size(0, 0);
+      this.printPreviewDialogTurnos.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+      this.printPreviewDialogTurnos.ClientSize = new System.Drawing.Size(400, 300);
+      this.printPreviewDialogTurnos.Enabled = true;
+      this.printPreviewDialogTurnos.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogTurnos.Icon")));
+      this.printPreviewDialogTurnos.Name = "printPreviewDialogTurnos";
+      this.printPreviewDialogTurnos.Visible = false;
       // 
       // FrmMain
       // 
@@ -233,9 +253,11 @@
       this.Controls.Add(this.GrdTurnos);
       this.Controls.Add(this.monthCalendarTurno);
       this.Controls.Add(this.menuStrip1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "FrmMain";
-      this.Text = "FrmMain";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Menú Principal";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
       this.Load += new System.EventHandler(this.FrmMain_Load);
       this.menuStrip1.ResumeLayout(false);
@@ -268,5 +290,7 @@
     private System.Windows.Forms.Button btnActualizar;
     private System.Windows.Forms.Button BtnConfirmarTurno;
     private System.Windows.Forms.Button btnReporte;
+    private System.Drawing.Printing.PrintDocument printDocumentTurnos;
+    private System.Windows.Forms.PrintPreviewDialog printPreviewDialogTurnos;
   }
 }

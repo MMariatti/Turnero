@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModificarMedico));
       this.label1 = new System.Windows.Forms.Label();
       this.TxtLegajo = new System.Windows.Forms.TextBox();
       this.BtnSalir = new System.Windows.Forms.Button();
@@ -131,7 +132,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(252, 290);
+      this.ClientSize = new System.Drawing.Size(282, 290);
       this.Controls.Add(this.CmbEspecialidad);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.TxtLegajo);
@@ -142,7 +143,9 @@
       this.Controls.Add(this.LblApellido);
       this.Controls.Add(this.TxtApellido);
       this.Controls.Add(this.LblNuevoNombre);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmModificarMedico";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Modificar datos del medico";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmModificarApellido_FormClosing);
       this.Load += new System.EventHandler(this.FrmModificarApellido_Load);

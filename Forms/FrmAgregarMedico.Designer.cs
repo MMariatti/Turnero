@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgregarMedico));
       this.BtnAgregar = new System.Windows.Forms.Button();
       this.LblApellido = new System.Windows.Forms.Label();
       this.TxtNombre = new System.Windows.Forms.TextBox();
@@ -121,8 +122,10 @@
       this.Controls.Add(this.TxtNombre);
       this.Controls.Add(this.LblApellido);
       this.Controls.Add(this.BtnAgregar);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmAgregarMedico";
-      this.Text = "FrmAgregarMedico";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Agregar Medico";
       this.Load += new System.EventHandler(this.FrmAgregarMedico_Load);
       this.ResumeLayout(false);
       this.PerformLayout();

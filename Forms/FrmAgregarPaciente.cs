@@ -72,5 +72,10 @@ namespace Turnero.Forms
         this.Close();
       }
     }
+
+    private void CmbObraSocial_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
   }
 }

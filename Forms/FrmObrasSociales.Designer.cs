@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmObrasSociales));
       this.GrdObraSocial = new System.Windows.Forms.DataGridView();
       this.BtnAgregarObraSocial = new System.Windows.Forms.Button();
       this.TxtObraSocial = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@
       // 
       // GrdObraSocial
       // 
+      this.GrdObraSocial.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdObraSocial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.GrdObraSocial.Location = new System.Drawing.Point(31, 39);
       this.GrdObraSocial.Name = "GrdObraSocial";
@@ -102,8 +104,10 @@
       this.Controls.Add(this.TxtObraSocial);
       this.Controls.Add(this.BtnAgregarObraSocial);
       this.Controls.Add(this.GrdObraSocial);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmObrasSociales";
-      this.Text = "FrmObrasSociales";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Obras Sociales";
       this.Load += new System.EventHandler(this.FrmObrasSociales_Load);
       ((System.ComponentModel.ISupportInitialize)(this.GrdObraSocial)).EndInit();
       this.ResumeLayout(false);

@@ -31,6 +31,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPacientes));
       this.GrdPacientes = new System.Windows.Forms.DataGridView();
       this.BtnAgregarPaciente = new System.Windows.Forms.Button();
       this.BtnSalir = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
       this.GrdPacientes.AllowUserToAddRows = false;
       this.GrdPacientes.AllowUserToDeleteRows = false;
       this.GrdPacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+      this.GrdPacientes.BackgroundColor = System.Drawing.SystemColors.Menu;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
       dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,8 +127,10 @@
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.BtnAgregarPaciente);
       this.Controls.Add(this.GrdPacientes);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmPacientes";
-      this.Text = "FrmPacientes";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Pacientes";
       this.Load += new System.EventHandler(this.FrmPacientes_Load);
       ((System.ComponentModel.ISupportInitialize)(this.GrdPacientes)).EndInit();
       this.ResumeLayout(false);

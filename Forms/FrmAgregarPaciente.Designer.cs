@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgregarPaciente));
       this.BtnAgregarPaciente = new System.Windows.Forms.Button();
       this.BtnSalir = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
@@ -83,6 +84,7 @@
       this.CmbObraSocial.Name = "CmbObraSocial";
       this.CmbObraSocial.Size = new System.Drawing.Size(142, 21);
       this.CmbObraSocial.TabIndex = 4;
+      this.CmbObraSocial.SelectedIndexChanged += new System.EventHandler(this.CmbObraSocial_SelectedIndexChanged);
       // 
       // TxtFechaNac
       // 
@@ -204,8 +206,10 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.BtnAgregarPaciente);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmAgregarPaciente";
-      this.Text = "FrmAgregarPaciente";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Agregar Paciente";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAgregarPaciente_FormClosing);
       this.Load += new System.EventHandler(this.FrmAgregarPaciente_Load);
       this.ResumeLayout(false);

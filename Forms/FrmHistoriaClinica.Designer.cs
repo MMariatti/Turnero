@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistoriaClinica));
       this.RtbHistoriaClinica = new System.Windows.Forms.RichTextBox();
       this.BtnGuardar = new System.Windows.Forms.Button();
       this.BtnImprimir = new System.Windows.Forms.Button();
@@ -115,8 +116,11 @@
       this.Controls.Add(this.BtnImprimir);
       this.Controls.Add(this.BtnGuardar);
       this.Controls.Add(this.RtbHistoriaClinica);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmHistoriaClinica";
-      this.Text = "FrmHistoriaClinica";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Historia Clinica";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHistoriaClinica_FormClosing);
       this.Load += new System.EventHandler(this.FrmHistoriaClinica_Load);
       this.ResumeLayout(false);
       this.PerformLayout();

@@ -51,8 +51,19 @@ namespace Turnero.Forms
 
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
-      ActualizarP();
-      this.Close();
+      if(TxtApellido.Text != string.Empty && TxtDireccion.Text != string.Empty &&TxtFechaNac.Text != string.Empty && TxtDni.Text != string.Empty && TxtNombre.Text != string.Empty && TxtTelefono.Text != string.Empty&& CmbObraSocial.SelectedIndex != -1
+       )
+      {
+        ActualizarP();
+        this.Close();
+      }
+      else
+      {
+        MessageBox.Show("Por favor, complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+
+
+    
     }
   }
 }

@@ -55,8 +55,16 @@ namespace Turnero.Forms
 
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
-      ActualizarMedico();
-      this.Close();
+      if(TxtApellido.Text != string.Empty && TxtNombre.Text != string.Empty && CmbEspecialidad.SelectedIndex!= -1 )
+      {
+        ActualizarMedico();
+        this.Close();
+      }
+      else
+      {
+        MessageBox.Show("Por favor, complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+      
     }
   }
 }

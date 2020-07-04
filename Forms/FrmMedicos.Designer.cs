@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMedicos));
       this.GrdMedicos = new System.Windows.Forms.DataGridView();
       this.BtnAgregarMedico = new System.Windows.Forms.Button();
       this.BtnSalir = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
       // 
       // GrdMedicos
       // 
+      this.GrdMedicos.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdMedicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.GrdMedicos.Location = new System.Drawing.Point(12, 39);
       this.GrdMedicos.Name = "GrdMedicos";
@@ -94,8 +96,10 @@
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.BtnAgregarMedico);
       this.Controls.Add(this.GrdMedicos);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmMedicos";
-      this.Text = "FrmMedicos";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Medicos";
       this.Load += new System.EventHandler(this.FrmMedicos_Load);
       ((System.ComponentModel.ISupportInitialize)(this.GrdMedicos)).EndInit();
       this.ResumeLayout(false);

@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
       this.BtnInciarSesion = new System.Windows.Forms.Button();
       this.Usuario = new System.Windows.Forms.Label();
       this.TxtContra = new System.Windows.Forms.TextBox();
@@ -38,7 +39,7 @@
       // 
       // BtnInciarSesion
       // 
-      this.BtnInciarSesion.Location = new System.Drawing.Point(42, 222);
+      this.BtnInciarSesion.Location = new System.Drawing.Point(39, 162);
       this.BtnInciarSesion.Name = "BtnInciarSesion";
       this.BtnInciarSesion.Size = new System.Drawing.Size(86, 23);
       this.BtnInciarSesion.TabIndex = 2;
@@ -49,7 +50,7 @@
       // Usuario
       // 
       this.Usuario.AutoSize = true;
-      this.Usuario.Location = new System.Drawing.Point(39, 91);
+      this.Usuario.Location = new System.Drawing.Point(36, 31);
       this.Usuario.Name = "Usuario";
       this.Usuario.Size = new System.Drawing.Size(43, 13);
       this.Usuario.TabIndex = 0;
@@ -57,7 +58,7 @@
       // 
       // TxtContra
       // 
-      this.TxtContra.Location = new System.Drawing.Point(165, 164);
+      this.TxtContra.Location = new System.Drawing.Point(162, 104);
       this.TxtContra.Name = "TxtContra";
       this.TxtContra.PasswordChar = '*';
       this.TxtContra.Size = new System.Drawing.Size(100, 20);
@@ -67,7 +68,7 @@
       // Contraseña
       // 
       this.Contraseña.AutoSize = true;
-      this.Contraseña.Location = new System.Drawing.Point(39, 164);
+      this.Contraseña.Location = new System.Drawing.Point(36, 104);
       this.Contraseña.Name = "Contraseña";
       this.Contraseña.Size = new System.Drawing.Size(61, 13);
       this.Contraseña.TabIndex = 0;
@@ -75,7 +76,7 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(179, 222);
+      this.BtnSalir.Location = new System.Drawing.Point(176, 162);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(86, 23);
       this.BtnSalir.TabIndex = 3;
@@ -85,7 +86,7 @@
       // 
       // TxtUsuario
       // 
-      this.TxtUsuario.Location = new System.Drawing.Point(165, 91);
+      this.TxtUsuario.Location = new System.Drawing.Point(162, 31);
       this.TxtUsuario.Name = "TxtUsuario";
       this.TxtUsuario.Size = new System.Drawing.Size(100, 20);
       this.TxtUsuario.TabIndex = 0;
@@ -94,15 +95,17 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(312, 271);
+      this.ClientSize = new System.Drawing.Size(312, 203);
       this.Controls.Add(this.TxtUsuario);
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.Contraseña);
       this.Controls.Add(this.TxtContra);
       this.Controls.Add(this.Usuario);
       this.Controls.Add(this.BtnInciarSesion);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmLogin";
-      this.Text = "FrmLogin";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Iniciar Sesion";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
       this.Load += new System.EventHandler(this.FrmLogin_Load);
       this.ResumeLayout(false);

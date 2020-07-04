@@ -23,6 +23,22 @@ namespace Turnero.Forms
       DataTable tabla = new DataTable();
       tabla = Turnos.GetTurnosDelDia();
       GrdTurnos.DataSource = tabla;
+      GrdTurnos.Columns[7].Visible = false;
+      GrdTurnos.Columns[8].Visible = false;
+      GrdTurnos.Columns[9].Visible = false;
+
+      foreach (DataGridViewRow row in GrdTurnos.Rows)
+      {
+
+        if (Convert.ToBoolean(row.Cells[8].Value.ToString()) && Convert.ToBoolean(row.Cells[9].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.Red;
+        }
+        else if (Convert.ToBoolean(row.Cells[8].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.LightBlue;
+        }
+      }
     }
 
     private void gestionarMedicosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,12 +98,14 @@ namespace Turnero.Forms
       tabla = Turnos.GetAllEspecifico(fecha);
       GrdTurnos.DataSource = tabla;
       GrdTurnos.Columns[7].Visible = false;
+      GrdTurnos.Columns[8].Visible = false;
+      GrdTurnos.Columns[8].Visible = false;
     }
 
     private void FrmMain_Load(object sender, EventArgs e)
     {
       MostrarTurnosDelDia();
-      GrdTurnos.Columns[7].Visible = false;
+      
     }
 
     private void verHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,12 +117,14 @@ namespace Turnero.Forms
     private void btnActualizar_Click(object sender, EventArgs e)
     {
       MostrarTurnosDelDia();
+      BtnConfirmarTurno.Enabled = true;
 
     }
 
     private void btnBuscarTurnos_Click(object sender, EventArgs e)
     {
         VerTurnos(monthCalendarTurno.SelectionStart);
+        BtnConfirmarTurno.Enabled = false;
   
     }
 
@@ -121,24 +141,37 @@ namespace Turnero.Forms
         
 
         DateTime hora = DateTime.Parse(GrdTurnos.SelectedRows[0].Cells[1].Value.ToString());
+        
        
 
         int medico = Convert.ToInt32(GrdTurnos.SelectedRows[0].Cells[7].Value);
         Turnos turno = new Turnos(fecha, hora, medico);
-        MessageBox.Show(turno.fechaTurno + " /" + turno.horaTurno + " /" + turno.LegajoMedico);
+       
         turno.Confirmar();
       }
     }
 
+    
+
     private void btnReporte_Click(object sender, EventArgs e)
     {
-      FrmReporteTurnosDelDia frmReporte = new FrmReporteTurnosDelDia();
-      frmReporte.Show();
+      this.GrdTurnos.DefaultCellStyle.BackColor = Color.White;
+      printPreviewDialogTurnos.Document = printDocumentTurnos;
+      printPreviewDialogTurnos.ShowDialog();
     }
 
-    private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    private void printDocumentTurnos_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
     {
+      this.GrdTurnos.DefaultCellStyle.BackColor = Color.White;
+
+      Bitmap bmp = new Bitmap(this.GrdTurnos.Width, this.GrdTurnos.Height);
+      GrdTurnos.DrawToBitmap(bmp, new Rectangle(0,0,this.GrdTurnos.Width,this.GrdTurnos.Height));
+
+      e.Graphics.DrawImage(bmp, 0,0);
+
 
     }
+
+    
   }
 }

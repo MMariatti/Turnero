@@ -129,7 +129,7 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico(DateTime fechaDelDia)
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico " +
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico, T.confirmado, T.atendido " +
         "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
         "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = '"+fechaDelDia+"'";
       try
@@ -148,7 +148,7 @@ namespace Turnero.Classes
     public static  DataTable GetTurnosDelDia()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico " +
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
         "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
         "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE())";
       try
@@ -163,13 +163,50 @@ namespace Turnero.Classes
       }
     }
 
+    public static DataTable GetTurnosDelDiaMedico(int idMedico)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
+        "FROM Pacientes P, ObrasSociales O, Practicas X, Turnos T " +
+        "WHERE T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE()) AND T.medico = "+ idMedico;
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
+
+    //metodo que busca los turnos que hay para un dia determinado y un medico determinado 
+
+    public static DataTable GetDiaMedico(DateTime fechaDelDia, int idMedico)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico, T.confirmado, T.atendido " +
+        "FROM Pacientes P, ObrasSociales O,Practicas X, Turnos T " +
+        "WHERE T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idPractica = X.idPractica AND T.fecha = '" + fechaDelDia + "' AND T.medico = " +idMedico;
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
 
 
     public void Save()
     {
-      string query = "INSERT into Turnos(fecha, hora, medico, idEspecialidad, paciente, idPractica, obraSocial) VALUES ('"
+      string query = "INSERT into Turnos(fecha, hora, medico, idEspecialidad, paciente, idPractica, obraSocial, confirmado, atendido) VALUES ('"
         + fechaTurno.ToString("yyyy-MM-dd") + "','" + horaTurno.ToString("HH:mm:ss") + "'," + this.LegajoMedico + "," + this.IdEspecialidad + ",'" + this.DniPaciente + "',"
-        +this.Practica+"," + this.ObraSocial + ")";
+        +this.Practica+"," + this.ObraSocial + ",0, 0)";
       try{
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Turno cargado para el dia: " + this.fechaTurno.ToString("yyyy-MM-dd") + " a la hora: " + this.horaTurno.ToString("hh:mm:ss") + " para el paciente con dni: " + this.DniPaciente, "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -188,7 +225,7 @@ namespace Turnero.Classes
     public void Confirmar()
     {
       string query = "UPDATE Turnos SET confirmado = 1 " +
-        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("hh:mm:ss") + "' AND medico =" + this.LegajoMedico;
+        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("HH:mm:ss") + "' AND medico =" + this.LegajoMedico;
       try
       {
         BDHelper.ConsultarSQL(query);
@@ -203,7 +240,7 @@ namespace Turnero.Classes
     public void Atender()
     {
       string query = "UPDATE Turnos SET atendido = 1 " +
-        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("hh:mm:ss") + "' AND medico =" + this.LegajoMedico;
+        "WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("HH:mm:ss") + "' AND confirmado = 1 AND medico =" + this.LegajoMedico;
       try
       {
         BDHelper.ConsultarSQL(query);

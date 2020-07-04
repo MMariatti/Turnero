@@ -64,6 +64,7 @@ namespace Turnero.Classes
     {
       string query = "SELECT  descripcion FROM Especialidades WHERE idEspecialidad = " + IdEspecialidad;
       DataTable tabla = BDHelper.ConsultarSQL(query);
+      
       Descripcion = tabla.Rows[0]["descripcion"].ToString();
     }
 

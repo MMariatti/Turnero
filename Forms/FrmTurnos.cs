@@ -18,24 +18,26 @@ namespace Turnero.Forms
       InitializeComponent();
     }
     private int obraSocial;
-    private int especialidad;
-
+    private int especialidad ;
+    private int idMedico;
     
 
     private void AgregarTurnos()
     {
-      Turnos turno = new Turnos(DateTime.Parse(monthCalendarTurno.SelectionStart.ToString()),DateTime.Parse(txtHora.Text),Convert.ToInt16(cmbMedico.SelectedValue.ToString()), txtPaciente.Text,especialidad, Convert.ToInt16(cmbPracticas.SelectedValue.ToString()), obraSocial);
+      Turnos turno = new Turnos(DateTime.Parse(monthCalendarTurno.SelectionStart.ToString()),DateTime.Parse(txtHora.Text),idMedico, txtPaciente.Text,especialidad, Convert.ToInt16(cmbPracticas.SelectedValue.ToString()), obraSocial);
       
       turno.Save();
     }
     
     private void FrmTurnos_Load(object sender, EventArgs e)
     {
-      cmbMedico.DataSource = Medicos.GetAll();
-      cmbMedico.DisplayMember = "apellido";
-      cmbMedico.ValueMember = "legajo";
-      cmbMedico.SelectedIndex = -1;
+      DataTable tabla = new DataTable();
+      tabla = Medicos.GetAll();
+      GrdMedicos.DataSource = tabla;
+      GrdMedicos.Columns[0].Visible = false;
+      GrdMedicos.Columns[3].Visible = false;
 
+  
       cmbPracticas.DataSource = Practicas.GetAll();
       cmbPracticas.DisplayMember = "descripcion";
       cmbPracticas.ValueMember = "idPractica";
@@ -68,7 +70,7 @@ namespace Turnero.Forms
 
     private void Btn_DarTurno_Click(object sender, EventArgs e)
     {
-      if(txtPaciente.Text == string.Empty || cmbMedico.SelectedIndex == -1 || txtObraSocial.Text == string.Empty || txtEspecialidad.Text == string.Empty || txtHora.Text == string.Empty || cmbPracticas.SelectedIndex == -1 )
+      if(txtPaciente.Text == string.Empty ||GrdMedicos.SelectedRows.Count == -1|| txtObraSocial.Text == string.Empty || txtEspecialidad.Text == string.Empty || txtHora.Text == string.Empty || cmbPracticas.SelectedIndex == -1 )
       {
         MessageBox.Show("Por favor, complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -87,15 +89,20 @@ namespace Turnero.Forms
       }
     }
 
-    private void cmbMedico_SelectedIndexChanged(object sender, EventArgs e)
+    private void GrdMedicos_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-      if (cmbMedico.SelectedIndex > -1)
+      if (GrdMedicos.SelectedRows.Count != 0)
       {
-        
-        Medicos medicos = new Medicos(Convert.ToInt32(cmbMedico.SelectedValue));
-        especialidad = medicos.Especialidad;
-        Especialidades especialidades = new Especialidades(especialidad);
+        idMedico = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[0].Value.ToString());
+        Medicos medico = new Medicos(idMedico);
+        int esp = medico.Especialidad;
+        Especialidades especialidades = new Especialidades(esp);
         txtEspecialidad.Text = especialidades.Descripcion;
+        especialidad = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[3].Value.ToString());
+      }
+      else
+      {
+        MessageBox.Show("Por favor seleccione un medico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
     }
   }

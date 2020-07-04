@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPracticas));
       this.BtnAgregarPracticas = new System.Windows.Forms.Button();
       this.TxtCostoPractica = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@
       // 
       // GrdPracticas
       // 
+      this.GrdPracticas.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.GrdPracticas.Location = new System.Drawing.Point(26, 21);
       this.GrdPracticas.Name = "GrdPracticas";
@@ -122,8 +124,10 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.TxtCostoPractica);
       this.Controls.Add(this.BtnAgregarPracticas);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmPracticas";
-      this.Text = "FrmPracticas";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Practicas";
       this.Load += new System.EventHandler(this.FrmPracticas_Load);
       ((System.ComponentModel.ISupportInitialize)(this.GrdPracticas)).EndInit();
       this.ResumeLayout(false);

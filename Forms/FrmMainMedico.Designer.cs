@@ -28,39 +28,49 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-      this.comboBox1 = new System.Windows.Forms.ComboBox();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMedico));
+      this.GrdPacientesMedico = new System.Windows.Forms.DataGridView();
+      this.monthCalendarMedico = new System.Windows.Forms.MonthCalendar();
+      this.cmbMedico = new System.Windows.Forms.ComboBox();
       this.BtnHistoriaClinica = new System.Windows.Forms.Button();
       this.BtnAtendido = new System.Windows.Forms.Button();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      this.BtnBuscar = new System.Windows.Forms.Button();
+      this.label1 = new System.Windows.Forms.Label();
+      this.BtnBuscarTurno = new System.Windows.Forms.Button();
+      ((System.ComponentModel.ISupportInitialize)(this.GrdPacientesMedico)).BeginInit();
       this.SuspendLayout();
       // 
-      // dataGridView1
+      // GrdPacientesMedico
       // 
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Location = new System.Drawing.Point(284, 81);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.Size = new System.Drawing.Size(467, 162);
-      this.dataGridView1.TabIndex = 1;
+      this.GrdPacientesMedico.AllowUserToAddRows = false;
+      this.GrdPacientesMedico.AllowUserToDeleteRows = false;
+      this.GrdPacientesMedico.BackgroundColor = System.Drawing.SystemColors.Menu;
+      this.GrdPacientesMedico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.GrdPacientesMedico.GridColor = System.Drawing.SystemColors.Menu;
+      this.GrdPacientesMedico.Location = new System.Drawing.Point(259, 81);
+      this.GrdPacientesMedico.Name = "GrdPacientesMedico";
+      this.GrdPacientesMedico.ReadOnly = true;
+      this.GrdPacientesMedico.Size = new System.Drawing.Size(516, 162);
+      this.GrdPacientesMedico.TabIndex = 1;
       // 
-      // monthCalendar1
+      // monthCalendarMedico
       // 
-      this.monthCalendar1.Location = new System.Drawing.Point(18, 34);
-      this.monthCalendar1.Name = "monthCalendar1";
-      this.monthCalendar1.TabIndex = 2;
+      this.monthCalendarMedico.Location = new System.Drawing.Point(18, 34);
+      this.monthCalendarMedico.MaxSelectionCount = 1;
+      this.monthCalendarMedico.Name = "monthCalendarMedico";
+      this.monthCalendarMedico.TabIndex = 2;
       // 
-      // comboBox1
+      // cmbMedico
       // 
-      this.comboBox1.FormattingEnabled = true;
-      this.comboBox1.Location = new System.Drawing.Point(284, 34);
-      this.comboBox1.Name = "comboBox1";
-      this.comboBox1.Size = new System.Drawing.Size(338, 21);
-      this.comboBox1.TabIndex = 3;
+      this.cmbMedico.FormattingEnabled = true;
+      this.cmbMedico.Location = new System.Drawing.Point(321, 34);
+      this.cmbMedico.Name = "cmbMedico";
+      this.cmbMedico.Size = new System.Drawing.Size(226, 21);
+      this.cmbMedico.TabIndex = 3;
       // 
       // BtnHistoriaClinica
       // 
-      this.BtnHistoriaClinica.Location = new System.Drawing.Point(18, 375);
+      this.BtnHistoriaClinica.Location = new System.Drawing.Point(259, 297);
       this.BtnHistoriaClinica.Name = "BtnHistoriaClinica";
       this.BtnHistoriaClinica.Size = new System.Drawing.Size(95, 23);
       this.BtnHistoriaClinica.TabIndex = 4;
@@ -70,36 +80,76 @@
       // 
       // BtnAtendido
       // 
-      this.BtnAtendido.Location = new System.Drawing.Point(656, 375);
+      this.BtnAtendido.Location = new System.Drawing.Point(680, 297);
       this.BtnAtendido.Name = "BtnAtendido";
       this.BtnAtendido.Size = new System.Drawing.Size(95, 23);
       this.BtnAtendido.TabIndex = 5;
       this.BtnAtendido.Text = "Marcar Atendido";
       this.BtnAtendido.UseVisualStyleBackColor = true;
+      this.BtnAtendido.Click += new System.EventHandler(this.BtnAtendido_Click);
+      // 
+      // BtnBuscar
+      // 
+      this.BtnBuscar.Location = new System.Drawing.Point(680, 32);
+      this.BtnBuscar.Name = "BtnBuscar";
+      this.BtnBuscar.Size = new System.Drawing.Size(95, 23);
+      this.BtnBuscar.TabIndex = 6;
+      this.BtnBuscar.Text = "Buscar";
+      this.BtnBuscar.UseVisualStyleBackColor = true;
+      this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(256, 37);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(48, 13);
+      this.label1.TabIndex = 7;
+      this.label1.Text = "Medico :";
+      // 
+      // BtnBuscarTurno
+      // 
+      this.BtnBuscarTurno.Location = new System.Drawing.Point(18, 297);
+      this.BtnBuscarTurno.Name = "BtnBuscarTurno";
+      this.BtnBuscarTurno.Size = new System.Drawing.Size(95, 23);
+      this.BtnBuscarTurno.TabIndex = 8;
+      this.BtnBuscarTurno.Text = "Buscar Turno";
+      this.BtnBuscarTurno.UseVisualStyleBackColor = true;
+      this.BtnBuscarTurno.Click += new System.EventHandler(this.BtnBuscarTurno_Click);
       // 
       // FrmMainMedico
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.ClientSize = new System.Drawing.Size(800, 332);
+      this.Controls.Add(this.BtnBuscarTurno);
+      this.Controls.Add(this.label1);
+      this.Controls.Add(this.BtnBuscar);
       this.Controls.Add(this.BtnAtendido);
       this.Controls.Add(this.BtnHistoriaClinica);
-      this.Controls.Add(this.comboBox1);
-      this.Controls.Add(this.monthCalendar1);
-      this.Controls.Add(this.dataGridView1);
+      this.Controls.Add(this.cmbMedico);
+      this.Controls.Add(this.monthCalendarMedico);
+      this.Controls.Add(this.GrdPacientesMedico);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmMainMedico";
-      this.Text = "FrmMainMedico";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Menú Principal";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMedico_FormClosing);
       this.Load += new System.EventHandler(this.FrmMainMedico_Load);
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.GrdPacientesMedico)).EndInit();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
     #endregion
-    private System.Windows.Forms.DataGridView dataGridView1;
-    private System.Windows.Forms.MonthCalendar monthCalendar1;
-    private System.Windows.Forms.ComboBox comboBox1;
+    private System.Windows.Forms.DataGridView GrdPacientesMedico;
+    private System.Windows.Forms.MonthCalendar monthCalendarMedico;
+    private System.Windows.Forms.ComboBox cmbMedico;
     private System.Windows.Forms.Button BtnHistoriaClinica;
     private System.Windows.Forms.Button BtnAtendido;
+    private System.Windows.Forms.Button BtnBuscar;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Button BtnBuscarTurno;
   }
 }

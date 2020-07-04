@@ -67,5 +67,13 @@ namespace Turnero.Forms
       Pacientes paciente = new Pacientes(txtDni.Text);
       paciente.GuardarHistoriaClinica(RtbHistoriaClinica.Text);
     }
+
+    private void FrmHistoriaClinica_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (MessageBox.Show("¿Está seguro que desea salir? Los cambios no guardados se perderan", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        e.Cancel = false;
+      else
+        e.Cancel = true;
+    }
   }
 }
