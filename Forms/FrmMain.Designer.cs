@@ -44,13 +44,19 @@
       this.gestionarPracticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.gestionarTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.planillaTurnosDelDiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.cajaYFacturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.cierreDeCajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.generarFacturaPorMedicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.GrdTurnos = new System.Windows.Forms.DataGridView();
       this.btnBuscarTurnos = new System.Windows.Forms.Button();
       this.btnActualizar = new System.Windows.Forms.Button();
       this.BtnConfirmarTurno = new System.Windows.Forms.Button();
-      this.btnReporte = new System.Windows.Forms.Button();
-      this.printDocumentTurnos = new System.Drawing.Printing.PrintDocument();
-      this.printPreviewDialogTurnos = new System.Windows.Forms.PrintPreviewDialog();
+      this.Btn_EliminarTurno = new System.Windows.Forms.Button();
+      this.BtnBuscarXmedico = new System.Windows.Forms.Button();
+      this.CmbMedicos = new System.Windows.Forms.ComboBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.BtnSobreTurno = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).BeginInit();
       this.SuspendLayout();
@@ -60,7 +66,7 @@
       this.monthCalendarTurno.Location = new System.Drawing.Point(18, 79);
       this.monthCalendarTurno.MaxSelectionCount = 1;
       this.monthCalendarTurno.Name = "monthCalendarTurno";
-      this.monthCalendarTurno.TabIndex = 1;
+      this.monthCalendarTurno.TabIndex = 3;
       // 
       // menuStrip1
       // 
@@ -70,10 +76,11 @@
             this.pacientesToolStripMenuItem,
             this.pacientesToolStripMenuItem1,
             this.practicasToolStripMenuItem1,
-            this.turnosToolStripMenuItem});
+            this.turnosToolStripMenuItem,
+            this.cajaYFacturacionToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1076, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(1029, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -163,7 +170,8 @@
       // turnosToolStripMenuItem
       // 
       this.turnosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionarTurnosToolStripMenuItem});
+            this.gestionarTurnosToolStripMenuItem,
+            this.planillaTurnosDelDiaToolStripMenuItem});
       this.turnosToolStripMenuItem.Name = "turnosToolStripMenuItem";
       this.turnosToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
       this.turnosToolStripMenuItem.Text = "Turnos";
@@ -171,9 +179,39 @@
       // gestionarTurnosToolStripMenuItem
       // 
       this.gestionarTurnosToolStripMenuItem.Name = "gestionarTurnosToolStripMenuItem";
-      this.gestionarTurnosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+      this.gestionarTurnosToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
       this.gestionarTurnosToolStripMenuItem.Text = "Gestionar Turnos";
       this.gestionarTurnosToolStripMenuItem.Click += new System.EventHandler(this.gestionarTurnosToolStripMenuItem_Click);
+      // 
+      // planillaTurnosDelDiaToolStripMenuItem
+      // 
+      this.planillaTurnosDelDiaToolStripMenuItem.Name = "planillaTurnosDelDiaToolStripMenuItem";
+      this.planillaTurnosDelDiaToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+      this.planillaTurnosDelDiaToolStripMenuItem.Text = "Planilla Turnos del dia";
+      this.planillaTurnosDelDiaToolStripMenuItem.Click += new System.EventHandler(this.planillaTurnosDelDiaToolStripMenuItem_Click);
+      // 
+      // cajaYFacturacionToolStripMenuItem
+      // 
+      this.cajaYFacturacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cierreDeCajaToolStripMenuItem1,
+            this.generarFacturaPorMedicoToolStripMenuItem1});
+      this.cajaYFacturacionToolStripMenuItem.Name = "cajaYFacturacionToolStripMenuItem";
+      this.cajaYFacturacionToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+      this.cajaYFacturacionToolStripMenuItem.Text = "Caja y Facturacion";
+      // 
+      // cierreDeCajaToolStripMenuItem1
+      // 
+      this.cierreDeCajaToolStripMenuItem1.Name = "cierreDeCajaToolStripMenuItem1";
+      this.cierreDeCajaToolStripMenuItem1.Size = new System.Drawing.Size(221, 22);
+      this.cierreDeCajaToolStripMenuItem1.Text = "Cierre de caja";
+      this.cierreDeCajaToolStripMenuItem1.Click += new System.EventHandler(this.cierreDeCajaToolStripMenuItem1_Click);
+      // 
+      // generarFacturaPorMedicoToolStripMenuItem1
+      // 
+      this.generarFacturaPorMedicoToolStripMenuItem1.Name = "generarFacturaPorMedicoToolStripMenuItem1";
+      this.generarFacturaPorMedicoToolStripMenuItem1.Size = new System.Drawing.Size(221, 22);
+      this.generarFacturaPorMedicoToolStripMenuItem1.Text = "Generar Factura por medico";
+      this.generarFacturaPorMedicoToolStripMenuItem1.Click += new System.EventHandler(this.generarFacturaPorMedicoToolStripMenuItem1_Click);
       // 
       // GrdTurnos
       // 
@@ -184,25 +222,27 @@
       this.GrdTurnos.Location = new System.Drawing.Point(244, 79);
       this.GrdTurnos.Name = "GrdTurnos";
       this.GrdTurnos.ReadOnly = true;
-      this.GrdTurnos.Size = new System.Drawing.Size(792, 290);
-      this.GrdTurnos.TabIndex = 2;
+      this.GrdTurnos.Size = new System.Drawing.Size(767, 290);
+      this.GrdTurnos.TabIndex = 4;
+      this.GrdTurnos.DataSourceChanged += new System.EventHandler(this.GrdTurnos_DataSourceChanged);
+      this.GrdTurnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdTurnos_CellContentClick);
       // 
       // btnBuscarTurnos
       // 
       this.btnBuscarTurnos.Location = new System.Drawing.Point(18, 385);
       this.btnBuscarTurnos.Name = "btnBuscarTurnos";
       this.btnBuscarTurnos.Size = new System.Drawing.Size(99, 23);
-      this.btnBuscarTurnos.TabIndex = 3;
+      this.btnBuscarTurnos.TabIndex = 5;
       this.btnBuscarTurnos.Text = "Buscar Turnos";
       this.btnBuscarTurnos.UseVisualStyleBackColor = true;
       this.btnBuscarTurnos.Click += new System.EventHandler(this.btnBuscarTurnos_Click);
       // 
       // btnActualizar
       // 
-      this.btnActualizar.Location = new System.Drawing.Point(937, 385);
+      this.btnActualizar.Location = new System.Drawing.Point(912, 385);
       this.btnActualizar.Name = "btnActualizar";
       this.btnActualizar.Size = new System.Drawing.Size(99, 23);
-      this.btnActualizar.TabIndex = 4;
+      this.btnActualizar.TabIndex = 9;
       this.btnActualizar.Text = "Actualizar";
       this.btnActualizar.UseVisualStyleBackColor = true;
       this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -212,41 +252,69 @@
       this.BtnConfirmarTurno.Location = new System.Drawing.Point(244, 385);
       this.BtnConfirmarTurno.Name = "BtnConfirmarTurno";
       this.BtnConfirmarTurno.Size = new System.Drawing.Size(99, 23);
-      this.BtnConfirmarTurno.TabIndex = 5;
+      this.BtnConfirmarTurno.TabIndex = 6;
       this.BtnConfirmarTurno.Text = "Confirmar Turno";
       this.BtnConfirmarTurno.UseVisualStyleBackColor = true;
       this.BtnConfirmarTurno.Click += new System.EventHandler(this.BtnConfirmarTurno_Click);
       // 
-      // btnReporte
+      // Btn_EliminarTurno
       // 
-      this.btnReporte.Location = new System.Drawing.Point(553, 385);
-      this.btnReporte.Name = "btnReporte";
-      this.btnReporte.Size = new System.Drawing.Size(155, 23);
-      this.btnReporte.TabIndex = 6;
-      this.btnReporte.Text = "Imprimir listado de turnos";
-      this.btnReporte.UseVisualStyleBackColor = true;
-      this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+      this.Btn_EliminarTurno.Location = new System.Drawing.Point(435, 385);
+      this.Btn_EliminarTurno.Name = "Btn_EliminarTurno";
+      this.Btn_EliminarTurno.Size = new System.Drawing.Size(99, 23);
+      this.Btn_EliminarTurno.TabIndex = 7;
+      this.Btn_EliminarTurno.Text = "Eliminar Turno";
+      this.Btn_EliminarTurno.UseVisualStyleBackColor = true;
+      this.Btn_EliminarTurno.Click += new System.EventHandler(this.Btn_EliminarTurno_Click);
       // 
-      // printDocumentTurnos
+      // BtnBuscarXmedico
       // 
-      this.printDocumentTurnos.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentTurnos_PrintPage);
+      this.BtnBuscarXmedico.Location = new System.Drawing.Point(881, 50);
+      this.BtnBuscarXmedico.Name = "BtnBuscarXmedico";
+      this.BtnBuscarXmedico.Size = new System.Drawing.Size(130, 23);
+      this.BtnBuscarXmedico.TabIndex = 2;
+      this.BtnBuscarXmedico.Text = "Buscar por medico";
+      this.BtnBuscarXmedico.UseVisualStyleBackColor = true;
+      this.BtnBuscarXmedico.Click += new System.EventHandler(this.BtnBuscarXmedico_Click);
       // 
-      // printPreviewDialogTurnos
+      // CmbMedicos
       // 
-      this.printPreviewDialogTurnos.AutoScrollMargin = new System.Drawing.Size(0, 0);
-      this.printPreviewDialogTurnos.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-      this.printPreviewDialogTurnos.ClientSize = new System.Drawing.Size(400, 300);
-      this.printPreviewDialogTurnos.Enabled = true;
-      this.printPreviewDialogTurnos.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogTurnos.Icon")));
-      this.printPreviewDialogTurnos.Name = "printPreviewDialogTurnos";
-      this.printPreviewDialogTurnos.Visible = false;
+      this.CmbMedicos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.CmbMedicos.FormattingEnabled = true;
+      this.CmbMedicos.Location = new System.Drawing.Point(346, 50);
+      this.CmbMedicos.Name = "CmbMedicos";
+      this.CmbMedicos.Size = new System.Drawing.Size(188, 21);
+      this.CmbMedicos.TabIndex = 1;
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(241, 55);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(48, 13);
+      this.label1.TabIndex = 9;
+      this.label1.Text = "Medico :";
+      // 
+      // BtnSobreTurno
+      // 
+      this.BtnSobreTurno.Location = new System.Drawing.Point(727, 385);
+      this.BtnSobreTurno.Name = "BtnSobreTurno";
+      this.BtnSobreTurno.Size = new System.Drawing.Size(99, 23);
+      this.BtnSobreTurno.TabIndex = 8;
+      this.BtnSobreTurno.Text = "Sobre Turno";
+      this.BtnSobreTurno.UseVisualStyleBackColor = true;
+      this.BtnSobreTurno.Click += new System.EventHandler(this.BtnSobreTurno_Click);
       // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1076, 450);
-      this.Controls.Add(this.btnReporte);
+      this.ClientSize = new System.Drawing.Size(1029, 450);
+      this.Controls.Add(this.BtnSobreTurno);
+      this.Controls.Add(this.label1);
+      this.Controls.Add(this.CmbMedicos);
+      this.Controls.Add(this.BtnBuscarXmedico);
+      this.Controls.Add(this.Btn_EliminarTurno);
       this.Controls.Add(this.BtnConfirmarTurno);
       this.Controls.Add(this.btnActualizar);
       this.Controls.Add(this.btnBuscarTurnos);
@@ -257,7 +325,7 @@
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "FrmMain";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-      this.Text = "Menú Principal";
+      this.Text = " ";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
       this.Load += new System.EventHandler(this.FrmMain_Load);
       this.menuStrip1.ResumeLayout(false);
@@ -289,8 +357,14 @@
     private System.Windows.Forms.Button btnBuscarTurnos;
     private System.Windows.Forms.Button btnActualizar;
     private System.Windows.Forms.Button BtnConfirmarTurno;
-    private System.Windows.Forms.Button btnReporte;
-    private System.Drawing.Printing.PrintDocument printDocumentTurnos;
-    private System.Windows.Forms.PrintPreviewDialog printPreviewDialogTurnos;
+    private System.Windows.Forms.ToolStripMenuItem planillaTurnosDelDiaToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem cajaYFacturacionToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem cierreDeCajaToolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem generarFacturaPorMedicoToolStripMenuItem1;
+    private System.Windows.Forms.Button Btn_EliminarTurno;
+    private System.Windows.Forms.Button BtnBuscarXmedico;
+    private System.Windows.Forms.ComboBox CmbMedicos;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Button BtnSobreTurno;
   }
 }

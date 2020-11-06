@@ -18,13 +18,13 @@ namespace Turnero.Forms
       InitializeComponent();
     }
 
-    private void AgregarMedico(string apellido, string nombre, int idEspecialidad)
+    private void AgregarMedico(string apellido, string nombre, int idEspecialidad,DateTime horaInicio, DateTime horaFin, int intervaloTurnos, double porcDesc)
     {
       
       try
       {
-
-       Medicos Medico = new Medicos(apellido, nombre, idEspecialidad);
+        
+       Medicos Medico = new Medicos(apellido, nombre, idEspecialidad,horaInicio,horaFin,intervaloTurnos, porcDesc);
         Medico.Save();
         MessageBox.Show("Se ha cargado con exito a " + apellido +" "+ nombre + "", "Carga Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
@@ -52,13 +52,22 @@ namespace Turnero.Forms
 
     private void BtnAgregar_Click(object sender, EventArgs e)
     {
-      if(TxtApellido.Text == string.Empty || TxtNombre.Text == string.Empty || CmbEspecialidades.SelectedIndex < 0)
+      if(TxtApellido.Text == string.Empty || TxtNombre.Text == string.Empty || CmbEspecialidades.SelectedIndex < 0 || TxtPorcentajeDescuento.Text == string.Empty || 
+        TxtHoraInicio.Text == string.Empty || TxtHoraFin.Text == string.Empty || TxtIntervaloTurnos.Text == string.Empty)
       {
         MessageBox.Show("Por favor complete todos los campos", "Error al cargar medico", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       else
       {
-        AgregarMedico(TxtApellido.Text, TxtNombre.Text, Convert.ToInt32(CmbEspecialidades.SelectedValue.ToString()));
+        TxtPorcentajeDescuento.Text.Replace(",", ".");
+        double porcentaje;
+        porcentaje = Convert.ToDouble(TxtPorcentajeDescuento.Text.ToString());
+        DateTime horaInicio = new DateTime();
+        DateTime horaFin = new DateTime();
+        horaInicio = DateTime.Parse(TxtHoraInicio.Text);
+        horaFin = DateTime.Parse(TxtHoraFin.Text);
+        int intervaloTurnos = Convert.ToInt32(TxtIntervaloTurnos.Text);
+        AgregarMedico(TxtApellido.Text, TxtNombre.Text, Convert.ToInt32(CmbEspecialidades.SelectedValue.ToString()),horaInicio,horaFin,intervaloTurnos,porcentaje);
         this.Close();
       }
     }

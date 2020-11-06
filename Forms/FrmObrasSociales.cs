@@ -69,5 +69,21 @@ namespace Turnero.Forms
         this.Close();
       }
     }
+
+    private void BtnModificarObraSocial_Click(object sender, EventArgs e)
+    {
+      if(GrdObraSocial.SelectedRows.Count !=0)
+      {
+        FrmModificaObraSocial frmModificaObraSocial = new FrmModificaObraSocial();
+        frmModificaObraSocial.TxtIdObraSocial.Text = GrdObraSocial.SelectedRows[0].Cells[0].Value.ToString();
+        frmModificaObraSocial.TxtNombreObraSocial.Text = GrdObraSocial.SelectedRows[0].Cells[1].Value.ToString();
+        frmModificaObraSocial.Show();
+      }
+      else
+      {
+        MessageBox.Show("Por favor, seleccione la obra social que desea modificar ", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+      
+    }
   }
 }

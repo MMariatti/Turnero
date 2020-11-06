@@ -1,0 +1,9 @@
+requisitos
+	abm pacintes fecha de nacimiento edad domicilio obra social 
+	abm medicos
+	abm practicas nombre id costo
+	dar turnos 
+
+SELECT T.fecha, T.hora, M.apellido,E.descripcion, X.descripcion,X.costo, (X.costo-(0.25*X.costo)) AS Saldo, 0.25*X.costo as 'Descuento'
+FROM Turnos T, Medicos M, Especialidades E, Practicas X 
+WHERE T.medico = M.legajo AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = convert (date,GETDATE())

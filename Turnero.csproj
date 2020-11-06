@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -73,10 +91,58 @@
     <Compile Include="Classes\Practicas.cs" />
     <Compile Include="Classes\Sesion.cs" />
     <Compile Include="Classes\Turnos.cs" />
+    <Compile Include="DataSets\DataSetCaja.cs">
+      <DependentUpon>DataSetCaja.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DataSetCaja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCaja.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DataSetFacturacionMedicos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DataSetHistoriaClinica.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\DataSetTurnos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTurnos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReportes\FrmCobroMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReportes\FrmCobroMedicos.Designer.cs">
+      <DependentUpon>FrmCobroMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReportes\FrmImprimirHc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReportes\FrmImprimirHc.Designer.cs">
+      <DependentUpon>FrmImprimirHc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReportes\FrmPlanillaTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReportes\FrmPlanillaTurnos.Designer.cs">
+      <DependentUpon>FrmPlanillaTurnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReportes\FrmReciboMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReportes\FrmReciboMedicos.Designer.cs">
+      <DependentUpon>FrmReciboMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmActualizarPractica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmActualizarPractica.Designer.cs">
+      <DependentUpon>FrmActualizarPractica.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmAgregarMedico.cs">
       <SubType>Form</SubType>
@@ -126,6 +192,18 @@
     <Compile Include="Forms\FrmMedicos.Designer.cs">
       <DependentUpon>FrmMedicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmModificaObraSocial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModificaObraSocial.Designer.cs">
+      <DependentUpon>FrmModificaObraSocial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmModificarEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmModificarEspecialidades.Designer.cs">
+      <DependentUpon>FrmModificarEspecialidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmModificarMedico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +234,12 @@
     <Compile Include="Forms\FrmPracticas.Designer.cs">
       <DependentUpon>FrmPracticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmSobreTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSobreTurno.Designer.cs">
+      <DependentUpon>FrmSobreTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmTurnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +249,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FormsReportes\FrmCobroMedicos.resx">
+      <DependentUpon>FrmCobroMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsReportes\FrmImprimirHc.resx">
+      <DependentUpon>FrmImprimirHc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsReportes\FrmPlanillaTurnos.resx">
+      <DependentUpon>FrmPlanillaTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsReportes\FrmReciboMedicos.resx">
+      <DependentUpon>FrmReciboMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmActualizarPractica.resx">
+      <DependentUpon>FrmActualizarPractica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAgregarMedico.resx">
       <DependentUpon>FrmAgregarMedico.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +288,12 @@
     <EmbeddedResource Include="Forms\FrmMedicos.resx">
       <DependentUpon>FrmMedicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModificaObraSocial.resx">
+      <DependentUpon>FrmModificaObraSocial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmModificarEspecialidades.resx">
+      <DependentUpon>FrmModificarEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmModificarMedico.resx">
       <DependentUpon>FrmModificarMedico.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +309,9 @@
     <EmbeddedResource Include="Forms\FrmPracticas.resx">
       <DependentUpon>FrmPracticas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSobreTurno.resx">
+      <DependentUpon>FrmSobreTurno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmTurnos.resx">
       <DependentUpon>FrmTurnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +324,43 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reportes\RptCierreCajardlc.rdlc" />
+    <EmbeddedResource Include="Reportes\RptFacturacionMedicos.rdlc" />
+    <EmbeddedResource Include="Reportes\RptHistoriaClinica.rdlc" />
+    <EmbeddedResource Include="Reportes\RptTurnosXmedico.rdlc" />
+    <None Include="DataSets\DataSetCaja.xsc">
+      <DependentUpon>DataSetCaja.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetCaja.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCaja.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSetCaja.xss">
+      <DependentUpon>DataSetCaja.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetFacturacionMedicos.xsc">
+      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetFacturacionMedicos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetFacturacionMedicos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSetFacturacionMedicos.xss">
+      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetHistoriaClinica.xsc">
+      <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetHistoriaClinica.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetHistoriaClinica.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSetHistoriaClinica.xss">
+      <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\DataSetTurnos.xsc">
       <DependentUpon>DataSetTurnos.xsd</DependentUpon>
     </None>
@@ -239,10 +384,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reportes\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />

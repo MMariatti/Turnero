@@ -109,6 +109,20 @@ namespace Turnero.Classes
      
     }
 
+    public void ActualizarObraSocial(string descripcionN)
+    {
+      string query = "UPDATE ObrasSociales SET descripcion = '" + descripcionN + "' WHERE idObraSocial = " + this.IdObraSocial;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show( " Obra Social actualizada", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
 
     
 

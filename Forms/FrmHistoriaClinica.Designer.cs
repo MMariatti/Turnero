@@ -32,8 +32,6 @@
       this.RtbHistoriaClinica = new System.Windows.Forms.RichTextBox();
       this.BtnGuardar = new System.Windows.Forms.Button();
       this.BtnImprimir = new System.Windows.Forms.Button();
-      this.printDialog1 = new System.Windows.Forms.PrintDialog();
-      this.printHistoriaClinica = new System.Drawing.Printing.PrintDocument();
       this.txtDni = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.BtnBuscar = new System.Windows.Forms.Button();
@@ -70,14 +68,6 @@
       this.BtnImprimir.Text = "Imprimir";
       this.BtnImprimir.UseVisualStyleBackColor = true;
       this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
-      // 
-      // printDialog1
-      // 
-      this.printDialog1.UseEXDialog = true;
-      // 
-      // printHistoriaClinica
-      // 
-      this.printHistoriaClinica.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printHistoriaClinica_PrintPage);
       // 
       // txtDni
       // 
@@ -129,12 +119,10 @@
 
     #endregion
     private System.Windows.Forms.Button BtnImprimir;
-    private System.Windows.Forms.PrintDialog printDialog1;
-    private System.Drawing.Printing.PrintDocument printHistoriaClinica;
     protected internal System.Windows.Forms.RichTextBox RtbHistoriaClinica;
     protected internal System.Windows.Forms.Button BtnGuardar;
-    private System.Windows.Forms.TextBox txtDni;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button BtnBuscar;
+    protected internal System.Windows.Forms.TextBox txtDni;
   }
 }

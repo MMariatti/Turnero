@@ -24,7 +24,9 @@ namespace Turnero.Forms
 
     private void AgregarTurnos()
     {
-      Turnos turno = new Turnos(DateTime.Parse(monthCalendarTurno.SelectionStart.ToString()),DateTime.Parse(txtHora.Text),idMedico, txtPaciente.Text,especialidad, Convert.ToInt16(cmbPracticas.SelectedValue.ToString()), obraSocial);
+      DateTime horaTurno = DateTime.Parse(GrdHora.SelectedRows[0].Cells[0].Value.ToString());
+
+      Turnos turno = new Turnos(DateTime.Parse(monthCalendarTurno.SelectionStart.ToString()),horaTurno,idMedico, txtPaciente.Text,especialidad, Convert.ToInt16(cmbPracticas.SelectedValue.ToString()), obraSocial);
       
       turno.Save();
     }
@@ -36,12 +38,13 @@ namespace Turnero.Forms
       GrdMedicos.DataSource = tabla;
       GrdMedicos.Columns[0].Visible = false;
       GrdMedicos.Columns[3].Visible = false;
+      GrdMedicos.Columns[4].Visible = false;
+      GrdMedicos.Columns[5].Visible = false;
+      GrdMedicos.Columns[6].Visible = false;
+      GrdMedicos.Columns[7].Visible = false;
 
-  
-      cmbPracticas.DataSource = Practicas.GetAll();
-      cmbPracticas.DisplayMember = "descripcion";
-      cmbPracticas.ValueMember = "idPractica";
-      cmbPracticas.SelectedIndex = -1;
+
+
     }
 
     private void Btn_BuscarPaciente_Click(object sender, EventArgs e)
@@ -70,14 +73,15 @@ namespace Turnero.Forms
 
     private void Btn_DarTurno_Click(object sender, EventArgs e)
     {
-      if(txtPaciente.Text == string.Empty ||GrdMedicos.SelectedRows.Count == -1|| txtObraSocial.Text == string.Empty || txtEspecialidad.Text == string.Empty || txtHora.Text == string.Empty || cmbPracticas.SelectedIndex == -1 )
+      if(txtPaciente.Text == string.Empty ||GrdMedicos.SelectedRows.Count != 1|| txtObraSocial.Text == string.Empty || txtEspecialidad.Text == string.Empty || GrdHora.SelectedRows.Count!= 1 || cmbPracticas.SelectedIndex == -1  ||monthCalendarTurno.SelectionStart < monthCalendarTurno.TodayDate)
       {
-        MessageBox.Show("Por favor, complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        MessageBox.Show("Por favor, complete todos los campos y/o elija una fecha igual o posterior al dia de hoy", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
       }
       else
       {
         AgregarTurnos();
+        this.Close();
       }
     }
 
@@ -93,17 +97,56 @@ namespace Turnero.Forms
     {
       if (GrdMedicos.SelectedRows.Count != 0)
       {
+
+        // Esta seccion del codigo coloca la descripcion de la especialidad de cada medico en el TxtEspecialidad 
         idMedico = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[0].Value.ToString());
         Medicos medico = new Medicos(idMedico);
         int esp = medico.Especialidad;
         Especialidades especialidades = new Especialidades(esp);
         txtEspecialidad.Text = especialidades.Descripcion;
         especialidad = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[3].Value.ToString());
+
+        
+        //Esta seccion del codigo muestra en el combo box las practicas asociadas a la especialidad que tiene cargado el medico 
+        cmbPracticas.DataSource = Practicas.GetAll(esp);
+        cmbPracticas.DisplayMember = "descripcion";
+        cmbPracticas.ValueMember = "idPractica";
+        cmbPracticas.SelectedIndex = -1;
+        //esta seccion del codigo se encarga de llenar la tabla de horarios y deja afuera los horarios que no estan disponible
+        DateTime horaInicio = DateTime.Parse(GrdMedicos.SelectedRows[0].Cells[4].Value.ToString());
+        DateTime horaFin = DateTime.Parse(GrdMedicos.SelectedRows[0].Cells[5].Value.ToString());
+        int minutosAgregados = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[6].Value.ToString());
+        DateTime fecha = monthCalendarTurno.SelectionStart;
+        
+        while (horaInicio < horaFin)
+        {
+          DataTable table = Turnos.CheckearTurno(fecha, horaInicio, idMedico);
+          if (table.Rows.Count == 0)
+          {
+            GrdHora.Rows.Add(horaInicio.ToString("HH:mm"));
+            horaInicio = horaInicio.AddMinutes(minutosAgregados);
+          }
+          else
+          {
+            horaInicio = horaInicio.AddMinutes(minutosAgregados);
+          }
+          
+        }
       }
       else
       {
         MessageBox.Show("Por favor seleccione un medico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
+    }
+
+    private void GrdMedicos_SelectionChanged(object sender, EventArgs e)
+    {
+      GrdHora.Rows.Clear();
+    }
+
+    private void monthCalendarTurno_DateChanged(object sender, DateRangeEventArgs e)
+    {
+      GrdHora.Rows.Clear();
     }
   }
   

@@ -11,9 +11,7 @@ namespace Turnero.Classes
   public class Especialidades
   {
     private int idEspecialidad = 0;
-   
-    private string descripcion = "";
-
+  
     public int IdEspecialidad
     {
       get { return this.idEspecialidad; }
@@ -22,6 +20,9 @@ namespace Turnero.Classes
         this.idEspecialidad = value;
       }
     }
+
+    private string descripcion = "";
+
     public string Descripcion
     {
       get { return this.descripcion; }
@@ -101,7 +102,7 @@ namespace Turnero.Classes
     public static DataTable LlenarCmb()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT * FROM Especialidades";
+      string query = "SELECT * FROM Especialidades ORDER BY descripcion";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -124,6 +125,20 @@ namespace Turnero.Classes
       catch (Exception ex)
       {
         MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    public void ActualizarEspecialidad(string descripcionN)
+    {
+      string query = "UPDATE Especialidades SET descripcion = '" + descripcionN + "' WHERE idEspecialidad = " + this.IdEspecialidad;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Especialidad actualizada", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
   }

@@ -28,7 +28,7 @@ namespace Turnero.Forms
       }
     }
 
-    private void ActualizarP()
+    private void ActualizarPaciente()
     {
       string nombre = TxtNombre.Text;
       string apellido = TxtApellido.Text;
@@ -54,7 +54,7 @@ namespace Turnero.Forms
       if(TxtApellido.Text != string.Empty && TxtDireccion.Text != string.Empty &&TxtFechaNac.Text != string.Empty && TxtDni.Text != string.Empty && TxtNombre.Text != string.Empty && TxtTelefono.Text != string.Empty&& CmbObraSocial.SelectedIndex != -1
        )
       {
-        ActualizarP();
+        ActualizarPaciente();
         this.Close();
       }
       else

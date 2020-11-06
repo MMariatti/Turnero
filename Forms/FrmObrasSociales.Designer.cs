@@ -35,6 +35,7 @@
       this.label1 = new System.Windows.Forms.Label();
       this.BtnSalir = new System.Windows.Forms.Button();
       this.BtnActualizar = new System.Windows.Forms.Button();
+      this.BtnModificarObraSocial = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdObraSocial)).BeginInit();
       this.SuspendLayout();
       // 
@@ -42,14 +43,14 @@
       // 
       this.GrdObraSocial.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdObraSocial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.GrdObraSocial.Location = new System.Drawing.Point(31, 39);
+      this.GrdObraSocial.Location = new System.Drawing.Point(12, 39);
       this.GrdObraSocial.Name = "GrdObraSocial";
       this.GrdObraSocial.Size = new System.Drawing.Size(240, 150);
       this.GrdObraSocial.TabIndex = 0;
       // 
       // BtnAgregarObraSocial
       // 
-      this.BtnAgregarObraSocial.Location = new System.Drawing.Point(31, 315);
+      this.BtnAgregarObraSocial.Location = new System.Drawing.Point(12, 315);
       this.BtnAgregarObraSocial.Name = "BtnAgregarObraSocial";
       this.BtnAgregarObraSocial.Size = new System.Drawing.Size(127, 23);
       this.BtnAgregarObraSocial.TabIndex = 3;
@@ -59,7 +60,7 @@
       // 
       // TxtObraSocial
       // 
-      this.TxtObraSocial.Location = new System.Drawing.Point(178, 250);
+      this.TxtObraSocial.Location = new System.Drawing.Point(145, 247);
       this.TxtObraSocial.Name = "TxtObraSocial";
       this.TxtObraSocial.Size = new System.Drawing.Size(174, 20);
       this.TxtObraSocial.TabIndex = 2;
@@ -67,7 +68,7 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(28, 253);
+      this.label1.Location = new System.Drawing.Point(9, 250);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(130, 13);
       this.label1.TabIndex = 0;
@@ -75,17 +76,17 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(277, 315);
+      this.BtnSalir.Location = new System.Drawing.Point(343, 315);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-      this.BtnSalir.TabIndex = 4;
+      this.BtnSalir.TabIndex = 5;
       this.BtnSalir.Text = "Salir";
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
       // 
       // BtnActualizar
       // 
-      this.BtnActualizar.Location = new System.Drawing.Point(277, 166);
+      this.BtnActualizar.Location = new System.Drawing.Point(343, 166);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
       this.BtnActualizar.TabIndex = 1;
@@ -93,11 +94,22 @@
       this.BtnActualizar.UseVisualStyleBackColor = true;
       this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
       // 
+      // BtnModificarObraSocial
+      // 
+      this.BtnModificarObraSocial.Location = new System.Drawing.Point(171, 315);
+      this.BtnModificarObraSocial.Name = "BtnModificarObraSocial";
+      this.BtnModificarObraSocial.Size = new System.Drawing.Size(127, 23);
+      this.BtnModificarObraSocial.TabIndex = 4;
+      this.BtnModificarObraSocial.Text = "Modificar obra social";
+      this.BtnModificarObraSocial.UseVisualStyleBackColor = true;
+      this.BtnModificarObraSocial.Click += new System.EventHandler(this.BtnModificarObraSocial_Click);
+      // 
       // FrmObrasSociales
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(430, 364);
+      this.Controls.Add(this.BtnModificarObraSocial);
       this.Controls.Add(this.BtnActualizar);
       this.Controls.Add(this.BtnSalir);
       this.Controls.Add(this.label1);
@@ -116,12 +128,12 @@
     }
 
     #endregion
-
-    private System.Windows.Forms.DataGridView GrdObraSocial;
     private System.Windows.Forms.Button BtnAgregarObraSocial;
     private System.Windows.Forms.TextBox TxtObraSocial;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button BtnSalir;
     private System.Windows.Forms.Button BtnActualizar;
+    private System.Windows.Forms.Button BtnModificarObraSocial;
+    protected internal System.Windows.Forms.DataGridView GrdObraSocial;
   }
 }

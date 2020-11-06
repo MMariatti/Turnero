@@ -34,6 +34,7 @@
       this.BtnSalir = new System.Windows.Forms.Button();
       this.BtnModificarMedico = new System.Windows.Forms.Button();
       this.BtnActualizar = new System.Windows.Forms.Button();
+      this.BtnEliminarMedico = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdMedicos)).BeginInit();
       this.SuspendLayout();
       // 
@@ -61,7 +62,7 @@
       this.BtnSalir.Location = new System.Drawing.Point(573, 415);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-      this.BtnSalir.TabIndex = 6;
+      this.BtnSalir.TabIndex = 5;
       this.BtnSalir.Text = "Salir";
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -81,16 +82,27 @@
       this.BtnActualizar.Location = new System.Drawing.Point(573, 294);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
-      this.BtnActualizar.TabIndex = 5;
+      this.BtnActualizar.TabIndex = 4;
       this.BtnActualizar.Text = "Actualizar";
       this.BtnActualizar.UseVisualStyleBackColor = true;
       this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
+      // 
+      // BtnEliminarMedico
+      // 
+      this.BtnEliminarMedico.Location = new System.Drawing.Point(217, 335);
+      this.BtnEliminarMedico.Name = "BtnEliminarMedico";
+      this.BtnEliminarMedico.Size = new System.Drawing.Size(97, 23);
+      this.BtnEliminarMedico.TabIndex = 2;
+      this.BtnEliminarMedico.Text = "Eliminar Medico";
+      this.BtnEliminarMedico.UseVisualStyleBackColor = true;
+      this.BtnEliminarMedico.Click += new System.EventHandler(this.BtnEliminarMedico_Click);
       // 
       // FrmMedicos
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(661, 450);
+      this.Controls.Add(this.BtnEliminarMedico);
       this.Controls.Add(this.BtnActualizar);
       this.Controls.Add(this.BtnModificarMedico);
       this.Controls.Add(this.BtnSalir);
@@ -112,5 +124,6 @@
     private System.Windows.Forms.Button BtnModificarMedico;
     private System.Windows.Forms.Button BtnActualizar;
     protected internal System.Windows.Forms.DataGridView GrdMedicos;
+    private System.Windows.Forms.Button BtnEliminarMedico;
   }
 }

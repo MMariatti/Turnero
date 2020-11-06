@@ -26,6 +26,12 @@ namespace Turnero.Forms
 
     }
 
+    private void EliminarMedico(int idMedico)
+    {
+      Medicos medico = new Medicos(idMedico);
+      medico.BorrarMedico();
+    }
+
 
     private void FrmMedicos_Load(object sender, EventArgs e)
     {
@@ -72,11 +78,35 @@ namespace Turnero.Forms
         frmModificarMedico.TxtApellido.Text = GrdMedicos.SelectedRows[0].Cells[1].Value.ToString();
         frmModificarMedico.TxtNombre.Text = GrdMedicos.SelectedRows[0].Cells[2].Value.ToString();
         frmModificarMedico.CmbEspecialidad.Text = GrdMedicos.SelectedRows[0].Cells[3].Value.ToString();
+        frmModificarMedico.TxtHoraInicio.Text = GrdMedicos.SelectedRows[0].Cells[4].Value.ToString();
+        frmModificarMedico.TxtHoraFin.Text = GrdMedicos.SelectedRows[0].Cells[5].Value.ToString();
+        frmModificarMedico.TxtIntervaloTurnos.Text = GrdMedicos.SelectedRows[0].Cells[6].Value.ToString();
+        frmModificarMedico.TxtPorcentajeDescuento.Text = GrdMedicos.SelectedRows[0].Cells[7].Value.ToString();
         frmModificarMedico.Show();
       }
      
     }
 
-   
+    private void BtnEliminarMedico_Click(object sender, EventArgs e)
+    {
+      if (GrdMedicos.SelectedRows.Count != 0)
+      {
+        int legajo = Convert.ToInt32(GrdMedicos.SelectedRows[0].Cells[0].Value.ToString());
+
+        if (MessageBox.Show("¿Está seguro que desea eliminar el medico  seleccionado? ", "Eliminar Medico", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+
+          EliminarMedico(legajo);
+
+        }
+      }
+        
+      else
+      {
+        MessageBox.Show("Por favor, seleccione el medico que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+
+    }
+
   }
 }

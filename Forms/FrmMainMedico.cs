@@ -20,10 +20,19 @@ namespace Turnero.Forms
 
     private void BtnHistoriaClinica_Click(object sender, EventArgs e)
     {
-      FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
-      frmHistoriaClinica.RtbHistoriaClinica.ReadOnly = false;
-      frmHistoriaClinica.BtnGuardar.Visible = true;
-      frmHistoriaClinica.Show();
+      if (GrdPacientesMedico.SelectedRows.Count == 0)
+      {
+        MessageBox.Show("Por favor seleccione al paciente del que quiere ver la historia clinica", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+      else
+      {
+        FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
+        frmHistoriaClinica.txtDni.Text = GrdPacientesMedico.SelectedRows[0].Cells[8].Value.ToString();
+        frmHistoriaClinica.RtbHistoriaClinica.ReadOnly = false;
+        frmHistoriaClinica.BtnGuardar.Visible = true;
+        frmHistoriaClinica.Show();
+      }
+     
     }
 
     private void FrmMainMedico_Load(object sender, EventArgs e)
@@ -41,9 +50,23 @@ namespace Turnero.Forms
       {
         tabla = Turnos.GetDiaMedico(monthCalendarMedico.SelectionStart, Convert.ToInt32(cmbMedico.SelectedValue.ToString()));
         GrdPacientesMedico.DataSource = tabla;
-        GrdPacientesMedico.Columns[5].Visible = false;
-        GrdPacientesMedico.Columns[6].Visible = false;
-        GrdPacientesMedico.Columns[7].Visible = false;
+       // GrdPacientesMedico.Columns[5].Visible = false;
+        GrdPacientesMedico.Columns[10].Visible = false;
+        GrdPacientesMedico.Columns[11].Visible = false;
+        GrdPacientesMedico.Columns[12].Visible = false;
+
+        foreach (DataGridViewRow row in GrdPacientesMedico.Rows)
+        {
+
+          if (Convert.ToBoolean(row.Cells[11].Value.ToString()) && Convert.ToBoolean(row.Cells[12].Value.ToString()))
+          {
+            row.DefaultCellStyle.BackColor = Color.Red;
+          }
+          else if (Convert.ToBoolean(row.Cells[11].Value.ToString()))
+          {
+            row.DefaultCellStyle.BackColor = Color.LightBlue;
+          }
+        }
       }
       else
       {
@@ -56,12 +79,12 @@ namespace Turnero.Forms
       DataTable tabla = new DataTable();
       tabla = Turnos.GetTurnosDelDiaMedico(Convert.ToInt32(cmbMedico.SelectedValue.ToString()));
       GrdPacientesMedico.DataSource = tabla;
-      
       GrdPacientesMedico.Columns[5].Visible = false;
       GrdPacientesMedico.Columns[6].Visible = false;
       GrdPacientesMedico.Columns[7].Visible = false;
+      GrdPacientesMedico.Columns[8].Visible = true;
       
-      /*
+      
       
       foreach (DataGridViewRow row in GrdPacientesMedico.Rows)
       {
@@ -75,7 +98,7 @@ namespace Turnero.Forms
           row.DefaultCellStyle.BackColor = Color.LightBlue;
         }
       }
-      */
+      
     }
 
     private void BtnBuscar_Click(object sender, EventArgs e)
@@ -115,10 +138,8 @@ namespace Turnero.Forms
 
     private void FrmMainMedico_FormClosing(object sender, FormClosingEventArgs e)
     {
-      if (MessageBox.Show("¿Está seguro que desea cerrar la aplicacion?", "Cerrar Aplicacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        e.Cancel = false;
-      else
-        e.Cancel = true;
+      Application.Exit();
+        
     }
   }
 

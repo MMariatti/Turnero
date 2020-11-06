@@ -29,8 +29,13 @@ namespace Turnero.Forms
       string apellidoM = TxtApellido.Text;
       int idEspecialidadM = Convert.ToInt32(CmbEspecialidad.SelectedValue);
       int legajo = Convert.ToInt32(TxtLegajo.Text);
+      DateTime horaInicio = DateTime.Parse(TxtHoraInicio.Text);
+      DateTime horaFin = DateTime.Parse(TxtHoraFin.Text);
+      int intervaloTurnos = Convert.ToInt32(TxtIntervaloTurnos.Text);
+      TxtPorcentajeDescuento.Text.Replace(",",".");
+      double porcentaje = Convert.ToDouble(TxtPorcentajeDescuento.Text);
       Medicos medico = new Medicos(legajo);
-      medico.ActualizarMedico(nombreM,apellidoM,idEspecialidadM);
+      medico.ActualizarMedico(nombreM,apellidoM,idEspecialidadM,horaInicio,horaFin,intervaloTurnos, porcentaje);
     }
     
     
@@ -51,11 +56,13 @@ namespace Turnero.Forms
       CmbEspecialidad.DataSource = Especialidades.LlenarCmb();
       CmbEspecialidad.DisplayMember = "descripcion";
       CmbEspecialidad.ValueMember = "idEspecialidad";
+      CmbEspecialidad.SelectedIndex = -1;
     }
 
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
-      if(TxtApellido.Text != string.Empty && TxtNombre.Text != string.Empty && CmbEspecialidad.SelectedIndex!= -1 )
+      if(TxtApellido.Text != string.Empty && TxtNombre.Text != string.Empty && CmbEspecialidad.SelectedIndex!= -1 && TxtPorcentajeDescuento.Text != string.Empty && 
+        TxtHoraFin.Text != string.Empty &&TxtHoraInicio.Text != string.Empty && TxtIntervaloTurnos.Text != string.Empty)
       {
         ActualizarMedico();
         this.Close();
@@ -66,5 +73,7 @@ namespace Turnero.Forms
       }
       
     }
+
+    
   }
 }

@@ -22,7 +22,7 @@ namespace Turnero.Classes
       private set
       {
         this.legajoMedico = value;
-      
+
       }
     }
 
@@ -33,7 +33,7 @@ namespace Turnero.Classes
       get { return this.dniPaciente; }
       private set
       {
-        if(!string.IsNullOrWhiteSpace(value))
+        if (!string.IsNullOrWhiteSpace(value))
         {
           this.dniPaciente = value;
         }
@@ -94,6 +94,11 @@ namespace Turnero.Classes
       }
     }
 
+    public Turnos()
+    {
+
+    }
+
     public Turnos(DateTime fechaTurno, DateTime horaTurno, int legajoMedico, string dniPaciente, int idEspecialidad, int practica, int obraSocial)
     {
       this.fechaTurno = fechaTurno;
@@ -129,7 +134,7 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico(DateTime fechaDelDia)
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico, T.confirmado, T.atendido " +
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', P.apellido AS 'Apellido',P.nombre AS 'Nombre',P.dni AS'DNI',P.telefono AS'Telefono', O.descripcion AS 'Obra Social',T.medico, T.confirmado, T.atendido " +
         "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
         "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = '"+fechaDelDia+"'";
       try
@@ -148,7 +153,7 @@ namespace Turnero.Classes
     public static  DataTable GetTurnosDelDia()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', P.apellido AS 'Apellido',P.nombre AS 'Nombre',P.dni AS'DNI',P.telefono AS'Telefono', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
         "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
         "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE())";
       try
@@ -162,11 +167,27 @@ namespace Turnero.Classes
         return tabla;
       }
     }
-
+    public static DataTable TurnosMedico(int idMedico)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica', P.apellido AS 'Apellido',P.nombre AS 'Nombre',P.dni AS'DNI',P.telefono AS'Telefono', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
+        "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
+        "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE())  AND T.medico = "+idMedico;
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
     public static DataTable GetTurnosDelDiaMedico(int idMedico)
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido " +
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', X.descripcion AS 'Practica', P.apellido AS 'Paciente', O.descripcion AS 'Obra Social', T.medico, T.confirmado,T.atendido,T.paciente AS 'DNI'" +
         "FROM Pacientes P, ObrasSociales O, Practicas X, Turnos T " +
         "WHERE T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idPractica = X.idPractica AND T.fecha = convert(date, GETDATE()) AND T.medico = "+ idMedico;
       try
@@ -186,9 +207,9 @@ namespace Turnero.Classes
     public static DataTable GetDiaMedico(DateTime fechaDelDia, int idMedico)
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora',X.descripcion AS 'Practica', concat(P.apellido, ' ',P.nombre) AS 'Paciente', O.descripcion AS 'Obra Social',T.medico, T.confirmado, T.atendido " +
-        "FROM Pacientes P, ObrasSociales O,Practicas X, Turnos T " +
-        "WHERE T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idPractica = X.idPractica AND T.fecha = '" + fechaDelDia + "' AND T.medico = " +idMedico;
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico',E.descripcion as 'Especialidad',X.descripcion AS 'Practica',O.descripcion AS 'Obra Social' ,P.apellido AS 'Apellido',P.nombre AS 'Nombre',P.dni AS'DNI',P.telefono AS'Telefono', T.medico, T.confirmado,T.atendido " +
+        "FROM Pacientes P, ObrasSociales O, Medicos M, Especialidades E, Practicas X, Turnos T " +
+        "WHERE T.medico = M.legajo AND T.obraSocial = O.idObraSocial AND T.paciente = P.dni AND T.idEspecialidad = E.idEspecialidad AND T.idPractica = X.idPractica AND T.fecha = '"+fechaDelDia.ToShortDateString() +"' AND T.medico ="+idMedico;
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -201,6 +222,21 @@ namespace Turnero.Classes
       }
     }
 
+    public static DataTable CheckearTurno(DateTime fecha, DateTime hora, int medico)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT * FROM Turnos WHERE fecha ='"+fecha.ToString("yyyy-MM-dd")+"' AND hora = '"+hora.ToString("HH:mm:ss")+"' AND medico ="+medico;
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
 
     public void Save()
     {
@@ -209,7 +245,7 @@ namespace Turnero.Classes
         +this.Practica+"," + this.ObraSocial + ",0, 0)";
       try{
         BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Turno cargado para el dia: " + this.fechaTurno.ToString("yyyy-MM-dd") + " a la hora: " + this.horaTurno.ToString("hh:mm:ss") + " para el paciente con dni: " + this.DniPaciente, "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        MessageBox.Show("Turno cargado para el dia: " + this.fechaTurno.ToString("yyyy-MM-dd") + " a la hora: " + this.horaTurno.ToString("HH:mm:ss") + " para el paciente con dni: " + this.DniPaciente, "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
       }
       catch(Exception ex)
@@ -245,6 +281,20 @@ namespace Turnero.Classes
       {
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("Turno atendido", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+    }
+
+    public void BorrarTurno()
+    {
+      string query = "DELETE FROM Turnos WHERE fecha = '" + this.fechaTurno.ToString("yyyy-MM-dd") + "' AND hora = '" + this.horaTurno.ToString("HH:mm:ss") + "' AND medico = " + this.LegajoMedico;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Turno eliminado", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch (Exception ex)
       {

@@ -68,5 +68,21 @@ namespace Turnero.Forms
     {
       mostrarEspecialidades();
     }
+
+    private void BtnModificarEspecialidades_Click(object sender, EventArgs e)
+    {
+      if(GrdEspecialidades.SelectedRows.Count != 0)
+      {
+        FrmModificarEspecialidades frmModificarEspecialidades = new FrmModificarEspecialidades();
+        frmModificarEspecialidades.TxtIdEspecialidad.Text = GrdEspecialidades.SelectedRows[0].Cells[0].Value.ToString();
+        frmModificarEspecialidades.TxtNombreEspecialidad.Text = GrdEspecialidades.SelectedRows[0].Cells[1].Value.ToString();
+        frmModificarEspecialidades.Show();
+
+      }
+      else
+      {
+        MessageBox.Show("Por favor, seleccione la especialidad que desea modificar", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
   }
 }

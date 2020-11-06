@@ -35,12 +35,13 @@
       this.BtnSalir = new System.Windows.Forms.Button();
       this.GrdEspecialidades = new System.Windows.Forms.DataGridView();
       this.BtnActualizar = new System.Windows.Forms.Button();
+      this.BtnModificarEspecialidades = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdEspecialidades)).BeginInit();
       this.SuspendLayout();
       // 
       // BtnAgregarEspecialidad
       // 
-      this.BtnAgregarEspecialidad.Location = new System.Drawing.Point(32, 308);
+      this.BtnAgregarEspecialidad.Location = new System.Drawing.Point(12, 308);
       this.BtnAgregarEspecialidad.Name = "BtnAgregarEspecialidad";
       this.BtnAgregarEspecialidad.Size = new System.Drawing.Size(135, 23);
       this.BtnAgregarEspecialidad.TabIndex = 3;
@@ -66,10 +67,10 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(313, 308);
+      this.BtnSalir.Location = new System.Drawing.Point(343, 308);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-      this.BtnSalir.TabIndex = 4;
+      this.BtnSalir.TabIndex = 5;
       this.BtnSalir.Text = "Salir";
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -84,7 +85,7 @@
       // 
       // BtnActualizar
       // 
-      this.BtnActualizar.Location = new System.Drawing.Point(313, 149);
+      this.BtnActualizar.Location = new System.Drawing.Point(343, 149);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
       this.BtnActualizar.TabIndex = 1;
@@ -92,11 +93,22 @@
       this.BtnActualizar.UseVisualStyleBackColor = true;
       this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
       // 
+      // BtnModificarEspecialidades
+      // 
+      this.BtnModificarEspecialidades.Location = new System.Drawing.Point(173, 308);
+      this.BtnModificarEspecialidades.Name = "BtnModificarEspecialidades";
+      this.BtnModificarEspecialidades.Size = new System.Drawing.Size(135, 23);
+      this.BtnModificarEspecialidades.TabIndex = 4;
+      this.BtnModificarEspecialidades.Text = "Modificar especialidad";
+      this.BtnModificarEspecialidades.UseVisualStyleBackColor = true;
+      this.BtnModificarEspecialidades.Click += new System.EventHandler(this.BtnModificarEspecialidades_Click);
+      // 
       // FrmEspecialidades
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(430, 364);
+      this.Controls.Add(this.BtnModificarEspecialidades);
       this.Controls.Add(this.BtnActualizar);
       this.Controls.Add(this.GrdEspecialidades);
       this.Controls.Add(this.BtnSalir);
@@ -122,5 +134,6 @@
     private System.Windows.Forms.Button BtnSalir;
     private System.Windows.Forms.DataGridView GrdEspecialidades;
     private System.Windows.Forms.Button BtnActualizar;
+    private System.Windows.Forms.Button BtnModificarEspecialidades;
   }
 }
