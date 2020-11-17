@@ -67,6 +67,7 @@
       this.txtPaciente.Name = "txtPaciente";
       this.txtPaciente.Size = new System.Drawing.Size(121, 20);
       this.txtPaciente.TabIndex = 0;
+      this.txtPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaciente_KeyPress);
       // 
       // label1
       // 

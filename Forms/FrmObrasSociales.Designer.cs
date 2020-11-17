@@ -64,6 +64,7 @@
       this.TxtObraSocial.Name = "TxtObraSocial";
       this.TxtObraSocial.Size = new System.Drawing.Size(174, 20);
       this.TxtObraSocial.TabIndex = 2;
+      this.TxtObraSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtObraSocial_KeyPress);
       // 
       // label1
       // 

@@ -32,16 +32,16 @@ namespace Turnero.Forms
       DateTime horaInicio = DateTime.Parse(TxtHoraInicio.Text);
       DateTime horaFin = DateTime.Parse(TxtHoraFin.Text);
       int intervaloTurnos = Convert.ToInt32(TxtIntervaloTurnos.Text);
-      TxtPorcentajeDescuento.Text.Replace(",",".");
+      TxtPorcentajeDescuento.Text.Replace(",", ".");
       double porcentaje = Convert.ToDouble(TxtPorcentajeDescuento.Text);
       Medicos medico = new Medicos(legajo);
-      medico.ActualizarMedico(nombreM,apellidoM,idEspecialidadM,horaInicio,horaFin,intervaloTurnos, porcentaje);
+      medico.ActualizarMedico(nombreM, apellidoM, idEspecialidadM, horaInicio, horaFin, intervaloTurnos, porcentaje);
     }
-    
-    
 
 
-    
+
+
+
 
     private void BtnSalir_Click(object sender, EventArgs e)
     {
@@ -61,8 +61,8 @@ namespace Turnero.Forms
 
     private void BtnGuardar_Click(object sender, EventArgs e)
     {
-      if(TxtApellido.Text != string.Empty && TxtNombre.Text != string.Empty && CmbEspecialidad.SelectedIndex!= -1 && TxtPorcentajeDescuento.Text != string.Empty && 
-        TxtHoraFin.Text != string.Empty &&TxtHoraInicio.Text != string.Empty && TxtIntervaloTurnos.Text != string.Empty)
+      if (TxtApellido.Text != string.Empty && TxtNombre.Text != string.Empty && CmbEspecialidad.SelectedIndex != -1 && TxtPorcentajeDescuento.Text != string.Empty &&
+        TxtHoraFin.Text != string.Empty && TxtHoraInicio.Text != string.Empty && TxtIntervaloTurnos.Text != string.Empty)
       {
         ActualizarMedico();
         this.Close();
@@ -71,9 +71,57 @@ namespace Turnero.Forms
       {
         MessageBox.Show("Por favor, complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
-      
+
     }
 
-    
+    private void TxtApellido_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+      {
+        MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
+
+    private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+      {
+        MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
+
+    private void TxtHoraInicio_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+      {
+        MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
+
+    private void TxtHoraFin_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+      {
+        MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
+
+    private void TxtPorcentajeDescuento_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+      {
+        MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
   }
 }

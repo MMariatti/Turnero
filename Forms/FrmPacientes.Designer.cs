@@ -37,6 +37,7 @@
       this.BtnSalir = new System.Windows.Forms.Button();
       this.BtnActualizar = new System.Windows.Forms.Button();
       this.BtnModificarPaciente = new System.Windows.Forms.Button();
+      this.BtnBorrarPaciente = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdPacientes)).BeginInit();
       this.SuspendLayout();
       // 
@@ -74,12 +75,12 @@
       dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
       dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.GrdPacientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-      this.GrdPacientes.Size = new System.Drawing.Size(714, 150);
+      this.GrdPacientes.Size = new System.Drawing.Size(714, 216);
       this.GrdPacientes.TabIndex = 0;
       // 
       // BtnAgregarPaciente
       // 
-      this.BtnAgregarPaciente.Location = new System.Drawing.Point(12, 190);
+      this.BtnAgregarPaciente.Location = new System.Drawing.Point(12, 253);
       this.BtnAgregarPaciente.Name = "BtnAgregarPaciente";
       this.BtnAgregarPaciente.Size = new System.Drawing.Size(121, 23);
       this.BtnAgregarPaciente.TabIndex = 1;
@@ -92,7 +93,7 @@
       this.BtnSalir.Location = new System.Drawing.Point(778, 253);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-      this.BtnSalir.TabIndex = 2;
+      this.BtnSalir.TabIndex = 5;
       this.BtnSalir.Text = "Salir";
       this.BtnSalir.UseVisualStyleBackColor = true;
       this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -102,26 +103,37 @@
       this.BtnActualizar.Location = new System.Drawing.Point(778, 139);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
-      this.BtnActualizar.TabIndex = 3;
+      this.BtnActualizar.TabIndex = 4;
       this.BtnActualizar.Text = "Actualizar";
       this.BtnActualizar.UseVisualStyleBackColor = true;
       this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
       // 
       // BtnModificarPaciente
       // 
-      this.BtnModificarPaciente.Location = new System.Drawing.Point(552, 190);
+      this.BtnModificarPaciente.Location = new System.Drawing.Point(552, 253);
       this.BtnModificarPaciente.Name = "BtnModificarPaciente";
       this.BtnModificarPaciente.Size = new System.Drawing.Size(174, 23);
-      this.BtnModificarPaciente.TabIndex = 4;
+      this.BtnModificarPaciente.TabIndex = 3;
       this.BtnModificarPaciente.Text = "Modificar datos del paciente ";
       this.BtnModificarPaciente.UseVisualStyleBackColor = true;
       this.BtnModificarPaciente.Click += new System.EventHandler(this.BtnModificarPaciente_Click);
+      // 
+      // BtnBorrarPaciente
+      // 
+      this.BtnBorrarPaciente.Location = new System.Drawing.Point(297, 253);
+      this.BtnBorrarPaciente.Name = "BtnBorrarPaciente";
+      this.BtnBorrarPaciente.Size = new System.Drawing.Size(174, 23);
+      this.BtnBorrarPaciente.TabIndex = 2;
+      this.BtnBorrarPaciente.Text = "Borrar Paciente";
+      this.BtnBorrarPaciente.UseVisualStyleBackColor = true;
+      this.BtnBorrarPaciente.Click += new System.EventHandler(this.BtnBorrarPaciente_Click);
       // 
       // FrmPacientes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(865, 293);
+      this.Controls.Add(this.BtnBorrarPaciente);
       this.Controls.Add(this.BtnModificarPaciente);
       this.Controls.Add(this.BtnActualizar);
       this.Controls.Add(this.BtnSalir);
@@ -143,5 +155,6 @@
     private System.Windows.Forms.Button BtnActualizar;
     private System.Windows.Forms.Button BtnModificarPaciente;
     protected internal System.Windows.Forms.DataGridView GrdPacientes;
+    private System.Windows.Forms.Button BtnBorrarPaciente;
   }
 }

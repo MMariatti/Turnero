@@ -92,6 +92,7 @@
       this.TxtNombre.Name = "TxtNombre";
       this.TxtNombre.Size = new System.Drawing.Size(123, 20);
       this.TxtNombre.TabIndex = 2;
+      this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
       // 
       // LblEspecialidad
       // 
@@ -117,6 +118,7 @@
       this.TxtApellido.Name = "TxtApellido";
       this.TxtApellido.Size = new System.Drawing.Size(121, 20);
       this.TxtApellido.TabIndex = 1;
+      this.TxtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApellido_KeyPress);
       // 
       // LblNuevoNombre
       // 
@@ -142,6 +144,7 @@
       this.TxtPorcentajeDescuento.Name = "TxtPorcentajeDescuento";
       this.TxtPorcentajeDescuento.Size = new System.Drawing.Size(121, 20);
       this.TxtPorcentajeDescuento.TabIndex = 7;
+      this.TxtPorcentajeDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPorcentajeDescuento_KeyPress);
       // 
       // label2
       // 
@@ -194,6 +197,7 @@
       this.TxtHoraInicio.Size = new System.Drawing.Size(46, 20);
       this.TxtHoraInicio.TabIndex = 4;
       this.TxtHoraInicio.ValidatingType = typeof(System.DateTime);
+      this.TxtHoraInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtHoraInicio_KeyPress);
       // 
       // TxtHoraFin
       // 
@@ -203,6 +207,7 @@
       this.TxtHoraFin.Size = new System.Drawing.Size(44, 20);
       this.TxtHoraFin.TabIndex = 5;
       this.TxtHoraFin.ValidatingType = typeof(System.DateTime);
+      this.TxtHoraFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtHoraFin_KeyPress);
       // 
       // FrmModificarMedico
       // 

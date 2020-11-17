@@ -133,6 +133,7 @@
       this.TxtPaciente.Name = "TxtPaciente";
       this.TxtPaciente.Size = new System.Drawing.Size(121, 20);
       this.TxtPaciente.TabIndex = 1;
+      this.TxtPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPaciente_KeyPress);
       // 
       // TxtObraSocial
       // 
@@ -147,18 +148,18 @@
       this.label5.AutoSize = true;
       this.label5.Location = new System.Drawing.Point(344, 49);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(55, 13);
+      this.label5.Size = new System.Drawing.Size(29, 13);
       this.label5.TabIndex = 11;
-      this.label5.Text = "Paciente :";
+      this.label5.Text = "Dni :";
       // 
       // label6
       // 
       this.label6.AutoSize = true;
       this.label6.Location = new System.Drawing.Point(344, 91);
       this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(62, 13);
+      this.label6.Size = new System.Drawing.Size(68, 13);
       this.label6.TabIndex = 12;
-      this.label6.Text = "Obra Social";
+      this.label6.Text = "Obra Social :";
       // 
       // TxtEspecialidad
       // 

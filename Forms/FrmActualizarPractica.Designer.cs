@@ -81,6 +81,7 @@
       this.TxtCosto.Name = "TxtCosto";
       this.TxtCosto.Size = new System.Drawing.Size(146, 20);
       this.TxtCosto.TabIndex = 2;
+      this.TxtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCosto_KeyPress);
       // 
       // Btn_Salir
       // 

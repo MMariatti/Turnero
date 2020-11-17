@@ -79,6 +79,7 @@
       this.TxtNombreObraSocial.Name = "TxtNombreObraSocial";
       this.TxtNombreObraSocial.Size = new System.Drawing.Size(177, 20);
       this.TxtNombreObraSocial.TabIndex = 1;
+      this.TxtNombreObraSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombreObraSocial_KeyPress);
       // 
       // BtnSalir
       // 

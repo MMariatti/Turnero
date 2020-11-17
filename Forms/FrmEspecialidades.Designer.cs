@@ -64,6 +64,7 @@
       this.TxtAgregarEspecialidad.Name = "TxtAgregarEspecialidad";
       this.TxtAgregarEspecialidad.Size = new System.Drawing.Size(189, 20);
       this.TxtAgregarEspecialidad.TabIndex = 2;
+      this.TxtAgregarEspecialidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAgregarEspecialidad_KeyPress);
       // 
       // BtnSalir
       // 

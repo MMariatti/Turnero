@@ -84,5 +84,15 @@ namespace Turnero.Forms
         MessageBox.Show("Por favor, seleccione la especialidad que desea modificar", "Modificar datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
+
+    private void TxtAgregarEspecialidad_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+      {
+        MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        e.Handled = true;
+        return;
+      }
+    }
   }
 }

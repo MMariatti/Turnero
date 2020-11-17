@@ -118,6 +118,23 @@ namespace Turnero.Classes
         }
       }
     }
+    private int nroHistoriaClinica;
+    public int NroHistoriaClinica
+    {
+      get { return this.nroHistoriaClinica; }
+      private set
+      {
+        if (value > 0)
+        {
+          this.nroHistoriaClinica = value;
+        }
+        else
+        {
+          throw new ArgumentOutOfRangeException();
+        }
+      }
+    }
+   
 
     private string historiaClinica;
     public string HistoriaClinica
@@ -179,6 +196,8 @@ namespace Turnero.Classes
         fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNac"].ToString());
         Direccion = tabla.Rows[0]["direccion"].ToString();
         Telefono = tabla.Rows[0]["Telefono"].ToString();
+        NroHistoriaClinica = (int)tabla.Rows[0]["nroHistoriaClinica"];
+        
       }
       else
       {
@@ -248,12 +267,12 @@ namespace Turnero.Classes
       return paciente;
     }
 
-    public void ActualizarPaciente(string nombre, string apellido, int obraSocial, DateTime fechaNacimiento, string direccion, string telefono)
+    public void ActualizarPaciente(string dni, string nombre, string apellido, int obraSocial, DateTime fechaNacimiento, string direccion, string telefono)
     {
       try
       {
-        string query = "UPDATE Pacientes SET apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
-        ", fechaNac='" + fechaNacimiento.ToString("yyyy-MM-dd") + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE dni = '" + this.Dni + "' ";
+        string query = "UPDATE Pacientes SET dni='"+dni+"', apellido = '" + apellido + "', nombre = '" + nombre + "', obraSocial=" + obraSocial +
+        ", fechaNac='" + fechaNacimiento.ToString("yyyy-MM-dd") + "', direccion ='" + direccion + "', telefono ='" + telefono + "' WHERE nroHistoriaClinica = " +this.NroHistoriaClinica ;
         BDHelper.ConsultarSQL(query);
         this.Nombre = nombre;
         this.Apellido = apellido;
@@ -390,6 +409,36 @@ namespace Turnero.Classes
       catch(Exception ex)
       {
         MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    public static DataTable CheckearPaciente(string dni)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT * FROM Pacientes WHERE dni= '"+dni+"'";
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
+
+    public void BorrarPaciente()
+    {
+      string query = "DELETE FROM Pacientes WHERE dni = '" + this.Dni+ "'" ;
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Paciente Eliminado", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
     }
 

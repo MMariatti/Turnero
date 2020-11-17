@@ -80,6 +80,7 @@
       this.TxtNombreEspecialidad.Name = "TxtNombreEspecialidad";
       this.TxtNombreEspecialidad.Size = new System.Drawing.Size(153, 20);
       this.TxtNombreEspecialidad.TabIndex = 1;
+      this.TxtNombreEspecialidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombreEspecialidad_KeyPress);
       // 
       // label2
       // 

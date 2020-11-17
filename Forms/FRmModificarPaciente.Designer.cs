@@ -54,6 +54,7 @@
       this.TxtTelefono.Name = "TxtTelefono";
       this.TxtTelefono.Size = new System.Drawing.Size(142, 20);
       this.TxtTelefono.TabIndex = 5;
+      this.TxtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefono_KeyPress);
       // 
       // TxtNombre
       // 
@@ -61,6 +62,7 @@
       this.TxtNombre.Name = "TxtNombre";
       this.TxtNombre.Size = new System.Drawing.Size(142, 20);
       this.TxtNombre.TabIndex = 2;
+      this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
       // 
       // TxtDireccion
       // 
@@ -75,6 +77,7 @@
       this.TxtApellido.Name = "TxtApellido";
       this.TxtApellido.Size = new System.Drawing.Size(142, 20);
       this.TxtApellido.TabIndex = 1;
+      this.TxtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApellido_KeyPress);
       // 
       // label7
       // 
@@ -132,11 +135,11 @@
       // 
       // TxtDni
       // 
-      this.TxtDni.Enabled = false;
       this.TxtDni.Location = new System.Drawing.Point(151, 39);
       this.TxtDni.Name = "TxtDni";
       this.TxtDni.Size = new System.Drawing.Size(142, 20);
       this.TxtDni.TabIndex = 0;
+      this.TxtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDni_KeyPress);
       // 
       // TxtFechaNac
       // 
@@ -146,6 +149,7 @@
       this.TxtFechaNac.Size = new System.Drawing.Size(142, 20);
       this.TxtFechaNac.TabIndex = 3;
       this.TxtFechaNac.ValidatingType = typeof(System.DateTime);
+      this.TxtFechaNac.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFechaNac_KeyPress);
       // 
       // CmbObraSocial
       // 

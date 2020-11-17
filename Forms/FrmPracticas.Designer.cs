@@ -104,6 +104,7 @@
       this.TxtNombrePractica.Name = "TxtNombrePractica";
       this.TxtNombrePractica.Size = new System.Drawing.Size(172, 20);
       this.TxtNombrePractica.TabIndex = 2;
+      this.TxtNombrePractica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombrePractica_KeyPress);
       // 
       // label2
       // 

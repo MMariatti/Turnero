@@ -25,6 +25,11 @@ namespace Turnero.Forms
       GrdPacientes.DataSource = tabla;
 
     }
+    private void BorrarPaciente(string dni)
+    {
+      Pacientes paciente = new Pacientes(dni);
+      paciente.BorrarPaciente();
+    }
 
     private void BtnSalir_Click(object sender, EventArgs e)
     {
@@ -62,6 +67,7 @@ namespace Turnero.Forms
         FrmModificarPaciente frmModificarPaciente;
         frmModificarPaciente = new FrmModificarPaciente();
         frmModificarPaciente.TxtDni.Text = GrdPacientes.SelectedRows[0].Cells[0].Value.ToString();
+        frmModificarPaciente.nroHc = Convert.ToInt32(GrdPacientes.SelectedRows[0].Cells[1].Value.ToString());
         frmModificarPaciente.TxtApellido.Text = GrdPacientes.SelectedRows[0].Cells[2].Value.ToString();
         frmModificarPaciente.TxtNombre.Text = GrdPacientes.SelectedRows[0].Cells[3].Value.ToString();
         frmModificarPaciente.TxtFechaNac.Text = GrdPacientes.SelectedRows[0].Cells[4].Value.ToString();
@@ -70,6 +76,25 @@ namespace Turnero.Forms
         frmModificarPaciente.TxtDireccion.Text = GrdPacientes.SelectedRows[0].Cells[7].Value.ToString();
         frmModificarPaciente.Show();
 
+      }
+    }
+
+    private void BtnBorrarPaciente_Click(object sender, EventArgs e)
+    {
+      
+      if(GrdPacientes.SelectedRows.Count!=0)
+      {
+        string dniBorrar = GrdPacientes.SelectedRows[0].Cells[0].Value.ToString();
+        if (MessageBox.Show("¿Está seguro que desea eliminar el paciente seleccionado? ", "Eliminar Paciente", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+
+          BorrarPaciente(dniBorrar);
+
+        }
+      }
+      else
+      {
+        MessageBox.Show("Por favor, seleccione el paciente que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
   }
