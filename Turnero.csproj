@@ -86,6 +86,7 @@
     <Compile Include="Classes\DBHelper.cs" />
     <Compile Include="Classes\Especialidades.cs" />
     <Compile Include="Classes\Medicos.cs" />
+    <Compile Include="Classes\Meses.cs" />
     <Compile Include="Classes\ObrasSociales.cs" />
     <Compile Include="Classes\Pacientes.cs" />
     <Compile Include="Classes\Practicas.cs" />
@@ -109,10 +110,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\DataSetPacientesMes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPacientesMes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\DataSetTurnos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTurnos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormsReportes\FrmPacientesXMes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsReportes\FrmPacientesXMes.Designer.cs">
+      <DependentUpon>FrmPacientesXMes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsReportes\FrmCobroMedicos.cs">
       <SubType>Form</SubType>
@@ -249,6 +261,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FormsReportes\FrmPacientesXMes.resx">
+      <DependentUpon>FrmPacientesXMes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsReportes\FrmCobroMedicos.resx">
       <DependentUpon>FrmCobroMedicos.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +342,7 @@
     <EmbeddedResource Include="Reportes\RptCierreCajardlc.rdlc" />
     <EmbeddedResource Include="Reportes\RptFacturacionMedicos.rdlc" />
     <EmbeddedResource Include="Reportes\RptHistoriaClinica.rdlc" />
+    <EmbeddedResource Include="Reportes\RptPacientesXMes.rdlc" />
     <EmbeddedResource Include="Reportes\RptTurnosXmedico.rdlc" />
     <None Include="DataSets\DataSetCaja.xsc">
       <DependentUpon>DataSetCaja.xsd</DependentUpon>
@@ -360,6 +376,17 @@
     </None>
     <None Include="DataSets\DataSetHistoriaClinica.xss">
       <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetPacientesMes.xsc">
+      <DependentUpon>DataSetPacientesMes.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetPacientesMes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPacientesMes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSetPacientesMes.xss">
+      <DependentUpon>DataSetPacientesMes.xsd</DependentUpon>
     </None>
     <None Include="DataSets\DataSetTurnos.xsc">
       <DependentUpon>DataSetTurnos.xsd</DependentUpon>

@@ -57,6 +57,8 @@
       this.CmbMedicos = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.BtnSobreTurno = new System.Windows.Forms.Button();
+      this.informwaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.pacientesDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).BeginInit();
       this.SuspendLayout();
@@ -77,7 +79,8 @@
             this.pacientesToolStripMenuItem1,
             this.practicasToolStripMenuItem1,
             this.turnosToolStripMenuItem,
-            this.cajaYFacturacionToolStripMenuItem});
+            this.cajaYFacturacionToolStripMenuItem,
+            this.informwaToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Size = new System.Drawing.Size(1029, 24);
@@ -305,6 +308,21 @@
       this.BtnSobreTurno.UseVisualStyleBackColor = true;
       this.BtnSobreTurno.Click += new System.EventHandler(this.BtnSobreTurno_Click);
       // 
+      // informwaToolStripMenuItem
+      // 
+      this.informwaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacientesDelMesToolStripMenuItem});
+      this.informwaToolStripMenuItem.Name = "informwaToolStripMenuItem";
+      this.informwaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+      this.informwaToolStripMenuItem.Text = "Informes";
+      // 
+      // pacientesDelMesToolStripMenuItem
+      // 
+      this.pacientesDelMesToolStripMenuItem.Name = "pacientesDelMesToolStripMenuItem";
+      this.pacientesDelMesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.pacientesDelMesToolStripMenuItem.Text = "Pacientes del Mes";
+      this.pacientesDelMesToolStripMenuItem.Click += new System.EventHandler(this.pacientesDelMesToolStripMenuItem_Click);
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,5 +384,7 @@
     private System.Windows.Forms.ComboBox CmbMedicos;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button BtnSobreTurno;
+    private System.Windows.Forms.ToolStripMenuItem informwaToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem pacientesDelMesToolStripMenuItem;
   }
 }

@@ -314,5 +314,12 @@ namespace Turnero.Forms
     {
 
     }
+
+    private void pacientesDelMesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      FrmPacientesXMes frmPacientesXMes = new FrmPacientesXMes();
+      frmPacientesXMes.Show();
+
+    }
   }
 }
