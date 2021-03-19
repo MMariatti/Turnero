@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Turnero.Classes
 {
@@ -54,11 +56,49 @@ namespace Turnero.Classes
       }
     }
 
-    public Sesion(string usuario, string contraseña, int rol)
+    private int ? legajoMedico;
+    public int ? LegajoMedico
     {
-      this.usuario = usuario;
+      get { return this.legajoMedico; }
+      private set
+      {
+        this.legajoMedico = value;
+      }
+    }
+    public Sesion() { }
+
+    public Sesion(string usuario, string contraseña)
+    {
+      this.Usuario = usuario;
+      this.Contraseña = contraseña;
+    }
+
+    public Sesion(string usuario, string contraseña, int rol, int ? legajoMedico)
+    {
+      this.Usuario = usuario;
       this.Contraseña = contraseña;
       this.Rol = rol;
+      this.LegajoMedico = legajoMedico;
+    }
+
+    public DataTable Login()
+    {
+      DataTable tabla = new DataTable();
+      try
+      {
+        
+        string query = "SELECT usuario, contraseña, idRol, Activo, nMedico FROM Usuarios WHERE usuario = '" + this.Usuario +
+          "' AND contraseña ='" + this.Contraseña + "' AND idRol =" + this.Rol + "AND activo=1 AND nMedico=" + this.LegajoMedico;
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
     }
   }
+
+
 }

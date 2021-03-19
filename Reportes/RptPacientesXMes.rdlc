@@ -36,15 +36,6 @@
                             <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
@@ -103,7 +94,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia del Turno</Value>
+                              <Value>Fecha del Turno</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -200,14 +191,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="DIA">
+                    <Textbox Name="Fecha">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!DIA.Value</Value>
+                              <Value>=FormatDateTime(Fields!Fecha.Value, DateFormat.ShortDate)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -216,7 +207,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>DIA</rd:DefaultName>
+                      <rd:DefaultName>Fecha</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -249,6 +240,9 @@
             </TablixMember>
             <TablixMember>
               <Group Name="Detalles" />
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
@@ -368,8 +362,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.34966cm</Top>
-        <Left>2.31704cm</Left>
+        <Top>1.31438cm</Top>
+        <Left>2.49343cm</Left>
         <Height>0.6cm</Height>
         <Width>1.5cm</Width>
         <ZIndex>4</ZIndex>
@@ -420,7 +414,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Medico.Value, "DataSetPacientesXMes")</Value>
+                <Value>=First(Fields!Medico.Value, "DataSetPacientesXMes")+", "+First(Fields!nombreM.Value, "DataSetPacientesXMes")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -431,7 +425,7 @@
         <Top>2.86716cm</Top>
         <Left>2.49343cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.5cm</Width>
+        <Width>7.71569cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -613,6 +607,10 @@
           <DataField>Apellido</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="DNI">
+          <DataField>DNI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Medico">
           <DataField>Medico</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -625,13 +623,17 @@
           <DataField>Año</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="DNI">
-          <DataField>DNI</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="DIA">
           <DataField>DIA</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="nombreM">
+          <DataField>nombreM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fecha">
+          <DataField>Fecha</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

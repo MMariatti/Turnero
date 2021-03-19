@@ -17,15 +17,16 @@ namespace Turnero.Forms
     private string usuarioActual;
     private string contraseñaActual;
     private int rolActual;
+    private int? legajoM;
 
     public FrmLogin()
     {
       InitializeComponent();
     }
 
-   
+  
 
-    private bool loguear(string usuario, string contra)
+    /* private bool loguear(string usuario, string contra)
     {
       DataTable tabla;
       string consulta = "SELECT usuario , contraseña, idRol  FROM Usuarios U WHERE " +
@@ -42,7 +43,8 @@ namespace Turnero.Forms
         rolActual = (int)tabla.Rows[0]["idRol"];
         return true;
       }
-    }
+    } */
+
     private void FrmLogin_Load(object sender, EventArgs e)
     {
       
@@ -56,6 +58,7 @@ namespace Turnero.Forms
       }
       else
       {
+        /*
         //Logueo con base de datos 
         if (loguear(TxtUsuario.Text, TxtContra.Text))
         {
@@ -83,6 +86,7 @@ namespace Turnero.Forms
           MessageBox.Show("Usuario Incorrecto, por favor ingrese nuevamente", "Error al Iniciar Sesion", MessageBoxButtons.OK, MessageBoxIcon.Error);
     
         }
+      } */
       }
     }
 

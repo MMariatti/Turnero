@@ -293,6 +293,10 @@ namespace Turnero.DataSets {
             
             private global::System.Data.DataColumn columnDIA;
             
+            private global::System.Data.DataColumn columnnombreM;
+            
+            private global::System.Data.DataColumn columnFecha;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PacientesXMesDataTable() {
@@ -384,6 +388,22 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nombreMColumn {
+                get {
+                    return this.columnnombreM;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FechaColumn {
+                get {
+                    return this.columnFecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +439,7 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PacientesXMesRow AddPacientesXMesRow(string Nombre, string Apellido, string DNI, string Medico, string Mes, int Año, int DIA) {
+            public PacientesXMesRow AddPacientesXMesRow(string Nombre, string Apellido, string DNI, string Medico, string Mes, int Año, int DIA, string nombreM, System.DateTime Fecha) {
                 PacientesXMesRow rowPacientesXMesRow = ((PacientesXMesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
@@ -428,7 +448,9 @@ namespace Turnero.DataSets {
                         Medico,
                         Mes,
                         Año,
-                        DIA};
+                        DIA,
+                        nombreM,
+                        Fecha};
                 rowPacientesXMesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPacientesXMesRow);
                 return rowPacientesXMesRow;
@@ -458,6 +480,8 @@ namespace Turnero.DataSets {
                 this.columnMes = base.Columns["Mes"];
                 this.columnAño = base.Columns["Año"];
                 this.columnDIA = base.Columns["DIA"];
+                this.columnnombreM = base.Columns["nombreM"];
+                this.columnFecha = base.Columns["Fecha"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +501,10 @@ namespace Turnero.DataSets {
                 base.Columns.Add(this.columnAño);
                 this.columnDIA = new global::System.Data.DataColumn("DIA", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDIA);
+                this.columnnombreM = new global::System.Data.DataColumn("nombreM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombreM);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecha);
                 this.columnNombre.AllowDBNull = false;
                 this.columnNombre.MaxLength = 50;
                 this.columnApellido.AllowDBNull = false;
@@ -489,6 +517,9 @@ namespace Turnero.DataSets {
                 this.columnMes.MaxLength = 30;
                 this.columnAño.ReadOnly = true;
                 this.columnDIA.ReadOnly = true;
+                this.columnnombreM.AllowDBNull = false;
+                this.columnnombreM.MaxLength = 50;
+                this.columnFecha.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -718,6 +749,28 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string nombreM {
+                get {
+                    return ((string)(this[this.tablePacientesXMes.nombreMColumn]));
+                }
+                set {
+                    this[this.tablePacientesXMes.nombreMColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Fecha {
+                get {
+                    return ((global::System.DateTime)(this[this.tablePacientesXMes.FechaColumn]));
+                }
+                set {
+                    this[this.tablePacientesXMes.FechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsAñoNull() {
                 return this.IsNull(this.tablePacientesXMes.AñoColumn);
             }
@@ -907,6 +960,8 @@ namespace Turnero.DataSets.DataSetPacientesMesTableAdapters {
             tableMapping.ColumnMappings.Add("Mes", "Mes");
             tableMapping.ColumnMappings.Add("Año", "Año");
             tableMapping.ColumnMappings.Add("DIA", "DIA");
+            tableMapping.ColumnMappings.Add("nombreM", "nombreM");
+            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -923,12 +978,13 @@ namespace Turnero.DataSets.DataSetPacientesMesTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        P.nombre AS Nombre, P.apellido AS Apellido, T.paciente AS DNI, M.apellido AS Medico, Me.mes AS Mes, YEAR(T.fecha) AS Año, DAY(T.fecha) AS DIA
+            this._commandCollection[0].CommandText = @"SELECT        P.nombre AS Nombre, P.apellido AS Apellido, T.paciente AS DNI, M.apellido AS Medico, M.nombre AS nombreM, Me.mes AS Mes, T.fecha AS Fecha, YEAR(T.fecha) AS Año, DAY(T.fecha) AS DIA
 FROM            Pacientes AS P INNER JOIN
                          Turnos AS T ON P.dni = T.paciente INNER JOIN
                          Medicos AS M ON T.medico = M.legajo CROSS JOIN
                          Meses AS Me
-WHERE        (MONTH(T.fecha) = @Mes) AND (Me.id = @Mes) AND (YEAR(T.fecha) = YEAR(GETDATE())) AND (T.medico = @Medico)";
+WHERE        (MONTH(T.fecha) = @Mes) AND (Me.id = @Mes) AND (YEAR(T.fecha) = YEAR(GETDATE())) AND (T.medico = @Medico)
+GROUP BY P.nombre, P.apellido, T.paciente, M.apellido, M.nombre, Me.mes, T.fecha";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mes", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medico", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "medico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
