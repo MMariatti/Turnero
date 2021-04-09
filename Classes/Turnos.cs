@@ -222,6 +222,23 @@ namespace Turnero.Classes
       }
     }
 
+    public static DataTable GetTurnosPaciente(string dni)
+    {
+      DataTable tabla = new DataTable();
+      string query = "SELECT T.fecha AS 'Fecha', T.hora AS 'Hora', M.apellido AS 'Medico' " +
+        "FROM Turnos T, Medicos M WHERE T.medico = M.legajo AND T.paciente ='"+dni+"'";
+      try
+      {
+        tabla = BDHelper.ConsultarSQL(query);
+        return tabla;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return tabla;
+      }
+    }
+
     public static DataTable CheckearTurno(DateTime fecha, DateTime hora, int medico)
     {
       DataTable tabla = new DataTable();

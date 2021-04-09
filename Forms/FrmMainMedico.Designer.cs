@@ -31,12 +31,12 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMedico));
       this.GrdPacientesMedico = new System.Windows.Forms.DataGridView();
       this.monthCalendarMedico = new System.Windows.Forms.MonthCalendar();
-      this.cmbMedico = new System.Windows.Forms.ComboBox();
       this.BtnHistoriaClinica = new System.Windows.Forms.Button();
       this.BtnAtendido = new System.Windows.Forms.Button();
       this.BtnBuscar = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
+      this.Lbl_bienvenida = new System.Windows.Forms.Label();
       this.BtnBuscarTurno = new System.Windows.Forms.Button();
+      this.Lbl_Legajo = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.GrdPacientesMedico)).BeginInit();
       this.SuspendLayout();
       // 
@@ -55,18 +55,10 @@
       // 
       // monthCalendarMedico
       // 
-      this.monthCalendarMedico.Location = new System.Drawing.Point(18, 34);
+      this.monthCalendarMedico.Location = new System.Drawing.Point(9, 81);
       this.monthCalendarMedico.MaxSelectionCount = 1;
       this.monthCalendarMedico.Name = "monthCalendarMedico";
       this.monthCalendarMedico.TabIndex = 2;
-      // 
-      // cmbMedico
-      // 
-      this.cmbMedico.FormattingEnabled = true;
-      this.cmbMedico.Location = new System.Drawing.Point(321, 34);
-      this.cmbMedico.Name = "cmbMedico";
-      this.cmbMedico.Size = new System.Drawing.Size(226, 21);
-      this.cmbMedico.TabIndex = 3;
       // 
       // BtnHistoriaClinica
       // 
@@ -98,14 +90,14 @@
       this.BtnBuscar.UseVisualStyleBackColor = true;
       this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
       // 
-      // label1
+      // Lbl_bienvenida
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(256, 37);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(48, 13);
-      this.label1.TabIndex = 7;
-      this.label1.Text = "Medico :";
+      this.Lbl_bienvenida.AutoSize = true;
+      this.Lbl_bienvenida.Location = new System.Drawing.Point(15, 32);
+      this.Lbl_bienvenida.Name = "Lbl_bienvenida";
+      this.Lbl_bienvenida.Size = new System.Drawing.Size(48, 13);
+      this.Lbl_bienvenida.TabIndex = 7;
+      this.Lbl_bienvenida.Text = "Medico :";
       // 
       // BtnBuscarTurno
       // 
@@ -117,17 +109,27 @@
       this.BtnBuscarTurno.UseVisualStyleBackColor = true;
       this.BtnBuscarTurno.Click += new System.EventHandler(this.BtnBuscarTurno_Click);
       // 
+      // Lbl_Legajo
+      // 
+      this.Lbl_Legajo.AutoSize = true;
+      this.Lbl_Legajo.Location = new System.Drawing.Point(256, 268);
+      this.Lbl_Legajo.Name = "Lbl_Legajo";
+      this.Lbl_Legajo.Size = new System.Drawing.Size(35, 13);
+      this.Lbl_Legajo.TabIndex = 9;
+      this.Lbl_Legajo.Text = "label2";
+      this.Lbl_Legajo.Visible = false;
+      // 
       // FrmMainMedico
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 332);
+      this.Controls.Add(this.Lbl_Legajo);
       this.Controls.Add(this.BtnBuscarTurno);
-      this.Controls.Add(this.label1);
+      this.Controls.Add(this.Lbl_bienvenida);
       this.Controls.Add(this.BtnBuscar);
       this.Controls.Add(this.BtnAtendido);
       this.Controls.Add(this.BtnHistoriaClinica);
-      this.Controls.Add(this.cmbMedico);
       this.Controls.Add(this.monthCalendarMedico);
       this.Controls.Add(this.GrdPacientesMedico);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -145,11 +147,11 @@
     #endregion
     private System.Windows.Forms.DataGridView GrdPacientesMedico;
     private System.Windows.Forms.MonthCalendar monthCalendarMedico;
-    private System.Windows.Forms.ComboBox cmbMedico;
     private System.Windows.Forms.Button BtnHistoriaClinica;
     private System.Windows.Forms.Button BtnAtendido;
     private System.Windows.Forms.Button BtnBuscar;
-    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label Lbl_bienvenida;
     private System.Windows.Forms.Button BtnBuscarTurno;
+    protected internal System.Windows.Forms.Label Lbl_Legajo;
   }
 }

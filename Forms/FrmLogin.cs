@@ -17,7 +17,7 @@ namespace Turnero.Forms
     private string usuarioActual;
     private string contraseñaActual;
     private int rolActual;
-    private int? legajoM;
+   
 
     public FrmLogin()
     {
@@ -26,10 +26,10 @@ namespace Turnero.Forms
 
   
 
-    /* private bool loguear(string usuario, string contra)
+    private bool loguear(string usuario, string contra)
     {
       DataTable tabla;
-      string consulta = "SELECT usuario , contraseña, idRol  FROM Usuarios U WHERE " +
+      string consulta = "SELECT usuario , contraseña, idRol FROM Usuarios U WHERE " +
           "U.usuario = '" + usuario + "' AND U.contraseña = '" + contra + "' AND U.activo = 1";
       tabla = BDHelper.ConsultarSQL(consulta);
       if (tabla.Rows.Count == 0)
@@ -41,9 +41,12 @@ namespace Turnero.Forms
         contraseñaActual = contra;
         usuarioActual = usuario;
         rolActual = (int)tabla.Rows[0]["idRol"];
+        
+        
+        
         return true;
       }
-    } */
+    } 
 
     private void FrmLogin_Load(object sender, EventArgs e)
     {
@@ -58,24 +61,16 @@ namespace Turnero.Forms
       }
       else
       {
-        /*
+        
         //Logueo con base de datos 
         if (loguear(TxtUsuario.Text, TxtContra.Text))
         {
           Sesion sesion = new Sesion(usuarioActual,contraseñaActual, rolActual);
 
-          //Logueo satisfactorio, creacion de instancia de menu principal 
-          
-          if(sesion.Rol == 3)
-          {
-            FrmMainMedico frmMainMedico = new FrmMainMedico();
-            frmMainMedico.Show();
-          }
-          else
-          {
-            FrmMain frmMainMenu = new FrmMain();
-            frmMainMenu.Show();
-          }
+          //Logueo satisfactorio, creacion de instancia de menu principal
+          FrmMain frmMainMenu = new FrmMain();
+            
+          frmMainMenu.Show();
           
           //Minimizacion del frmLogin y eliminacion del TaskBar 
           this.WindowState = FormWindowState.Minimized;
@@ -86,8 +81,8 @@ namespace Turnero.Forms
           MessageBox.Show("Usuario Incorrecto, por favor ingrese nuevamente", "Error al Iniciar Sesion", MessageBoxButtons.OK, MessageBoxIcon.Error);
     
         }
-      } */
       }
+      
     }
 
    

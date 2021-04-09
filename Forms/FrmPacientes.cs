@@ -97,5 +97,11 @@ namespace Turnero.Forms
         MessageBox.Show("Por favor, seleccione el paciente que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
+
+    private void BtnBuscar_Click(object sender, EventArgs e)
+    {
+      FrmBuscarPaciente frmBuscarPaciente = new FrmBuscarPaciente();
+      frmBuscarPaciente.Show();
+    }
   }
 }

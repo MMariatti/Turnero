@@ -48,6 +48,8 @@
       this.cajaYFacturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.cierreDeCajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.generarFacturaPorMedicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.informwaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.pacientesDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.GrdTurnos = new System.Windows.Forms.DataGridView();
       this.btnBuscarTurnos = new System.Windows.Forms.Button();
       this.btnActualizar = new System.Windows.Forms.Button();
@@ -57,8 +59,6 @@
       this.CmbMedicos = new System.Windows.Forms.ComboBox();
       this.label1 = new System.Windows.Forms.Label();
       this.BtnSobreTurno = new System.Windows.Forms.Button();
-      this.informwaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.pacientesDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.GrdTurnos)).BeginInit();
       this.SuspendLayout();
@@ -216,6 +216,21 @@
       this.generarFacturaPorMedicoToolStripMenuItem1.Text = "Generar Factura por medico";
       this.generarFacturaPorMedicoToolStripMenuItem1.Click += new System.EventHandler(this.generarFacturaPorMedicoToolStripMenuItem1_Click);
       // 
+      // informwaToolStripMenuItem
+      // 
+      this.informwaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacientesDelMesToolStripMenuItem});
+      this.informwaToolStripMenuItem.Name = "informwaToolStripMenuItem";
+      this.informwaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+      this.informwaToolStripMenuItem.Text = "Informes";
+      // 
+      // pacientesDelMesToolStripMenuItem
+      // 
+      this.pacientesDelMesToolStripMenuItem.Name = "pacientesDelMesToolStripMenuItem";
+      this.pacientesDelMesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+      this.pacientesDelMesToolStripMenuItem.Text = "Pacientes del Mes";
+      this.pacientesDelMesToolStripMenuItem.Click += new System.EventHandler(this.pacientesDelMesToolStripMenuItem_Click);
+      // 
       // GrdTurnos
       // 
       this.GrdTurnos.AllowUserToAddRows = false;
@@ -308,26 +323,11 @@
       this.BtnSobreTurno.UseVisualStyleBackColor = true;
       this.BtnSobreTurno.Click += new System.EventHandler(this.BtnSobreTurno_Click);
       // 
-      // informwaToolStripMenuItem
-      // 
-      this.informwaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pacientesDelMesToolStripMenuItem});
-      this.informwaToolStripMenuItem.Name = "informwaToolStripMenuItem";
-      this.informwaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-      this.informwaToolStripMenuItem.Text = "Informes";
-      // 
-      // pacientesDelMesToolStripMenuItem
-      // 
-      this.pacientesDelMesToolStripMenuItem.Name = "pacientesDelMesToolStripMenuItem";
-      this.pacientesDelMesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-      this.pacientesDelMesToolStripMenuItem.Text = "Pacientes del Mes";
-      this.pacientesDelMesToolStripMenuItem.Click += new System.EventHandler(this.pacientesDelMesToolStripMenuItem_Click);
-      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1029, 450);
+      this.ClientSize = new System.Drawing.Size(1029, 486);
       this.Controls.Add(this.BtnSobreTurno);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.CmbMedicos);

@@ -17,7 +17,7 @@ namespace Turnero.Forms
     {
       InitializeComponent();
     }
-
+    
     private void BtnHistoriaClinica_Click(object sender, EventArgs e)
     {
       if (GrdPacientesMedico.SelectedRows.Count == 0)
@@ -37,18 +37,18 @@ namespace Turnero.Forms
 
     private void FrmMainMedico_Load(object sender, EventArgs e)
     {
-      cmbMedico.DataSource = Medicos.GetAll();
-      cmbMedico.DisplayMember = "apellido";
-      cmbMedico.ValueMember = "legajo";
-      cmbMedico.SelectedIndex = -1;
+      VerTurnosDelDia();
+
+      Medicos medico = new Medicos(Convert.ToInt32(Lbl_Legajo.Text.ToString()));
+      Lbl_bienvenida.Text = "Bienvenido Dr/a : " + medico.Nombre + ", " + medico.Apellido;
     }
 
     private void VerTurnos()
     {
       DataTable tabla = new DataTable();
-      if (monthCalendarMedico.SelectionStart != null && cmbMedico.SelectedIndex !=-1 )
+      if (monthCalendarMedico.SelectionStart != null  )
       {
-        tabla = Turnos.GetDiaMedico(monthCalendarMedico.SelectionStart, Convert.ToInt32(cmbMedico.SelectedValue.ToString()));
+        tabla = Turnos.GetDiaMedico(monthCalendarMedico.SelectionStart, Convert.ToInt32(Lbl_Legajo.Text.ToString()));
         GrdPacientesMedico.DataSource = tabla;
        // GrdPacientesMedico.Columns[5].Visible = false;
         GrdPacientesMedico.Columns[10].Visible = false;
@@ -77,7 +77,7 @@ namespace Turnero.Forms
     {
       
       DataTable tabla = new DataTable();
-      tabla = Turnos.GetTurnosDelDiaMedico(Convert.ToInt32(cmbMedico.SelectedValue.ToString()));
+      tabla = Turnos.GetTurnosDelDiaMedico(Convert.ToInt32(Lbl_Legajo.Text.ToString()));
       GrdPacientesMedico.DataSource = tabla;
       GrdPacientesMedico.Columns[5].Visible = false;
       GrdPacientesMedico.Columns[6].Visible = false;
@@ -103,15 +103,10 @@ namespace Turnero.Forms
 
     private void BtnBuscar_Click(object sender, EventArgs e)
     {
-      if (cmbMedico.SelectedIndex != -1)
-      {
+      
         VerTurnosDelDia();
         BtnAtendido.Enabled = true;
-      }
-      else
-      {
-        MessageBox.Show("Por favor seleccione el medico del que quiere ver los turnos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-      }
+      
     }
 
     private void BtnBuscarTurno_Click(object sender, EventArgs e)

@@ -73,6 +73,12 @@ namespace Turnero.Classes
       this.Contraseña = contraseña;
     }
 
+    public Sesion(string usuario, string contraseña, int rol)
+    {
+      this.Usuario = usuario;
+      this.Contraseña = contraseña;
+      this.Rol = rol;
+    }
     public Sesion(string usuario, string contraseña, int rol, int ? legajoMedico)
     {
       this.Usuario = usuario;
@@ -88,7 +94,7 @@ namespace Turnero.Classes
       {
         
         string query = "SELECT usuario, contraseña, idRol, Activo, nMedico FROM Usuarios WHERE usuario = '" + this.Usuario +
-          "' AND contraseña ='" + this.Contraseña + "' AND idRol =" + this.Rol + "AND activo=1 AND nMedico=" + this.LegajoMedico;
+          "' AND contraseña ='" + this.Contraseña + "AND activo=1 ";
         tabla = BDHelper.ConsultarSQL(query);
         return tabla;
       }

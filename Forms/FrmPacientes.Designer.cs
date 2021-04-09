@@ -38,6 +38,7 @@
       this.BtnActualizar = new System.Windows.Forms.Button();
       this.BtnModificarPaciente = new System.Windows.Forms.Button();
       this.BtnBorrarPaciente = new System.Windows.Forms.Button();
+      this.BtnBuscar = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdPacientes)).BeginInit();
       this.SuspendLayout();
       // 
@@ -100,7 +101,7 @@
       // 
       // BtnActualizar
       // 
-      this.BtnActualizar.Location = new System.Drawing.Point(778, 139);
+      this.BtnActualizar.Location = new System.Drawing.Point(778, 12);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
       this.BtnActualizar.TabIndex = 4;
@@ -128,11 +129,22 @@
       this.BtnBorrarPaciente.UseVisualStyleBackColor = true;
       this.BtnBorrarPaciente.Click += new System.EventHandler(this.BtnBorrarPaciente_Click);
       // 
+      // BtnBuscar
+      // 
+      this.BtnBuscar.Location = new System.Drawing.Point(778, 102);
+      this.BtnBuscar.Name = "BtnBuscar";
+      this.BtnBuscar.Size = new System.Drawing.Size(75, 23);
+      this.BtnBuscar.TabIndex = 6;
+      this.BtnBuscar.Text = "Buscar";
+      this.BtnBuscar.UseVisualStyleBackColor = true;
+      this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+      // 
       // FrmPacientes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(865, 293);
+      this.Controls.Add(this.BtnBuscar);
       this.Controls.Add(this.BtnBorrarPaciente);
       this.Controls.Add(this.BtnModificarPaciente);
       this.Controls.Add(this.BtnActualizar);
@@ -156,5 +168,6 @@
     private System.Windows.Forms.Button BtnModificarPaciente;
     protected internal System.Windows.Forms.DataGridView GrdPacientes;
     private System.Windows.Forms.Button BtnBorrarPaciente;
+    private System.Windows.Forms.Button BtnBuscar;
   }
 }
