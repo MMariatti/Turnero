@@ -178,6 +178,12 @@ namespace Turnero.Classes
       this.Direccion = direccionPaciente;
       this.historiaClinica = historiaClinicaPaciente;
     }
+    public Pacientes(string nombre, string apellido)
+    {
+      this.Nombre = nombre;
+      this.apellido = apellido;
+      getAttr(Nombre, Apellido);
+    }
     public Pacientes(string dni)
     {
       this.Dni = dni;
@@ -198,6 +204,28 @@ namespace Turnero.Classes
         Telefono = tabla.Rows[0]["Telefono"].ToString();
         NroHistoriaClinica = (int)tabla.Rows[0]["nroHistoriaClinica"];
         
+      }
+      else
+      {
+        MessageBox.Show("El paciente que busca no está cargado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      }
+
+    }
+    public void getAttr( string nombre, string apellido)
+    {
+      string query = "SELECT * FROM Pacientes WHERE nombre = '" + nombre + "' AND apellido ='"+apellido+"'";
+      DataTable tabla = BDHelper.ConsultarSQL(query);
+      if (tabla.Rows.Count != 0)
+      {
+        Dni = tabla.Rows[0]["dni"].ToString();
+        Apellido = tabla.Rows[0]["apellido"].ToString();
+        Nombre = tabla.Rows[0]["nombre"].ToString();
+        ObraSocial = (int)tabla.Rows[0]["obraSocial"];
+        fechaNac = DateTime.Parse(tabla.Rows[0]["fechaNac"].ToString());
+        Direccion = tabla.Rows[0]["direccion"].ToString();
+        Telefono = tabla.Rows[0]["Telefono"].ToString();
+        NroHistoriaClinica = (int)tabla.Rows[0]["nroHistoriaClinica"];
+
       }
       else
       {
@@ -289,97 +317,7 @@ namespace Turnero.Classes
       
     }
 
-    public void CambiarNombre(string newNombre)
-    {
-      try
-      {
-        
-        string query = "UPDATE Pacientes SET nombre = '" + newNombre + "' WHERE dni ='" + this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Nombre cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar nombre", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarApellido( string newApellido)
-    {
-      try
-      {
-        
-       
-        string query = "UPDATE pacientes SET apellido = '" + newApellido + "' WHERE dni = '" +this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Apellido cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar apellido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarTelefono(string newTelefono)
-    {
-      try
-      {
-        
-        string query = "UPDATE pacientes SET telefono = '" + newTelefono + "' WHERE dni= '" + this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Telefono cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar telefono", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarDireccion(string newDireccion)
-    {
-      try
-      {
-        ;
-        string query = "UPDATE Pacientes SET direccion = '" + newDireccion + "' WHERE dni='" + this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Direccion cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar direccion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarFechaNac(string newFechaNac)
-    {
-      try
-      {
-        
-        string query = "UPDATE Pacientes SET fechaNac = '" + newFechaNac + "' WHERE dni='" + this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Direccion cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar fecha de nacimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-    }
-
-    public void CambiarObraSocial(int newObraSocial)
-    {
-      try
-      {
-        
-        string query = "UPDATE Pacientes SET obraSocial = " + newObraSocial + " WHERE dni= '" + this.Dni + "'";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Obra Social cambiada con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar Obra Social", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
+    
 
     public void BuscarHistoriaClinica()
     {

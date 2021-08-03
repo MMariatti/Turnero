@@ -147,7 +147,7 @@ namespace Turnero.Classes
 
     private void getAttr()
     {
-      string query = "SELECT * FROM Medicos WHERE legajo = " + IdMedico + "";
+      string query = "SELECT * FROM Medicos WHERE legajo = " + IdMedico + " AND activo = 1 ";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       Nombre = tabla.Rows[0]["nombre"].ToString();
       Apellido = tabla.Rows[0]["apellido"].ToString();
@@ -164,7 +164,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "INSERT INTO Medicos(apellido, nombre, idEspecialidad, horaInicioAtencion, horaFinAtencion, intervaloTurnos, porcentajeDescuento) " + "VALUES('" + this.Apellido + "','" + this.Nombre + "', " + this.Especialidad + ", '" + this.horaInicio.ToString("HH:mm:ss") + "','" + this.horaFin.ToString("HH:mm:ss") + "'," + this.MinutosIntervalo + "," + this.PorcentajeDesc + ")";
+        string query = "INSERT INTO Medicos(apellido, nombre, idEspecialidad, horaInicioAtencion, horaFinAtencion, intervaloTurnos, porcentajeDescuento, activo) " + "VALUES('" + this.Apellido + "','" + this.Nombre + "', " + this.Especialidad + ", '" + this.horaInicio.ToString("HH:mm:ss") + "','" + this.horaFin.ToString("HH:mm:ss") + "'," + this.MinutosIntervalo + "," + this.PorcentajeDesc + ", 1)";
         BDHelper.ConsultarSQL(query);
 
       }
@@ -177,7 +177,7 @@ namespace Turnero.Classes
     public static DataTable GetAll()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT * FROM Medicos";
+      string query = "SELECT * FROM Medicos WHERE activo = 1";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -193,7 +193,7 @@ namespace Turnero.Classes
     public static DataTable GetAllEspecifico()
     {
       DataTable tabla = new DataTable();
-      string query = "SELECT M.legajo AS Legajo, M.apellido AS Apellido, M.nombre AS Nombre, E.descripcion AS Especialidad,M.horaInicioAtencion AS Inicio, M.horaFinAtencion AS Fin, M.intervaloTurnos AS Intervalo, M.porcentajeDescuento AS Comision FROM Medicos M , Especialidades E WHERE M.idEspecialidad = E.idEspecialidad";
+      string query = "SELECT M.legajo AS Legajo, M.apellido AS Apellido, M.nombre AS Nombre, E.descripcion AS Especialidad,M.horaInicioAtencion AS Inicio, M.horaFinAtencion AS Fin, M.intervaloTurnos AS Intervalo, M.porcentajeDescuento AS Comision FROM Medicos M , Especialidades E WHERE M.idEspecialidad = E.idEspecialidad AND activo =1";
       try
       {
         tabla = BDHelper.ConsultarSQL(query);
@@ -209,7 +209,7 @@ namespace Turnero.Classes
 
     public Medicos GetMedico(int idM)
     {
-      string query = "SELECT * FROM Medicos WHERE legajo = " + idM;
+      string query = "SELECT * FROM Medicos WHERE legajo = " + idM +"and activo=1";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
@@ -244,53 +244,11 @@ namespace Turnero.Classes
 
 
 
-    public void CambiarNombre(string newNombre)
-    {
-      try
-      {
-        string query = "UPDATE Medicos SET nombre = '" + newNombre + "' WHERE legajo = " + this.IdMedico + " ";
-        BDHelper.ConsultarSQL(query);
-        this.Nombre = newNombre;
-        MessageBox.Show("Nombre cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error al cambiar nombre", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarApellido(string newApellido)
-    {
-      try
-      {
-        string query = "UPDATE Medicos SET apellido = '" + newApellido + "' WHERE legajo = " + this.IdMedico + "";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Apellido cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        this.Apellido = newApellido;
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
-
-    public void CambiarEspecialidad(int newEspecialidad)
-    {
-      try
-      {
-        string query = "UPDATE Medicos SET idEspecialidad = " + newEspecialidad + " WHERE legajo = " + this.IdMedico + "";
-        BDHelper.ConsultarSQL(query);
-        MessageBox.Show("Especialidad cambiado con exito", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.Data.ToString(), "Error!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-    }
+  
 
     public void BorrarMedico()
     {
-      string query = "DELETE FROM Medicos WHERE legajo = " + IdMedico + " ";
+      string query = "UPDATE Medicos SET activo = 0 WHERE legajo = " + IdMedico + " ";
       try
       {
         BDHelper.ConsultarSQL(query);
@@ -302,6 +260,19 @@ namespace Turnero.Classes
       }
 
 
+    }
+
+    public void BorrarTurnosMedico()
+    {
+      string query = "UPDATE Turnos SET activo = 0 WHERE medico = " + IdMedico + "";
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+      }
+      catch (Exception )
+      {
+
+      }
     }
   }
 }

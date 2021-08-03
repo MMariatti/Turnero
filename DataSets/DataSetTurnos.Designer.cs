@@ -923,7 +923,7 @@ FROM            Medicos AS M INNER JOIN
                          Especialidades AS E ON T.idEspecialidad = E.idEspecialidad INNER JOIN
                          Practicas AS X ON T.idPractica = X.idPractica INNER JOIN
                          Pacientes AS P ON T.paciente = P.dni ON M.legajo = T.medico
-WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.medico = @medico)";
+WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.medico = @medico) AND (T.activo = 1)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@medico", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "medico", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

@@ -17,7 +17,7 @@ FROM            Turnos AS T INNER JOIN
                          Medicos AS M ON T.medico = M.legajo INNER JOIN
                          Especialidades AS E ON T.idEspecialidad = E.idEspecialidad INNER JOIN
                          Practicas AS P ON T.idPractica = P.idPractica
-WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.confirmado = 1)
+WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.confirmado = 1) AND (T.activo = 1)
 ORDER BY T.medico</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -31,8 +31,8 @@ ORDER BY T.medico</CommandText>
               <Mapping SourceColumn="Especialidad" DataSetColumn="Especialidad" />
               <Mapping SourceColumn="Practica" DataSetColumn="Practica" />
               <Mapping SourceColumn="Costo" DataSetColumn="Costo" />
-              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
               <Mapping SourceColumn="NombreM" DataSetColumn="NombreM" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe1" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -44,7 +44,7 @@ ORDER BY T.medico</CommandText>
   <xs:element name="DataSetCaja" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetCaja" msprop:Generator_UserDSName="DataSetCaja">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Caja" msprop:Generator_TableClassName="CajaDataTable" msprop:Generator_TableVarName="tableCaja" msprop:Generator_RowChangedName="CajaRowChanged" msprop:Generator_TablePropName="Caja" msprop:Generator_RowDeletingName="CajaRowDeleting" msprop:Generator_RowChangingName="CajaRowChanging" msprop:Generator_RowEvHandlerName="CajaRowChangeEventHandler" msprop:Generator_RowDeletedName="CajaRowDeleted" msprop:Generator_RowClassName="CajaRow" msprop:Generator_UserTableName="Caja" msprop:Generator_RowEvArgName="CajaRowChangeEvent">
+        <xs:element name="Caja" msprop:Generator_TableClassName="CajaDataTable" msprop:Generator_TableVarName="tableCaja" msprop:Generator_TablePropName="Caja" msprop:Generator_RowDeletingName="CajaRowDeleting" msprop:Generator_RowChangingName="CajaRowChanging" msprop:Generator_RowEvHandlerName="CajaRowChangeEventHandler" msprop:Generator_RowDeletedName="CajaRowDeleted" msprop:Generator_UserTableName="Caja" msprop:Generator_RowChangedName="CajaRowChanged" msprop:Generator_RowEvArgName="CajaRowChangeEvent" msprop:Generator_RowClassName="CajaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" />
@@ -79,6 +79,7 @@ ORDER BY T.medico</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Importe1" msdata:ReadOnly="true" msdata:Caption="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte1" msprop:Generator_ColumnPropNameInRow="Importe1" msprop:Generator_ColumnPropNameInTable="Importe1Column" msprop:Generator_UserColumnName="Importe1" type="xs:float" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

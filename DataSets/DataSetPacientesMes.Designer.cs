@@ -983,7 +983,7 @@ FROM            Pacientes AS P INNER JOIN
                          Turnos AS T ON P.dni = T.paciente INNER JOIN
                          Medicos AS M ON T.medico = M.legajo CROSS JOIN
                          Meses AS Me
-WHERE        (MONTH(T.fecha) = @Mes) AND (Me.id = @Mes) AND (YEAR(T.fecha) = YEAR(GETDATE())) AND (T.medico = @Medico)
+WHERE        (MONTH(T.fecha) = @Mes) AND (Me.id = @Mes) AND (YEAR(T.fecha) = YEAR(GETDATE())) AND (T.medico = @Medico) AND (T.activo = 1)
 GROUP BY P.nombre, P.apellido, T.paciente, M.apellido, M.nombre, Me.mes, T.fecha";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mes", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

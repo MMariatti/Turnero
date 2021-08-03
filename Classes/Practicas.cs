@@ -189,7 +189,7 @@ namespace Turnero.Classes
     {
       try
       {
-        string query = "INSERT INTO Practicas(descripcion, costo, idEspecialidad) " + "VALUES('" + this. descripcion+ "'," + this.costo +","+this.IdEspecialidad+")";
+        string query = "INSERT INTO Practicas(descripcion, costo, idEspecialidad, activo) " + "VALUES('" + this. descripcion+ "'," + this.costo +","+this.IdEspecialidad+", 1)";
         BDHelper.ConsultarSQL(query);
         MessageBox.Show("La practica " + this.descripcion + " con un costo de " + this.costo + " ha sido cargada correctamente", "Exito!",MessageBoxButtons.OK,MessageBoxIcon.Information);
       }
@@ -218,9 +218,23 @@ namespace Turnero.Classes
       }
 
     }
-     
+
+    public void BorrarPractica()
+    {
+      string query = "UPDATE Practica SET activo = 0 WHERE legajo = " + IdPractica + " ";
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+        MessageBox.Show("Practica borrada", "Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Primero debe borrar todos los turnos que tengan esta practica asignada", "Error!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
 
 
-    
+    }
+
+
   }
 }

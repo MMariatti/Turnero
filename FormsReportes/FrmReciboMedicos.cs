@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Turnero.DataSets;
-using Turnero.DataSets.DataSetFacturacionMedicosTableAdapters;
+using Turnero.DataSets.DataSetFacturacionXMedicoTableAdapters;
 using Turnero.Classes;
 using Microsoft.Reporting.WinForms;
 
@@ -36,10 +36,10 @@ namespace Turnero.FormsReportes
     {
       if (cmbMedicos.SelectedIndex != -1)
       {
-        var myDataTable = new DataSetFacturacionMedicos.FacturacionMedicoDataTable();
-        var myTableAdapter = new FacturacionMedicoTableAdapter();
+        var myDataTable = new DataSetFacturacionXMedico.FacturacionXmedicoDataTable();
+        var myTableAdapter = new FacturacionXmedicoTableAdapter();
         myTableAdapter.Fill(myDataTable, Convert.ToInt32(cmbMedicos.SelectedValue.ToString()));
-        var rds = new ReportDataSource("DataSet1", myDataTable as DataTable);
+        var rds = new ReportDataSource("DsFacturacionXmedico", myDataTable as DataTable);
         reportViewer1.LocalReport.DataSources.Clear();
         reportViewer1.LocalReport.DataSources.Add(rds);
         reportViewer1.RefreshReport();

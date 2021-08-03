@@ -31,6 +31,11 @@ namespace Turnero.Forms
       Medicos medico = new Medicos(idMedico);
       medico.BorrarMedico();
     }
+    private void EliminarTurnosMedico(int idMedico)
+    {
+      Medicos medico = new Medicos(idMedico);
+      medico.BorrarTurnosMedico();
+    }
 
 
     private void FrmMedicos_Load(object sender, EventArgs e)
@@ -95,7 +100,7 @@ namespace Turnero.Forms
 
         if (MessageBox.Show("¿Está seguro que desea eliminar el medico  seleccionado? ", "Eliminar Medico", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
         {
-
+          EliminarTurnosMedico(legajo);
           EliminarMedico(legajo);
 
         }

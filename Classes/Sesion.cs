@@ -104,6 +104,20 @@ namespace Turnero.Classes
         return tabla;
       }
     }
+
+    public void Logs()
+    {
+      string query = "INSERT INTO Logs(fecha, time, usuario) VALUES(GETDATE(),CONVERT(TIME(6),GETDATE()), '"+this.usuario+"')";
+      try
+      {
+        BDHelper.ConsultarSQL(query);
+      }
+      catch (Exception)
+      {
+
+        throw;
+      }
+    }
   }
 
 

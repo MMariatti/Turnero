@@ -19,8 +19,10 @@ namespace Turnero.FormsReportes
 
     private void FrmCobroMedicos_Load(object sender, EventArgs e)
     {
+      // TODO: esta línea de código carga datos en la tabla 'dataSetCajaV2.Caja' Puede moverla o quitarla según sea necesario.
+      this.cajaTableAdapter1.Fill(this.dataSetCajaV2.Caja);
       // TODO: esta línea de código carga datos en la tabla 'dataSetCaja.Caja' Puede moverla o quitarla según sea necesario.
-      this.cajaTableAdapter.Fill(this.dataSetCaja.Caja);
+      this.cajaTableAdapter1.Fill(this.dataSetCajaV2.Caja);
 
       this.reportViewer1.RefreshReport();
     }

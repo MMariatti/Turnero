@@ -18,6 +18,7 @@ namespace Turnero.Forms
     {
       InitializeComponent();
     }
+    // METODOS
 
     private void MostrarTurnosDelDia()
     {
@@ -41,6 +42,68 @@ namespace Turnero.Forms
         }
       }
     }
+    private void VerTurnosXMedico(DateTime fecha, int idMedico)
+    {
+      DataTable tabla = new DataTable();
+      tabla = Turnos.GetDiaMedico(fecha, idMedico);
+      GrdTurnos.DataSource = tabla;
+      GrdTurnos.Columns[10].Visible = false;
+      GrdTurnos.Columns[11].Visible = false;
+      GrdTurnos.Columns[12].Visible = false;
+
+      foreach (DataGridViewRow row in GrdTurnos.Rows)
+      {
+
+        if (Convert.ToBoolean(row.Cells[11].Value.ToString()) && Convert.ToBoolean(row.Cells[12].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.Red;
+        }
+        else if (Convert.ToBoolean(row.Cells[11].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.LightBlue;
+        }
+      }
+
+
+    }
+    private void VerTurnos(DateTime fecha)
+    {
+      DataTable tabla = new DataTable();
+      tabla = Turnos.GetAllEspecifico(fecha);
+      GrdTurnos.DataSource = tabla;
+      GrdTurnos.Columns[10].Visible = false;
+      GrdTurnos.Columns[11].Visible = false;
+      GrdTurnos.Columns[12].Visible = false;
+
+      foreach (DataGridViewRow row in GrdTurnos.Rows)
+      {
+
+        if (Convert.ToBoolean(row.Cells[11].Value.ToString()) && Convert.ToBoolean(row.Cells[12].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.Red;
+        }
+        else if (Convert.ToBoolean(row.Cells[11].Value.ToString()))
+        {
+          row.DefaultCellStyle.BackColor = Color.LightBlue;
+        }
+      }
+
+    }
+
+    public void ConfirmarTurno(DateTime fechaT, DateTime horaT, int legajoM)
+    {
+      Turnos turno = new Turnos(fechaT, horaT, legajoM);
+      turno.Confirmar();
+    }
+
+    public void EliminarTurno(DateTime fechaT, DateTime horaT, int legajoM, string paciente)
+    {
+      Turnos turno = new Turnos(fechaT, horaT, legajoM, paciente);
+      turno.CopiarTurnoBorrado();
+      turno.BorrarTurno();
+    }
+
+    // TOOLS STRIP
 
     private void gestionarMedicosToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -84,70 +147,39 @@ namespace Turnero.Forms
       frmTurnos.Show();
     }
 
-    private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+    private void verHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Application.Exit();
+      FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
+      frmHistoriaClinica.Show();
     }
 
-    private void VerTurnosXMedico(DateTime fecha, int idMedico)
+    private void planillaTurnosDelDiaToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      DataTable tabla = new DataTable();
-      tabla = Turnos.GetDiaMedico(fecha, idMedico);
-      GrdTurnos.DataSource = tabla;
-      GrdTurnos.Columns[10].Visible = false;
-      GrdTurnos.Columns[11].Visible = false;
-      GrdTurnos.Columns[12].Visible = false;
-
-      foreach (DataGridViewRow row in GrdTurnos.Rows)
-      {
-
-        if (Convert.ToBoolean(row.Cells[11].Value.ToString()) && Convert.ToBoolean(row.Cells[12].Value.ToString()))
-        {
-          row.DefaultCellStyle.BackColor = Color.Red;
-        }
-        else if (Convert.ToBoolean(row.Cells[11].Value.ToString()))
-        {
-          row.DefaultCellStyle.BackColor = Color.LightBlue;
-        }
-      }
-
-
+      FrmPlanillaTurnos frmPlanillaTurnos = new FrmPlanillaTurnos();
+      frmPlanillaTurnos.Show();
     }
-   private void VerTurnos(DateTime fecha)
+
+    private void cierreDeCajaToolStripMenuItem1_Click(object sender, EventArgs e)
     {
-      DataTable tabla = new DataTable();
-      tabla = Turnos.GetAllEspecifico(fecha);
-      GrdTurnos.DataSource = tabla;
-      GrdTurnos.Columns[10].Visible = false;
-      GrdTurnos.Columns[11].Visible = false;
-      GrdTurnos.Columns[12].Visible = false;
+      FrmCobroMedicos frmCobroMedicos = new FrmCobroMedicos();
+      frmCobroMedicos.Show();
+    }
 
-      foreach (DataGridViewRow row in GrdTurnos.Rows)
-      {
+    private void generarFacturaPorMedicoToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+      FrmReciboMedicos frmReciboMedicos = new FrmReciboMedicos();
+      frmReciboMedicos.Show();
+    }
 
-        if (Convert.ToBoolean(row.Cells[11].Value.ToString()) && Convert.ToBoolean(row.Cells[12].Value.ToString()))
-        {
-          row.DefaultCellStyle.BackColor = Color.Red;
-        }
-        else if (Convert.ToBoolean(row.Cells[11].Value.ToString()))
-        {
-          row.DefaultCellStyle.BackColor = Color.LightBlue;
-        }
-      }
+    private void pacientesDelMesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      FrmPacientesXMes frmPacientesXMes = new FrmPacientesXMes();
+      frmPacientesXMes.Show();
 
     }
 
-    public void ConfirmarTurno(DateTime fechaT, DateTime horaT, int legajoM)
-    {
-      Turnos turno = new Turnos(fechaT,horaT,legajoM);
-      turno.Confirmar();
-    }
+    // FORM LOAD
 
-    public void EliminarTurno(DateTime fechaT, DateTime horaT, int legajoM)
-    {
-      Turnos turno = new Turnos(fechaT, horaT, legajoM);
-      turno.BorrarTurno();
-    }
     private void FrmMain_Load(object sender, EventArgs e)
     {
       MostrarTurnosDelDia();
@@ -157,11 +189,14 @@ namespace Turnero.Forms
       CmbMedicos.SelectedIndex = -1;
     }
 
-    private void verHistoriaClinicaToolStripMenuItem_Click(object sender, EventArgs e)
+    //FORM CLOSING
+
+    private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
     {
-      FrmHistoriaClinica frmHistoriaClinica = new FrmHistoriaClinica();
-      frmHistoriaClinica.Show();
+      Application.Exit();
     }
+
+   //EVENTOS
 
     private void btnActualizar_Click(object sender, EventArgs e)
     {
@@ -201,28 +236,12 @@ namespace Turnero.Forms
         DateTime hora = DateTime.Parse(GrdTurnos.SelectedRows[0].Cells[1].Value.ToString());
        
         int medico = Convert.ToInt32(GrdTurnos.SelectedRows[0].Cells[10].Value);
-
+        
         ConfirmarTurno(fecha, hora, medico);
       }
     }
 
-    private void planillaTurnosDelDiaToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      FrmPlanillaTurnos frmPlanillaTurnos = new FrmPlanillaTurnos();
-      frmPlanillaTurnos.Show();
-    }
-
-    private void cierreDeCajaToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      FrmCobroMedicos frmCobroMedicos = new FrmCobroMedicos();
-      frmCobroMedicos.Show();
-    }
-
-    private void generarFacturaPorMedicoToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      FrmReciboMedicos frmReciboMedicos = new FrmReciboMedicos();
-      frmReciboMedicos.Show();
-    }
+   
 
     private void Btn_EliminarTurno_Click(object sender, EventArgs e)
     {
@@ -234,12 +253,13 @@ namespace Turnero.Forms
             DateTime hora = DateTime.Parse(GrdTurnos.SelectedRows[0].Cells[1].Value.ToString());
 
             int medico = Convert.ToInt32(GrdTurnos.SelectedRows[0].Cells[10].Value);
+            string paciente = GrdTurnos.SelectedRows[0].Cells[7].Value.ToString();
 
-          if (MessageBox.Show("¿Está seguro que desea eliminar el turno seleccionado? ", "Eliminar Turno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        if (MessageBox.Show("¿Está seguro que desea eliminar el turno seleccionado? ", "Eliminar Turno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
           {
             
 
-            EliminarTurno(fecha, hora, medico);
+            EliminarTurno(fecha, hora, medico, paciente);
 
           }
         }
@@ -315,11 +335,6 @@ namespace Turnero.Forms
 
     }
 
-    private void pacientesDelMesToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      FrmPacientesXMes frmPacientesXMes = new FrmPacientesXMes();
-      frmPacientesXMes.Show();
-
-    }
+   
   }
 }

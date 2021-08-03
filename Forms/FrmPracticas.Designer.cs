@@ -40,6 +40,7 @@
       this.Btn_ModificarPractica = new System.Windows.Forms.Button();
       this.label3 = new System.Windows.Forms.Label();
       this.cmbEspecialidades = new System.Windows.Forms.ComboBox();
+      this.btnEliminarPractica = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.GrdPracticas)).BeginInit();
       this.SuspendLayout();
       // 
@@ -75,12 +76,12 @@
       this.GrdPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.GrdPracticas.Location = new System.Drawing.Point(26, 21);
       this.GrdPracticas.Name = "GrdPracticas";
-      this.GrdPracticas.Size = new System.Drawing.Size(421, 150);
+      this.GrdPracticas.Size = new System.Drawing.Size(554, 150);
       this.GrdPracticas.TabIndex = 0;
       // 
       // BtnActualizar
       // 
-      this.BtnActualizar.Location = new System.Drawing.Point(372, 196);
+      this.BtnActualizar.Location = new System.Drawing.Point(505, 202);
       this.BtnActualizar.Name = "BtnActualizar";
       this.BtnActualizar.Size = new System.Drawing.Size(75, 23);
       this.BtnActualizar.TabIndex = 1;
@@ -90,7 +91,7 @@
       // 
       // BtnSalir
       // 
-      this.BtnSalir.Location = new System.Drawing.Point(372, 348);
+      this.BtnSalir.Location = new System.Drawing.Point(505, 348);
       this.BtnSalir.Name = "BtnSalir";
       this.BtnSalir.Size = new System.Drawing.Size(75, 23);
       this.BtnSalir.TabIndex = 7;
@@ -143,11 +144,22 @@
       this.cmbEspecialidades.Size = new System.Drawing.Size(172, 21);
       this.cmbEspecialidades.TabIndex = 4;
       // 
+      // btnEliminarPractica
+      // 
+      this.btnEliminarPractica.Location = new System.Drawing.Point(347, 348);
+      this.btnEliminarPractica.Name = "btnEliminarPractica";
+      this.btnEliminarPractica.Size = new System.Drawing.Size(100, 23);
+      this.btnEliminarPractica.TabIndex = 9;
+      this.btnEliminarPractica.Text = "Eliminar Practica";
+      this.btnEliminarPractica.UseVisualStyleBackColor = true;
+      this.btnEliminarPractica.Click += new System.EventHandler(this.btnEliminarPractica_Click);
+      // 
       // FrmPracticas
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(492, 392);
+      this.ClientSize = new System.Drawing.Size(607, 389);
+      this.Controls.Add(this.btnEliminarPractica);
       this.Controls.Add(this.cmbEspecialidades);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.Btn_ModificarPractica);
@@ -183,5 +195,6 @@
     protected internal System.Windows.Forms.DataGridView GrdPracticas;
     private System.Windows.Forms.Label label3;
     protected internal System.Windows.Forms.ComboBox cmbEspecialidades;
+    private System.Windows.Forms.Button btnEliminarPractica;
   }
 }

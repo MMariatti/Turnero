@@ -65,7 +65,7 @@
       // 
       // reportViewer1
       // 
-      this.reportViewer1.LocalReport.ReportEmbeddedResource = "Turnero.Reportes.RptFacturacionMedicos.rdlc";
+      this.reportViewer1.LocalReport.ReportEmbeddedResource = "Turnero.Reportes.RptFacturacionXMedico.rdlc";
       this.reportViewer1.Location = new System.Drawing.Point(-3, 41);
       this.reportViewer1.Name = "reportViewer1";
       this.reportViewer1.ServerReport.BearerToken = null;

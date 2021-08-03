@@ -295,6 +295,8 @@ namespace Turnero.DataSets {
             
             private global::System.Data.DataColumn columnNombreM;
             
+            private global::System.Data.DataColumn columnImporte1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CajaDataTable() {
@@ -394,6 +396,14 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Importe1Column {
+                get {
+                    return this.columnImporte1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CajaRow AddCajaRow(System.DateTime Fecha, System.TimeSpan Hora, string Medico, string Especialidad, string Practica, int Costo, decimal Importe, string NombreM) {
+            public CajaRow AddCajaRow(System.DateTime Fecha, System.TimeSpan Hora, string Medico, string Especialidad, string Practica, int Costo, decimal Importe, string NombreM, float Importe1) {
                 CajaRow rowCajaRow = ((CajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Fecha,
@@ -439,7 +449,8 @@ namespace Turnero.DataSets {
                         Practica,
                         Costo,
                         Importe,
-                        NombreM};
+                        NombreM,
+                        Importe1};
                 rowCajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCajaRow);
                 return rowCajaRow;
@@ -470,6 +481,7 @@ namespace Turnero.DataSets {
                 this.columnCosto = base.Columns["Costo"];
                 this.columnImporte = base.Columns["Importe"];
                 this.columnNombreM = base.Columns["NombreM"];
+                this.columnImporte1 = base.Columns["Importe1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +503,8 @@ namespace Turnero.DataSets {
                 base.Columns.Add(this.columnImporte);
                 this.columnNombreM = new global::System.Data.DataColumn("NombreM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombreM);
+                this.columnImporte1 = new global::System.Data.DataColumn("Importe1", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporte1);
                 this.columnFecha.AllowDBNull = false;
                 this.columnHora.AllowDBNull = false;
                 this.columnMedico.AllowDBNull = false;
@@ -503,6 +517,8 @@ namespace Turnero.DataSets {
                 this.columnImporte.ReadOnly = true;
                 this.columnNombreM.AllowDBNull = false;
                 this.columnNombreM.MaxLength = 50;
+                this.columnImporte1.ReadOnly = true;
+                this.columnImporte1.Caption = "Importe";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -738,6 +754,22 @@ namespace Turnero.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public float Importe1 {
+                get {
+                    try {
+                        return ((float)(this[this.tableCaja.Importe1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe1\' de la tabla \'Caja\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCaja.Importe1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsImporteNull() {
                 return this.IsNull(this.tableCaja.ImporteColumn);
             }
@@ -746,6 +778,18 @@ namespace Turnero.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetImporteNull() {
                 this[this.tableCaja.ImporteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsImporte1Null() {
+                return this.IsNull(this.tableCaja.Importe1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetImporte1Null() {
+                this[this.tableCaja.Importe1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -914,8 +958,8 @@ namespace Turnero.DataSets.DataSetCajaTableAdapters {
             tableMapping.ColumnMappings.Add("Especialidad", "Especialidad");
             tableMapping.ColumnMappings.Add("Practica", "Practica");
             tableMapping.ColumnMappings.Add("Costo", "Costo");
-            tableMapping.ColumnMappings.Add("Importe", "Importe");
             tableMapping.ColumnMappings.Add("NombreM", "NombreM");
+            tableMapping.ColumnMappings.Add("Importe", "Importe1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -937,7 +981,7 @@ FROM            Turnos AS T INNER JOIN
                          Medicos AS M ON T.medico = M.legajo INNER JOIN
                          Especialidades AS E ON T.idEspecialidad = E.idEspecialidad INNER JOIN
                          Practicas AS P ON T.idPractica = P.idPractica
-WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.confirmado = 1)
+WHERE        (T.fecha = CONVERT(date, GETDATE())) AND (T.confirmado = 1) AND (T.activo = 1)
 ORDER BY T.medico";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

@@ -66,7 +66,7 @@ namespace Turnero.Forms
         if (loguear(TxtUsuario.Text, TxtContra.Text))
         {
           Sesion sesion = new Sesion(usuarioActual,contraseñaActual, rolActual);
-
+          sesion.Logs();
           //Logueo satisfactorio, creacion de instancia de menu principal
           FrmMain frmMainMenu = new FrmMain();
             

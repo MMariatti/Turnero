@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Classes\DBHelper.cs" />
     <Compile Include="Classes\Especialidades.cs" />
+    <Compile Include="Classes\ItemsComboBox.cs" />
     <Compile Include="Classes\Medicos.cs" />
     <Compile Include="Classes\Meses.cs" />
     <Compile Include="Classes\ObrasSociales.cs" />
@@ -100,10 +101,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetCaja.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\DataSetFacturacionMedicos.Designer.cs">
+    <Compile Include="DataSets\DataSetCajaV2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+      <DependentUpon>DataSetCajaV2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DataSetFacturacionXMedico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetFacturacionXMedico.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\DataSetHistoriaClinica.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -282,6 +288,7 @@
     <EmbeddedResource Include="FormsReportes\FrmReciboMedicos.resx">
       <DependentUpon>FrmReciboMedicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptCierreCajaV2.rdlc" />
     <EmbeddedResource Include="Forms\FrmActualizarPractica.resx">
       <DependentUpon>FrmActualizarPractica.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,7 +356,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Reportes\RptCierreCajardlc.rdlc" />
-    <EmbeddedResource Include="Reportes\RptFacturacionMedicos.rdlc" />
+    <EmbeddedResource Include="Reportes\RptFacturacionXMedico.rdlc" />
     <EmbeddedResource Include="Reportes\RptHistoriaClinica.rdlc" />
     <EmbeddedResource Include="Reportes\RptPacientesXMes.rdlc" />
     <EmbeddedResource Include="Reportes\RptTurnosXmedico.rdlc" />
@@ -364,16 +371,27 @@
     <None Include="DataSets\DataSetCaja.xss">
       <DependentUpon>DataSetCaja.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\DataSetFacturacionMedicos.xsc">
-      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+    <None Include="DataSets\DataSetCajaV2.xsc">
+      <DependentUpon>DataSetCajaV2.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\DataSetFacturacionMedicos.xsd">
+    <None Include="DataSets\DataSetCajaV2.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetFacturacionMedicos.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetCajaV2.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSets\DataSetFacturacionMedicos.xss">
-      <DependentUpon>DataSetFacturacionMedicos.xsd</DependentUpon>
+    <None Include="DataSets\DataSetCajaV2.xss">
+      <DependentUpon>DataSetCajaV2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetFacturacionXMedico.xsc">
+      <DependentUpon>DataSetFacturacionXMedico.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSetFacturacionXMedico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetFacturacionXMedico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSetFacturacionXMedico.xss">
+      <DependentUpon>DataSetFacturacionXMedico.xsd</DependentUpon>
     </None>
     <None Include="DataSets\DataSetHistoriaClinica.xsc">
       <DependentUpon>DataSetHistoriaClinica.xsd</DependentUpon>

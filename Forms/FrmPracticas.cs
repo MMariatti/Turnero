@@ -38,7 +38,11 @@ namespace Turnero.Forms
         MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
-
+    private void EliminarPractica(int idPractica)
+    {
+      Practicas practica = new Practicas(idPractica);
+      practica.BorrarPractica();
+    }
     private void FrmPracticas_Load(object sender, EventArgs e)
     {
       MostrarPracticas();
@@ -106,5 +110,26 @@ namespace Turnero.Forms
         return;
       }
     }
+
+    private void btnEliminarPractica_Click(object sender, EventArgs e)
+    {
+      if(GrdPracticas.SelectedRows.Count != 0)
+      {
+        int idpractica = Convert.ToInt32(GrdPracticas.SelectedRows[0].Cells[0].Value.ToString());
+        if(MessageBox.Show("¿Está seguro que desea eliminar la practica seleccionada? ", "Eliminar Practica", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+
+         EliminarPractica(idpractica);
+
+        }
+      }
+
+      else
+      {
+        MessageBox.Show("Por favor, seleccione el medico que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+
+    }
   }
 }
+
