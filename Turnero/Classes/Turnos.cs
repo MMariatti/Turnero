@@ -126,7 +126,7 @@ namespace Turnero.Classes
 
     private  void GetAll()
     {
-      string query = "SELECT * FROM Turnos";
+      string query = "SELECT * FROM Turnos WHERE activo=1";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       fechaTurno = DateTime.Parse(tabla.Rows[0]["fecha"].ToString());
       horaTurno = DateTime.Parse(tabla.Rows[0]["hora"].ToString());

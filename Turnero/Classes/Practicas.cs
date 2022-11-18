@@ -84,17 +84,36 @@ namespace Turnero.Classes
       }
     }
 
+    private int activo;
+
+    public int Activo
+    {
+      get { return this.activo; }
+      private set
+      {
+        if (value >= 0)
+        {
+          this.activo = value;
+        }
+        else
+        {
+          throw new ArgumentNullException();
+        }
+      }
+    }
+
     public  Practicas()
     {
 
     }
 
-    public Practicas(int idPractica, string descripcion,int costo, int idEspecialidad)
+    public Practicas(int idPractica, string descripcion,int costo, int idEspecialidad, int activo)
     {
       this.IdPractica = idPractica;
       this.Descripcion = descripcion;
       this.Costo = costo;
       this.IdEspecialidad = idEspecialidad;
+      this.Activo = activo;
 
     }
     public Practicas(string descripcion, int costo, int idEspecialidad)
@@ -111,7 +130,7 @@ namespace Turnero.Classes
 
     private void GetAttr()
     {
-      string query = "SELECT * FROM Practicas WHERE idPractica = " + idPractica + "";
+      string query = "SELECT * FROM Practicas WHERE activo=1 AND idPractica = " + idPractica + "";
       DataTable tabla = BDHelper.ConsultarSQL(query);
       this.Descripcion = tabla.Rows[0]["descripcion"].ToString();
       this.Costo = (int)tabla.Rows[0]["costo"];
@@ -124,7 +143,7 @@ namespace Turnero.Classes
 
     public static DataTable GetAllEspecifico()
     {
-      string query = "SELECT P.idPractica as Codigo, P.descripcion AS Nombre, E.descripcion AS Especialidad, P.costo AS Costo From Practicas P, Especialidades E WHERE P.idEspecialidad = E.idEspecialidad ORDER BY P.descripcion";
+      string query = "SELECT P.idPractica as Codigo, P.descripcion AS Nombre, E.descripcion AS Especialidad, P.costo AS Costo From Practicas P, Especialidades E WHERE P.idEspecialidad = E.idEspecialidad AND P.activo =1 ORDER BY P.descripcion";
       DataTable tabla = new DataTable();
       try
       {
@@ -142,7 +161,7 @@ namespace Turnero.Classes
 
     public static DataTable GetAll()
     {
-      string query = "SELECT * From Practicas";
+      string query = "SELECT * From Practicas WHERE activo =1 ";
       DataTable tabla = new DataTable();
       try
       {
@@ -159,7 +178,7 @@ namespace Turnero.Classes
 
     public static DataTable GetAll(int idEspecialidad)
     {
-      string query = "SELECT * From Practicas WHERE idEspecialidad = "+idEspecialidad+" ORDER BY descripcion";
+      string query = "SELECT * From Practicas WHERE activo=1 AND idEspecialidad = "+idEspecialidad+" ORDER BY descripcion";
       DataTable tabla = new DataTable();
       try
       {
@@ -177,7 +196,7 @@ namespace Turnero.Classes
 
     public Practicas GetPracticas(int idPractica)
     {
-      string query = "SELECT * FROM Practicas WHERE idPractica = " + idPractica;
+      string query = "SELECT * FROM Practicas WHERE activo=1 AND idPractica = " + idPractica;
       DataTable tabla = BDHelper.ConsultarSQL(query);
       DataRowCollection filas = tabla.Rows;
       DataRow fila = filas[0];
@@ -221,7 +240,7 @@ namespace Turnero.Classes
 
     public void BorrarPractica()
     {
-      string query = "UPDATE Practica SET activo = 0 WHERE legajo = " + IdPractica + " ";
+      string query = "UPDATE Practicas SET activo = 0 WHERE idPractica = " + IdPractica + " ";
       try
       {
         BDHelper.ConsultarSQL(query);

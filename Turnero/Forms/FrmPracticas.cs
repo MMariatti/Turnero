@@ -126,7 +126,7 @@ namespace Turnero.Forms
 
       else
       {
-        MessageBox.Show("Por favor, seleccione el medico que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        MessageBox.Show("Por favor, seleccione la practica que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
 
     }
