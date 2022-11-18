@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 
 namespace Turnero.Classes
 {
@@ -12,8 +13,9 @@ namespace Turnero.Classes
   {
     //CONSTRUCTOR DE LA CLASE 
 
-    //private static readonly string cadenaConexion = @"Data Source=MARKY\SQLMARCOS;Initial Catalog=TurneroDB;Integrated Security=True";
-    private static readonly string cadenaConexion = @"Data Source=RECEPCION-PC\SQLEXPRESS;Initial Catalog=TurneroDB;Integrated Security=True";
+    private static readonly string cadenaConexion = @"Data Source=MARKY\SQLMARCOS;Initial Catalog=TurneroDB;Integrated Security=True";
+    //private static readonly string cadenaConexion = @"Data Source=DESKTOP-J994QKV;Initial Catalog=TurneroDB;Integrated Security=True";
+    // private static readonly string cadenaConexion = @"Data Source=RECEPCION-PC\SQLEXPRESS;Initial Catalog=TurneroDB;Integrated Security=True";
     private static SqlConnection conexion;
     private static SqlCommand comando;
     //PROPIEDAD QUE IMPLEMENTA SET Y GET DE CADA ATRIBUTO

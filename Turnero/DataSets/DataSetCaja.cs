@@ -2,8 +2,8 @@
 {
 
 
-  partial class DataSetCaja
-  {
-  }
+    partial class DataSetCaja
+    {
+    }
 }
 

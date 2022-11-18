@@ -83,7 +83,7 @@
             this.informwaToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(1029, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -237,7 +237,7 @@
       this.GrdTurnos.AllowUserToDeleteRows = false;
       this.GrdTurnos.BackgroundColor = System.Drawing.SystemColors.Menu;
       this.GrdTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.GrdTurnos.Location = new System.Drawing.Point(244, 79);
+      this.GrdTurnos.Location = new System.Drawing.Point(278, 77);
       this.GrdTurnos.Name = "GrdTurnos";
       this.GrdTurnos.ReadOnly = true;
       this.GrdTurnos.Size = new System.Drawing.Size(767, 290);
@@ -257,7 +257,7 @@
       // 
       // btnActualizar
       // 
-      this.btnActualizar.Location = new System.Drawing.Point(912, 385);
+      this.btnActualizar.Location = new System.Drawing.Point(946, 385);
       this.btnActualizar.Name = "btnActualizar";
       this.btnActualizar.Size = new System.Drawing.Size(99, 23);
       this.btnActualizar.TabIndex = 9;
@@ -267,7 +267,7 @@
       // 
       // BtnConfirmarTurno
       // 
-      this.BtnConfirmarTurno.Location = new System.Drawing.Point(244, 385);
+      this.BtnConfirmarTurno.Location = new System.Drawing.Point(278, 385);
       this.BtnConfirmarTurno.Name = "BtnConfirmarTurno";
       this.BtnConfirmarTurno.Size = new System.Drawing.Size(99, 23);
       this.BtnConfirmarTurno.TabIndex = 6;
@@ -277,7 +277,7 @@
       // 
       // Btn_EliminarTurno
       // 
-      this.Btn_EliminarTurno.Location = new System.Drawing.Point(435, 385);
+      this.Btn_EliminarTurno.Location = new System.Drawing.Point(469, 385);
       this.Btn_EliminarTurno.Name = "Btn_EliminarTurno";
       this.Btn_EliminarTurno.Size = new System.Drawing.Size(99, 23);
       this.Btn_EliminarTurno.TabIndex = 7;
@@ -315,7 +315,7 @@
       // 
       // BtnSobreTurno
       // 
-      this.BtnSobreTurno.Location = new System.Drawing.Point(727, 385);
+      this.BtnSobreTurno.Location = new System.Drawing.Point(761, 385);
       this.BtnSobreTurno.Name = "BtnSobreTurno";
       this.BtnSobreTurno.Size = new System.Drawing.Size(99, 23);
       this.BtnSobreTurno.TabIndex = 8;
@@ -327,7 +327,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1029, 486);
+      this.ClientSize = new System.Drawing.Size(1084, 486);
       this.Controls.Add(this.BtnSobreTurno);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.CmbMedicos);
